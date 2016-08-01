@@ -228,7 +228,7 @@ starts_on | date | No | ISO 8601 formatted date
 start_time | string | No | HH:MM
 horse_pony | string | No | R = Horse, P = Pony
 team | boolean | No
-judgement_id | string | Yes | See separate list for valid values
+judgement_id | string | (Yes) | [See separate list for valid values](https://app.equipe.com/api/judgement/show_jumpings.json)
 fence_height | integer | (Yes) | If show jumping, height in cm
 arena | string | No | Name of the arena
 entry_fee | decimal |
