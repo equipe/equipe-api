@@ -216,6 +216,17 @@ clubs | Array | Club | Yes | Matching clubs
 
 # Models
 
+## Show
+
+
+Attribute | Type | Mandatory | Description
+--- | :---: | :---: | ---
+id | integer | Yes | Your primary key for the show
+name | string | Yes | Name of the show
+starts_on | string | No | ISO 8601 formatted start date
+ends_on | string | No | ISO 8601 formatted end date
+currency | string | No | ISO 4217 formmated currency code used for overall economy for the show
+
 ## Competition
 
 Attribute | Type | Mandatory | Description
@@ -235,6 +246,7 @@ entry_fee | decimal |
 starting_fee | decimal |
 late_entry | decimal |
 prize_money | Array[decimal] | No | Prize money split
+prize_money_currency | string | No | ISO 4217 formatted currency for prize money
 young_horse_entry_fee | decimal | No |  Young horses entry fee
 young_horse_starting_fee | decimal | No |  Young horses Starting fee
 young_horse_late_entry | decimal | No |  Young horses late entry
