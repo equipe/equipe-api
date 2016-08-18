@@ -1,5 +1,7 @@
 # Custom dressage client
 
+> Use this only if you have very specific use case, as you will loose synchronisation.
+
 ## Introduction
 
 * Find out your organizer_id, show_id and competition_id by looking at the url, or browsing the api end points.
