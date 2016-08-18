@@ -1,4 +1,4 @@
-# Federation Marking Sheet
+# Federation Marking Sheet API
 
 Marking sheets is used for Dressage, Freestype, Para-dressage, Eventing and more. These sheets is created within app, and mapped to your specifided judgement id or rule code.
 
