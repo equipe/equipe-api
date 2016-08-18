@@ -35,6 +35,19 @@ This will return all marking sheets, both FEI and created specific for your own 
 ]
 ```
 
+Attribute | Type | Mandatory | Description
+--- | :---: | :---: | ---
+federation | string | Yes
+name | string | Yes
+sp | string | Yes | Language
+year | string | Yes | Edition
+course_length | string | Yes
+time | string | Yes
+type | string | Yes
+max_score | integer | Yes
+report_url | url | No | Link to pdf version of the marking sheet
+items_url | url | No | Link to json version of the marking sheet
+
 Follow the links to get the marking sheet in pdf or as json with full details.
 
 # Marking sheet
