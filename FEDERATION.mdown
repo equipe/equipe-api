@@ -121,6 +121,8 @@ riders | Array | Person | Yes | Matching riders
       "address_country":"Sweden",
       "home_phone":"",
       "club_id":2628,
+      "club_logo_id":"0235",
+      "club_logo_group": "svrf",
       "person_no":1969,
       "email":"xxx",
       "country":"SWE"
@@ -137,6 +139,8 @@ riders | Array | Person | Yes | Matching riders
       "address_country":"Sweden",
       "home_phone":"08-58358612",
       "club_id":1899,
+      "club_logo_id":"0431",
+      "club_logo_group": "svrf",
       "person_no":1958,
       "email":"xxx",
       "country":"SWE"
