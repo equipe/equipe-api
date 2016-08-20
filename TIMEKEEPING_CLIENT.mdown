@@ -107,38 +107,38 @@ This gives details how the result list is sorted, where you find time and faults
 ```json
 [
   {
-    "rider_name": "Max O'Reilly Hyland",
-    "rider_name_order": "O'Reilly HylandMax",
-    "rider_short_name": "M. O'Reilly Hyland",
-    "horse_name": "Dorado",
-    "horse_no": 600,
-    "clabb_no": "11",
     "id": 11077,
     "kq": 11,
+    "clabb_no": "11",
     "ord": 1000,
     "st": 1,
-    "rnr": 10066,
-    "re": 29,
-    "hnr": 10171,
-    "a": "",
+    "rider_name": "Max O'Reilly Hyland",
     "rider_country": "IRL",
+    "rider_name_order": "O'Reilly HylandMax",
+    "rider_short_name": "M. O'Reilly Hyland",
+    "rnr": 10066,
+    "horse_name": "Dorado",
+    "horse_no": 600,
+    "hnr": 10171,
+    "re": 29,
+    "a": "",
   },
   {
-    "rider_name": "Christine Raaholt",
-    "rider_name_order": "RaaholtChristine",
-    "rider_short_name": "C. Raaholt",
-    "horse_name": "Brandy",
-    "horse_no": 602,
-    "clabb_no": "11",
     "id": 10970,
     "kq": 11,
+    "clabb_no": "11",
     "ord": 1001,
     "st": 2,
-    "rnr": 10062,
-    "re": 40,
-    "hnr": 10164,
-    "a": "",
+    "rider_name": "Christine Raaholt",
     "rider_country": "NOR",
+    "rider_name_order": "RaaholtChristine",
+    "rider_short_name": "C. Raaholt",
+    "rnr": 10062,
+    "horse_name": "Brandy",
+    "horse_no": 602,
+    "hnr": 10164,
+    "re": 40,
+    "a": ""
   }
 ]
 ```
@@ -146,8 +146,12 @@ This gives details how the result list is sorted, where you find time and faults
 Attribute | Type | Description
 --- | --- | ---
 st | integer | Start number
+kq | integer | Competition ID
+ord | integer | Starting order
 rider_name | string | Name of the rider
+rider_country | string | Nation of the rider
 horse_name | string | Name of the horse
+horse_no | string | Horse number
 re | integer | Rank
 rnr | integer | Person ID
 hnr | integer | Horse ID
