@@ -170,17 +170,19 @@ It get more details about the rider or horse use
 ```json
 [
   {
+    "id": 10673,
+    "kq": 11,
+    "clabb_no": "11",
+    "ord": 1004,
+    "ord_omh": null,
+    "st": 5,
     "rider_name": "Ines Van Den Bosch",
     "rider_name_order": "Van Den BoschInes",
     "rider_short_name": "I. Van Den Bosch",
+    "rider_country": "BEL",
+    "rnr": 10082,
     "horse_name": "Watch ME",
     "horse_no": 612,
-    "clabb_no": "11",
-    "id": 10673,
-    "kq": 11,
-    "ord": 1004,
-    "st": 5,
-    "rnr": 10082,
     "hnr": 10239,
     "re": 1,
     "grundf": 0,
@@ -188,24 +190,24 @@ It get more details about the rider or horse use
     "tfg": 0,
     "or": "",
     "a": "",
-    "rider_country": "BEL",
-    "ord_omh": null,
     "rid": true,
     "result_preview": "0/69.57",
     "tida": null
   },
   {
+    "id": 11102,
+    "kq": 11,
+    "clabb_no": "11",
+    "ord": 1015,
+    "ord_omh": null,
+    "st": 16,
     "rider_name": "Leonie Peeters",
     "rider_name_order": "PeetersLeonie",
     "rider_short_name": "L. Peeters",
+    "rider_country": "BEL",
+    "rnr": 10085,
     "horse_name": "Sunny Girl",
     "horse_no": 638,
-    "clabb_no": "11",
-    "id": 11102,
-    "kq": 11,
-    "ord": 1015,
-    "st": 16,
-    "rnr": 10085,
     "hnr": 10205,
     "re": 2,
     "grundf": 0,
@@ -213,8 +215,6 @@ It get more details about the rider or horse use
     "tfg": 0,
     "or": "",
     "a": "",
-    "rider_country": "BEL",
-    "ord_omh": null,
     "rid": true,
     "result_preview": "0/71.02",
     "tida": null
@@ -224,17 +224,19 @@ It get more details about the rider or horse use
 
 Attribute | Type | Description
 --- | --- | ---
+id | integer | Start ID
 st | integer | Start number
+ord | integer | Start order
+ord_omh | integer | Starting order jump off or following round
 rider_name | string | Name of the rider
-horse_name | string | Name of the horse
-re | integer | Rank
+rider_country | string | Nation rider competing for
 rnr | integer | Person ID
+horse_name | string | Name of the horse
 hnr | integer | Horse ID
+re | integer | Rank
 tida | string | Estimated start time
 rid | boolean | Ridden
-rider_country | string | Nation rider competing for
 result_preview | string | Result summary for all rounds
-ord_omh | integer | Starting order jump off or following round
 or | string | Reason <ul><li><strong>U</strong> = Retired</li><li><strong>D</strong> = Eliminated</li><li><strong>S</strong> = Disqualified</li></ul> *Use this with the combination of judgement.json eliminated_faults to know in which round the rider is eliminated or retired in*
 a | string | Status <ul><li><strong>Ö</strong> = Withdrawn</li><li><strong>E</strong> = Unpaid withdrawn</li><li><strong>U</strong> = No-show</li><li><strong>B</strong> = Changed competition</li><li><strong>R</strong> = Reserve</li></ul> *Rider count as not started*
 
