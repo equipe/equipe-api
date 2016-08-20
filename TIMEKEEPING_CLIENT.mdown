@@ -1,0 +1,246 @@
+# Equipe Timekeeping Client API
+
+> This is only if you have very specific use case, or want to hook up your existing graphics solution with Equipe. We have built in support for TV-graphics, LED-screens and Info Screens.
+
+## Introduction
+
+* Find out your organizer_id, show_id and competition_id by looking at the url, or browsing the api end points
+* GET starts.json
+* GET people.json and horses.json if you need full details about the rider or horse
+* Connect via WebSocket to Equipe ATU Connector for realtime data events
+
+## Authentication
+
+Login to your account. Visit you profile page and click show API-Key. This key should be set in the X-API-KEY header on every request.
+
+## Shows
+
+`GET /organizers/:organizer_id/meetings.json`
+
+###### Example JSON request
+
+```json
+[
+  {
+    "id": 1961,
+    "name": "Knokke Hippique",
+    "starts_on": "2016-06-29",
+    "ends_on": "2016-07-03",
+    "logo_id": "0004",
+    "logo_group": "kbrsf"
+  }
+]
+```
+
+## Competitions
+
+`GET /meetings/:show_id/competitions.json`
+
+```json
+[
+  {
+    "kq": 27,
+    "clabb": "27",
+    "klass": "CSI5* Grand Prix Table A (238.2.2a-GP) 1.60m"
+  }
+]
+```
+
+Attribute | Type | Description
+--- | --- | ---
+kq | integer | ID
+clabb | string | Competition number
+klass | string | Name of the competition
+
+
+## Judgement details
+
+This gives details how the result list is sorted, where you find time and faults in the different rounds.
+
+`GET /meetings/:show_id/competitions/:competition_id/H/judgement.json`
+
+```json
+{
+  "rounds": [
+    {
+      "faults_caption": "Faults",
+      "caption": "First round",
+      "time_faults_caption": "Time faults",
+      "time_caption": "Time",
+      "fence_faults_caption": "Fence faults",
+      "time_column": "grundt",
+      "faults_column": "grundf",
+      "time_faults_column": "tfg",
+      "round_no": 1,
+      "max_time": 74,
+      "eliminated_faults": 999,
+      "eliminated_time": 999
+    },
+    {
+      "faults_caption": "Faults",
+      "caption": "Jump off",
+      "time_faults_caption": "Time faults",
+      "time_caption": "Time",
+      "fence_faults_caption": "Fence faults",
+      "time_column": "omh1t",
+      "faults_column": "omh1f",
+      "time_faults_column": "tf1",
+      "round_no": 2,
+      "max_time": 50,
+      "eliminated_faults": 999,
+      "eliminated_time": 999
+    }
+  ],
+  "sorting": {
+    "grundf": "asc",
+    "omh1f": "asc",
+    "omh1t": "asc",
+    "grundt": "asc"
+  }
+}
+```
+
+## Starts
+
+`GET /meetings/:show_id/competitions/:competition_id/H/starts.json`
+
+```json
+[
+  {
+    "rider_name": "Max O'Reilly Hyland",
+    "rider_name_order": "O'Reilly HylandMax",
+    "rider_short_name": "M. O'Reilly Hyland",
+    "horse_name": "Dorado",
+    "horse_no": 600,
+    "clabb_no": "11",
+    "id": 11077,
+    "kq": 11,
+    "ord": 1000,
+    "st": 1,
+    "rnr": 10066,
+    "re": 29,
+    "hnr": 10171,
+    "a": "",
+    "rider_country": "IRL",
+  },
+  {
+    "rider_name": "Christine Raaholt",
+    "rider_name_order": "RaaholtChristine",
+    "rider_short_name": "C. Raaholt",
+    "horse_name": "Brandy",
+    "horse_no": 602,
+    "clabb_no": "11",
+    "id": 10970,
+    "kq": 11,
+    "ord": 1001,
+    "st": 2,
+    "rnr": 10062,
+    "re": 40,
+    "hnr": 10164,
+    "a": "",
+    "rider_country": "NOR",
+  }
+]
+```
+
+Attribute | Type | Description
+--- | --- | ---
+st | integer | Start number
+rider_name | string | Name of the rider
+horse_name | string | Name of the horse
+re | integer | Rank
+rnr | integer | Person ID
+hnr | integer | Horse ID
+a | string | See below
+
+It get more details about the rider or horse use
+
+`GET /meetings/:show_id/people/:person_id`
+
+`GET /meetings/:show_id/horses/:horse_id`
+
+## Results
+
+`GET /meetings/:show_id/competitions/:competition_id/H/results.json`
+
+```json
+[
+  {
+    "rider_name": "Ines Van Den Bosch",
+    "rider_name_order": "Van Den BoschInes",
+    "rider_short_name": "I. Van Den Bosch",
+    "horse_name": "Watch ME",
+    "horse_no": 612,
+    "clabb_no": "11",
+    "id": 10673,
+    "kq": 11,
+    "ord": 1004,
+    "st": 5,
+    "rnr": 10082,
+    "hnr": 10239,
+    "re": 1,
+    "grundf": 0,
+    "grundt": 69.57,
+    "tfg": 0,
+    "or": "",
+    "a": "",
+    "rider_country": "BEL",
+    "ord_omh": null,
+    "rid": true,
+    "result_preview": "0/69.57",
+    "tida": null
+  },
+  {
+    "rider_name": "Leonie Peeters",
+    "rider_name_order": "PeetersLeonie",
+    "rider_short_name": "L. Peeters",
+    "horse_name": "Sunny Girl",
+    "horse_no": 638,
+    "clabb_no": "11",
+    "id": 11102,
+    "kq": 11,
+    "ord": 1015,
+    "st": 16,
+    "rnr": 10085,
+    "hnr": 10205,
+    "re": 2,
+    "grundf": 0,
+    "grundt": 71.02,
+    "tfg": 0,
+    "or": "",
+    "a": "",
+    "rider_country": "BEL",
+    "ord_omh": null,
+    "rid": true,
+    "result_preview": "0/71.02",
+    "tida": null
+  }
+]
+```
+
+Attribute | Type | Description
+--- | --- | ---
+st | integer | Start number
+rider_name | string | Name of the rider
+horse_name | string | Name of the horse
+re | integer | Rank
+rnr | integer | Person ID
+hnr | integer | Horse ID
+tida | string | Estimated start time
+rider_country | string | Nation rider competing for
+result_preview | string | Result summary for all rounds
+ord_omh | integer | Starting order jump off or following round
+or | string | Reason <ul><li><strong>U</strong> = Retired</li><li><strong>D</strong> = Eliminated</li><li><strong>S</strong> = Disqualified</li></ul> *Use this with the combination of judgement.json eliminated_faults to know in which round the rider is eliminated or retired in*
+a | string | Status <ul><li><strong>Ö</strong> = Withdrawn</li><li><strong>E</strong> = Unpaid withdrawn</li><li><strong>U</strong> = No-show</li><li><strong>B</strong> = Changed competition</li><li><strong>R</strong> = Reserve</li></ul> *Rider count as not started*
+
+
+## Development
+
+Create a test show, where you play with the timekeeping. Install the Equipe ATU Connector this can be run without the timekeeping hardware. Click Edit settings, Select ATU Type, choose Computer.
+
+![Image of ATU Connector](https://files.readme.io/as3m6VQSvWtOvmpYRDF3_GUI.png)
+
+## Realtime timekeeping
+
+> WIP
+
