@@ -244,11 +244,59 @@ a | string | Status <ul><li><strong>Ö</strong> = Withdrawn</li><li><strong>E</s
 
 ## Development
 
-Create a test show, where you play with the timekeeping. Install the Equipe ATU Connector this can be run without the timekeeping hardware. Click Edit settings, Select ATU Type, choose Computer.
+Create a test show, where you can play with the timekeeping. Install the Equipe ATU Connector this can be run without the timekeeping hardware. Click Edit settings, Select ATU Type, choose Computer.
 
 ![Image of ATU Connector](https://files.readme.io/as3m6VQSvWtOvmpYRDF3_GUI.png)
 
 ## Realtime timekeeping
 
-> WIP
+You get realtime timekeeping events by connecting to the Equipe ATU Connector via WebSocket and listen for the event `output` with this you are able to rebuild the timekeeping state.
 
+```json
+{
+  "type": "output",
+  "payload": {
+    "id": 10946,
+    "rank": 999,
+    "running": true,
+    "countDown": false,
+    "countDownDiff": null,
+    "timekeepingOutputId": 46,
+    "action": "output",
+    "baseTime": "0.0",
+    "time": 0,
+    "timeToBeatTime": null,
+    "timeToBeatDiff": null,
+    "phase": 1,
+    "round": 1,
+    "previousTime": null,
+    "faults": 0,
+    "fenceFaults": null,
+    "timeFaults": 0,
+    "totalFaults": null,
+    "startNo": 13,
+    "rider": "Megan Laseur",
+    "horse": "Especially For You"
+  }
+}
+```
+
+When output event is recevied, check the state of running/countDown and trigger your own timer.
+
+```javascript
+if (data.countDown && !data.running)
+  this.start(Date.now() - (data.countDownValue * 1000));
+else
+  if(data.running)
+    this.start(Date.now() - (parseFloat(data.time, 10) * 1000));
+  else {
+    if(this.state.countDown && !data.countDown)
+      data.countDown = true;
+
+    data.time = this.fixedTo(parseFloat(data.time, 10) || 0, 2);
+    data.countDownValue = this.fixedTo(parseFloat(data.countDownValue, 10), 2);
+    this.stop();
+  }
+```
+
+See full working example in `examples/equipe_timekeeing_client`
