@@ -248,7 +248,7 @@ Create a test show, where you can play with the timekeeping. Install the Equipe 
 
 ![Image of ATU Connector](https://files.readme.io/as3m6VQSvWtOvmpYRDF3_GUI.png)
 
-## Realtime timekeeping
+## Realtime data
 
 You get realtime timekeeping events by connecting to the Equipe ATU Connector via WebSocket and listen for the event `output` with this you are able to rebuild the timekeeping state.
 
