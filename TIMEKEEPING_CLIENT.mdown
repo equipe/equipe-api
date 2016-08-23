@@ -284,19 +284,34 @@ You get realtime timekeeping events by connecting to the Equipe ATU Connector vi
 When output event is recevied, check the state of running/countDown and trigger your own timer.
 
 ```javascript
-if (data.countDown && !data.running)
-  this.start(Date.now() - (data.countDownValue * 1000));
-else
-  if(data.running)
-    this.start(Date.now() - (parseFloat(data.time, 10) * 1000));
-  else {
-    if(this.state.countDown && !data.countDown)
-      data.countDown = true;
+receivedTimekeepingOutput(data){
+  // If eliminated hide the clock
+  data.isEliminated = !!ShowJumpingEvent[data.fenceFaults];
 
-    data.time = this.fixedTo(parseFloat(data.time, 10) || 0, 2);
-    data.countDownValue = this.fixedTo(parseFloat(data.countDownValue, 10), 2);
-    this.stop();
-  }
+  // Normalize
+  data.faults = data.faults || 0;
+  if(!data.timeAdded)
+    data.timeAdded = null;
+
+  if(data.countDownValue)
+    data.countDownValue = parseFloat(data.countDownValue, 10);
+
+  if (data.countDown && !data.running)
+    this.start(Date.now() - (data.countDownValue * 1000));
+  else
+    if(data.running)
+      this.start(Date.now() - (parseFloat(data.time, 10) * 1000));
+    else {
+      if(this.state.countDown && !data.countDown)
+        data.countDown = true;
+
+      data.time = this.fixedTo(parseFloat(data.time, 10) || 0, 2);
+      data.countDownValue = this.fixedTo(parseFloat(data.countDownValue, 10), 2);
+      this.stop();
+    }
+
+  this.setState(data);
+}
 ```
 
 See full working example in `examples/equipe_timekeeing_client`
