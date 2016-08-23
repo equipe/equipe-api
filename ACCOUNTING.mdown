@@ -85,6 +85,8 @@ Alternative path is `/meetings/:show_id/people/receivable.json`, `/meetings/:sho
 ]
 ```
 
+#### Person
+
 Attribute | Type | Description
 --- | --- | ---
 rnr | integer | Primary key, person id
