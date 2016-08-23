@@ -31,8 +31,8 @@ Attribute | Type | Mandatory | Description
 --- | :---: | :---: | ---
 id | integer | Yes | Your primary key for the show
 name | string | Yes | Name of the show
-starts_on | string | No | ISO 8601 formatted start date
-ends_on | string | No | ISO 8601 formatted end date
+starts_on | string | No | ISO 8601 (YYYY-MM-DD) formatted start date
+ends_on | string | No | ISO 8601 (YYYY-MM-DD) formatted end date
 entries_url | url | Yes | Full url including protocol, host and path to the Entries end point for the given show
 
 `GET https://example.com/shows.json`
@@ -232,7 +232,7 @@ ends_on | string | No | ISO 8601 formatted end date
 currency | string | No | ISO 4217 formmated currency code used for overall economy for the show
 foreign_tax | boolean | No | If foreign tex should apply
 foreign_tax_percent | decimal | No | Foreign tax percent
-foreign_tax_skip | strinng | No | The IOC code, foreign tax but not for people from this country, this is the country code where the show is located.
+foreign_tax_skip | string | No | The IOC code, foreign tax but not for people from this country, this is the country code where the show is located.
 
 ## Competition
 
