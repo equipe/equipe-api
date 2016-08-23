@@ -131,7 +131,8 @@ invoice_closed | boolean | Invoice closed, locked for changes
 
 This will return the complete invoice-data in json. The data is self-descriptive. 
 
-`GET /meetings/:show_id/people/:person_id.json`
+`GET /meetings/:show_id/people/:person_id/economies.json`
+
 
 ###### Example JSON request
 
