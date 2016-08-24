@@ -20,17 +20,36 @@ This will return all marking sheets, both FEI and created specific for your own 
 ```json
 [
   {
-    "id": 10007,
-    "federation": "ERL",
-    "name": "FEI Dressage Test Nr 6",
+    "id": 307,
+    "federation": "FEI",
+    "name": "FEI Grand Prix 16-25",
     "sp": "E",
-    "year": "2002",
-    "course_length": "100",
-    "time": "9",
-    "type": "A",
-    "max_score": 200,
-    "report_url": "http://example.com/federations/3/marking_sheets/10007.pdf",
-    "items_url": "http://example.com/federations/3/marking_sheets/10007.json"
+    "year": "2009",
+    "course_length": "60",
+    "time": "6",
+    "type": "D",
+    "max_score": 430,
+    "format": {
+      "pdf": "http://localhost:3000/federations/4/marking_sheets/307.pdf",
+      "xml": "http://localhost:3000/federations/4/marking_sheets/307.xml",
+      "json": "http://localhost:3000/federations/4/marking_sheets/307.json"
+    }
+  },
+  {
+    "id": 306,
+    "federation": "FEI",
+    "name": "FEI Ind. Comp. Test Regional Games",
+    "sp": "E",
+    "year": "1997",
+    "course_length": "60",
+    "time": "6,5",
+    "type": "D",
+    "max_score": 370,
+    "format": {
+      "pdf": "http://localhost:3000/federations/4/marking_sheets/306.pdf",
+      "xml": "http://localhost:3000/federations/4/marking_sheets/306.xml",
+      "json": "http://localhost:3000/federations/4/marking_sheets/306.json"
+    }
   }
 ]
 ```
@@ -45,8 +64,7 @@ course_length | string | Yes
 time | string | Yes
 type | string | Yes
 max_score | integer | Yes
-report_url | url | No | Link to pdf version of the marking sheet
-items_url | url | No | Link to json version of the marking sheet
+format | url | object | Marking sheet in the different formats
 
 Follow the links to get the marking sheet in pdf or as json with full details.
 
