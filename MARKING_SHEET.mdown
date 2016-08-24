@@ -30,9 +30,9 @@ This will return all marking sheets, both FEI and created specific for your own 
     "type": "D",
     "max_score": 430,
     "format": {
-      "pdf": "http://localhost:3000/federations/4/marking_sheets/307.pdf",
-      "xml": "http://localhost:3000/federations/4/marking_sheets/307.xml",
-      "json": "http://localhost:3000/federations/4/marking_sheets/307.json"
+      "pdf": "https://app.equipe.com/federations/4/marking_sheets/307.pdf",
+      "xml": "https://app.equipe.com/federations/4/marking_sheets/307.xml",
+      "json": "https://app.equipe.com/federations/4/marking_sheets/307.json"
     }
   },
   {
@@ -46,9 +46,9 @@ This will return all marking sheets, both FEI and created specific for your own 
     "type": "D",
     "max_score": 370,
     "format": {
-      "pdf": "http://localhost:3000/federations/4/marking_sheets/306.pdf",
-      "xml": "http://localhost:3000/federations/4/marking_sheets/306.xml",
-      "json": "http://localhost:3000/federations/4/marking_sheets/306.json"
+      "pdf": "https://app.equipe.com/federations/4/marking_sheets/306.pdf",
+      "xml": "https://app.equipe.com/federations/4/marking_sheets/306.xml",
+      "json": "https://app.equipe.com/federations/4/marking_sheets/306.json"
     }
   }
 ]
