@@ -10,6 +10,7 @@ Welcome to Equipe Federation API docs. Looking to integrate your federation to t
   * Search officials
   * Search horses
   * Search clubs
+  * Upload entry file
 
 ## Authentication
 
@@ -217,6 +218,14 @@ Attribute | Type | Model | Mandatory | Description
 --- | :---: | :---: | :---: | :---
 clubs | Array | Club | Yes | Matching clubs
 
+## Upload entry file
+
+This is a  useful options if the your federation is not yet ready to commit to our standard format. You can build your own service that converts the entry file given by the entry system you are using.
+
+* The user uploads the entry file to Equipe
+* Equipe will in the background make a post with the data untouched to `Entry file upload URL`, the Content-Type header is set as it was received by the user, the request.body contains the file content.
+* You convert the entry file, and return our format for entries, see above ``Entries``
+* Equipe import the information, and tracks changes. The user will be able to import the entries serveral times.
 
 # Models
 
