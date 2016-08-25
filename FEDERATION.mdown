@@ -269,7 +269,7 @@ young_horse_late_entry | decimal | No |  Young horses late entry
 young_horse_prize_money | Array[decimal] | No | Young horses prize money split
 admin_fee | decimal | No | Admin fee
 team | boolean | No | Team competition
-team_entry_fee | No | Team entry fee
+team_entry_fee | decimal | No | Team entry fee
 team_prize_money | Array[decimal] | No | Prize money split team
 club_discount | boolean |  No | Discount for riders that compits for the same organizer that runs the show
 open_for_young_horses | boolean | No | Open for young horses
