@@ -274,6 +274,7 @@ team_prize_money | Array[decimal] | No | Prize money split team
 club_discount | boolean |  No | Discount for riders that compits for the same organizer that runs the show
 open_for_young_horses | boolean | No | Open for young horses
 honorary_award | boolean | No | Prize in kind
+randomized | boolean | No | Competition is randomized
 
 
 ## Person
