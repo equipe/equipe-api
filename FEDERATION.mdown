@@ -260,7 +260,7 @@ fence_height | integer | (Yes) | If show jumping, height in cm
 arena | string | No | Name of the arena
 entry_fee | decimal |
 starting_fee | decimal |
-late_entry | decimal |
+late_entry_fee | decimal |
 prize_money | Array[decimal] | No | Prize money split
 prize_money_currency | string | No | ISO 4217 formatted currency for prize money
 young_horse_entry_fee | decimal | No |  Young horses entry fee
