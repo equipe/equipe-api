@@ -275,6 +275,7 @@ club_discount | boolean |  No | Discount for riders that compits for the same o
 open_for_young_horses | boolean | No | Open for young horses
 honorary_award | boolean | No | Prize in kind
 randomized | boolean | No | Competition is randomized
+category_merge | string | No | Value of category_by_category, all_categories_together or three_full_category
 
 
 ## Person
