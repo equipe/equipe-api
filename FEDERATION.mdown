@@ -236,12 +236,30 @@ Attribute | Type | Mandatory | Description
 --- | :---: | :---: | ---
 id | integer | Yes | Your primary key for the show
 name | string | Yes | Name of the show
-starts_on | string | No | ISO 8601 formatted start date
-ends_on | string | No | ISO 8601 formatted end date
-currency | string | No | ISO 4217 formmated currency code used for overall economy for the show
-foreign_tax | boolean | No | If foreign tex should apply
-foreign_tax_percent | decimal | No | Foreign tax percent
+starts_on | string | No | ISO 8601 formatted start date
+ends_on | string | No | ISO 8601 formatted end date
+currency | string | No | ISO 4217 formmated currency code used for overall economy for the show
+foreign_tax | boolean | No | If foreign tax should apply (When used automatic for people not from foreign_tax_skip)
+foreign_tax_percent | decimal | No | Foreign tax percent
 foreign_tax_skip | string | No | The IOC code, foreign tax but not for people from this country, this is the country code where the show is located.
+income_tax | boolean | No | If income tax should apply (When used automatic for people from foreign_tax_skip-country without company)
+income_tax_percent | float | No | Income tax percent
+club_discount_percent | float | No | Discount percent for riders that competes from the same organizer that runs the show 
+show_fee | float | No | Overall fee for horses in competition or list that is linked to `show_fee_applied`, fee only apply once per horse. Rarely used instead use master list with fees on it.
+show_fee_vat | integer | No | VAT % on `show_fee`
+veterinary_fee | float | No | Apply fee once per horse on that entered a competition or list that is linked to `veterinary_fee_applied`
+veterinary_per_day | boolean | No | Apply fee once per day per horse
+veterinary_vat | integer | No | VAT % on `veterinary_fee`
+safety_fee | float | No | Apply fee once per horse on that entered a competition or list that is linked to `safety_fee_applied`
+safety_per_day | boolean | No | Apply fee once per day per horse
+safety_vat | integer | No | VAT % on `safety_fee`
+penalty_fee | float | No | Penalty fee for starts marked with status `no-show`
+credit_card_fee_percent | float | No | Possibllty to add credit card fee % on invoices
+default_account | string | No | Defaults to `cash` <ul><li>prepaid</li><li>bank</li><li>cash</li><li>credit_card</li><li>swish</li></ul>
+prize_money_equal_ranked | integer | No | Defaults to `2` <ul><li><strong>1</strong> Highest prize money</li><li><strong>2</strong> Prize money splits</li></ul>
+result_name | string | No | Name of the person responsibly for the results to online.equipe.com
+result_email | string | No | Email of the person responsibly for the results to online.equipe.com
+result_cell_phone | string | No | Cell phone of the person responsibly for the results to online.equipe.com
 
 ## Competition
 
@@ -267,16 +285,18 @@ young_horse_entry_fee | decimal | No |  Young horses entry fee
 young_horse_starting_fee | decimal | No |  Young horses Starting fee
 young_horse_late_entry | decimal | No |  Young horses late entry
 young_horse_prize_money | Array[decimal] | No | Young horses prize money split
-admin_fee | decimal | No | Admin fee
-team | boolean | No | Team competition
+admin_fee | decimal | No | Admin fee
+team | boolean | No | Team competition
 team_entry_fee | decimal | No | Team entry fee
 team_prize_money | Array[decimal] | No | Prize money split team
-club_discount | boolean |  No | Discount for riders that compits for the same organizer that runs the show
 open_for_young_horses | boolean | No | Open for young horses
-honorary_award | boolean | No | Prize in kind
+honorary_award | boolean | No | Prize in kind
 randomized | boolean | No | Competition is randomized
-category_merge | string | No | Value of category_by_category, all_categories_together or three_full_category
-
+category_merge | string | No | Value of <ul><li>category_by_category</li><li>all_categories_together</li><li>three_full_category</li></ul>
+club_discount_percent_applied | boolean | No | Apply discount for riders that competes for the same organizer that runs the show
+show_fee_applied | boolean | No | Apply `show_fee` on horses entered to this competition or list
+veterinary_fee_applied | boolean | No | Apply `veterinary_fee` on horses entered to this competition or list
+safety_fee_applied | boolean | No | Apply `safety_fee` on horses entered to this competition or list
 
 ## Person
 
