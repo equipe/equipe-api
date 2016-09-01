@@ -408,8 +408,7 @@ First we need to get all people in the show via `/meetings/:show_id/people.json`
 
 
 ```ruby
-require 'uri'
-require 'net/http'
+require 'faraday'
 require 'json'
 
 # Change this for the show you want to export
@@ -418,31 +417,14 @@ SHOW_ID = 0000
 # API-key found in app.equipe.com, users, profile for the user
 API_KEY = 'YOUR-API-KEY'
 
-url = URI("https://app.equipe.com/meetings/#{SHOW_ID}/people.json")
-
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-
-request = Net::HTTP::Get.new(url)
-request["X-API-KEY"] = API_KEY
-
-response = http.request(request)
-
-people = JSON.parse(response.read_body)
+response = Faraday.get("https://app.equipe.com/meetings/#{SHOW_ID}/people.json", {}, 'X-API-KEY' => API_KEY)
+people = JSON.parse(response.body)
 
 people.each do |person|
-  request = Net::HTTP::Get.new("/meetings/#{SHOW_ID}/people/#{person['rnr']}/economies.json")
-  request["X-API-KEY"] = API_KEY
-  response = http.request(request)
-  invoice = JSON.parse(response.read_body)
+  response = Faraday.get("https://app.equipe.com/meetings/#{SHOW_ID}/people/#{person['rnr']}/economies.json", {}, 'X-API-KEY' => API_KEY)
+  invoice = JSON.parse(response.body)
 
-  name = invoice['person']['name']
-  invoice_state = invoice['person']['invoice_closed'] ? 'CLOSED' : 'OPEN'
-  total_state = invoice['person']['total_state']
-  total = invoice['person']['total']
-
-  rows = invoice['economies'].map { |economy| "Type: #{economy['fee_type']}: #{economy['description']} (#{economy['vat']} %) #{economy['total']}" }.join(', ')
-
-  puts "[#{invoice_state}] #{name} #{total_state} #{total} (#{rows})"
+  # Print economies for person
+  puts invoice.inspect
 end
 ```
