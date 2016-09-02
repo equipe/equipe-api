@@ -95,5 +95,6 @@ en:
           S: Disqualified          # Often done afterwards, when the competition is finished. Judges take this decision.
 ```
 
+## Contact
 
-
+Contact us if you are want to translate app.equipe.com to your language. You should know our system well before you start making the translation.
