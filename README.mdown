@@ -4,6 +4,10 @@
 
 Looking to integrate your federation to the world of Equipe? This will guide you how to structure your web service to be compliant with https://app.equipe.com to import entires, enable search of riders, officials, horses, clubs and later get results when the show is finished. [Read more](https://github.com/equipe/equipe_api/blob/master/FEDERATION.mdown)
 
+## Accounting API
+
+Use this API if you want to fetch all accounting information from Equipe. [Read more](https://github.com/equipe/equipe_api/blob/master/ACCOUNTING.mdown)
+
 # License
 
 Equipe API docs are licensed under [Creative Commons (CC BY-SA 4.0)](http://creativecommons.org/licenses/by-sa/4.0/).
