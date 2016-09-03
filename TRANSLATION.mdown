@@ -95,6 +95,12 @@ en:
           S: Disqualified          # Often done afterwards, when the competition is finished. Judges take this decision.
 ```
 
+## What is it?
+
+* TDB - System for the Swedish federation, should not be translated to something else, this is not visible outside Sweden.
+* Swish - Electronic payment person to person. If something similar exist it can be translated
+
+
 ## Contact
 
 Contact us if you are want to translate app.equipe.com to your language. You should know our system well before you start making the translation.
