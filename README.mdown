@@ -8,6 +8,10 @@ Looking to integrate your federation to the world of Equipe? This will guide you
 
 Use this API if you want to fetch all accounting information from Equipe. [Read more](https://github.com/equipe/equipe_api/blob/master/ACCOUNTING.mdown)
 
+## Translation
+
+The only way to make proper and professional translation of app.equipe.com and online.equipe.com is to have used the software during serveral shows. When you have done that and want to add support for your native language. Contact us and we will add you as a translator. [Read more](https://github.com/equipe/equipe_api/blob/master/TRANSLATION.mdown)
+
 # License
 
 Equipe API docs are licensed under [Creative Commons (CC BY-SA 4.0)](http://creativecommons.org/licenses/by-sa/4.0/).
