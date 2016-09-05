@@ -8,6 +8,8 @@ You will notice that more words will come over and over again. This is because t
 
 Try to keep the words in similar length as the original values.
 
+Translation.iosaves white space and new line, so be careful when you leave the text box so there is no extra new line (enter) or traling white space.
+
 ```yaml
 en:
   reports:
