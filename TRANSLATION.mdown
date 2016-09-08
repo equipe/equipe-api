@@ -86,12 +86,12 @@ en:
           R: Reserve
           S: Starting
         or:                       # See reason below
-          A: NS
+          A: Abst.
           U: Ret.
           D: Eli.
           S: DQ
         reason:                    # All of these is a result, they will be calculated as starting
-          A: No start              # This is the easiest to get wrong, No start is only used if the start is qualified for jump off, but does not want to participate, this is a result like eliminated or retired.
+          A: Abstained             # This is the easiest to get wrong, Abstained is only used if the start is qualified for jump off, but does not want to participate, this is a result like eliminated or retired.
           U: Retired
           D: Eliminated           
           S: Disqualified          # Often done afterwards, when the competition is finished. Judges take this decision.
