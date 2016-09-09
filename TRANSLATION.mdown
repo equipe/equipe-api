@@ -6,11 +6,12 @@ Translation is done with the tool [translation.io](https://translation.io).
 
 You will notice that more words will come over and over again. This is because they are used in different parts of the apps. The translation-key is visible in the top-right of the word, it will give you some context where it's used. Marked with yellow in the screenshot above.
 
+Translation.io saves white space and new line, so be careful when you leave the text box so there is no extra new line (enter) or traling white space.
+
 Try to keep the words in similar length as the original values.
 
-Translation.iosaves white space and new line, so be careful when you leave the text box so there is no extra new line (enter) or traling white space.
-
 ```yaml
+# The translation of these keys must be as short as in English as it's used on on report headers with very limited space.
 en:
   reports:
     label_overrides:
@@ -46,6 +47,14 @@ sv:
         tidd: Uth. Tid
         rider_country: Nat
 
+# The translation of these keys must be as short as in English as it's used on the scoreboards with very limited space.
+en:
+  scoreboard:
+    components:
+      participants: Total
+      remaining: Left
+      end_time: Finish
+      rank: Rank
 ```
 
 ## Important to get it right
