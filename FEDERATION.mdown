@@ -11,6 +11,7 @@ Welcome to Equipe Federation API docs. Looking to integrate your federation to t
   * Search horses
   * Search clubs
   * Upload entry file
+  * Upload results
 
 ## Authentication
 
@@ -226,6 +227,42 @@ This is a  useful options if the your federation is not yet ready to commit to o
 * Equipe will in the background make a post with the data untouched to `Entry file upload URL`, the Content-Type header is set as it was received by the user, the request.body contains the file content.
 * You convert the entry file, and return our format for entries, see above ``Entries``
 * Equipe import the information, and tracks changes. The user will be able to import the entries serveral times.
+
+## Upload results
+
+We support 3 different ways of exporting results.
+
+* Submit the results directly to the federation in our format
+* Submit the results to external converter that transform our format to standard of the given federation, the file is downloaded and submitted manually to the federation by the user.
+* Download results in our format directly from the system
+
+### Submit results
+
+Provide the `Results URL` in the settings of the Federation in app.equipe.com.
+
+When the user exports the results, our system will make an `HTTP POST` with content type of `application/json` the request body contain the results in json format. If you accept the file, return status `202 Accepted` to our system knows that the file is accepted.
+
+In case of you own validation failes, the error needs to be communicated back to the user that tries to send the results.
+
+Return `422 Unprocessable entity` with content type `422 Unprocessable entity` and the body should contain the error messages in json format as following
+
+```json
+{
+ "errors": ["Missing licence of rider XXX"]
+}
+```
+
+### Submit the results to external converter
+
+Provide the `Result File URL` in the settings of the Federation in app.equipe.com
+
+When the user initialize the export, our system will make an `HTTP POST` with content type of `application/json` the request body contain the results in json format. You transform the file and return in in the body with the correct content type set. We will the forward this to the user and the file will be downloaded automatically and the user can submit it to the federation.
+
+In case of invalid result data return json response contain the error message with the status code `422 Unprocessable entity` as the example above.
+
+### Download our result
+
+This option is default if non of the above is specified. It will export the result data in our JSON-format to a file that will be downloaded.
 
 # Models
 
