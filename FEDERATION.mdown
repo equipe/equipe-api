@@ -238,6 +238,22 @@ We support 3 different ways of exporting results.
 
 ### Submit results
 
+#### Format
+
+The result format has similar structure as the entries. But instead of entries, we export the starts. [See example](examples/results.json)
+
+```json
+{
+  "show": {},
+  "competitions": [],
+  "people": [],
+  "horses": [],
+  "clubs": [],
+  "teams": [],
+  "starts": []
+}
+```
+
 Provide the `Results URL` in the settings of the Federation in app.equipe.com.
 
 When the user exports the results, our system will make an `HTTP POST` with content type of `application/json` the request body contain the results in json format. If you accept the file, return status `202 Accepted` to our system knows that the file is accepted.
