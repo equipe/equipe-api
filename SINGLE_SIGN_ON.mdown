@@ -1,6 +1,6 @@
 # Equipe Federation Single Sign On
 
-Your users of the system needs to login to `https://app.equipe.com`, instead of another password for the user to remember, you can sign in users that you have already authenticated in your system. This also creates the organizer and user if they not already exists in Equipe and assigns them to your federation. You should only generate this login possibility to users that have the role of organizer.
+Your users of the system needs to login to `https://app.equipe.com`, instead of another password for the user to remember, you can sign in users that you already have authenticated in your system. This also creates the organizer and user if they do not already exist in Equipe and assigns them to your federation. You should only generate this login possibility to users that have the role of organizer.
 
 ```html
 <form action="your-single-sign-on-url" method="post">
@@ -16,7 +16,7 @@ Your users of the system needs to login to `https://app.equipe.com`, instead of 
 
 ### Generate auth token
 
-Concat the values of organizer_id, organizer_name, name, email, cell_phone and your api key. Make a `SHA256` hexdigest of the result. We will use this to verify that your are the sender of the information and that it's untouched. Your `api_key` servers as the shared secret.
+Concat the values of organizer_id, organizer_name, name, email, cell_phone and your api key. Make a `SHA256` hexdigest of the result. We will use this to verify that your are the sender of the information and that it is untouched. Your `api_key` serves as the shared secret.
 
 ### Example
 
