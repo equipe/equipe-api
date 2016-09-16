@@ -1,12 +1,18 @@
 # Equipe API
 
-## Federation integration guide
+## Federation
 
-Follow this 6 steps guide to getting started with full featured integration with Equipe. This is overview guide of the steps involved. [Read more](https://github.com/equipe/equipe_api/blob/master/GUIDE.mdown)
+### Integration guide
 
-## Federation API
+Looking to integrate your federation to the world of Equipe? Follow this 6 steps guide to getting started with full featured integration with Equipe. This is overview guide of the steps involved. [Read more](https://github.com/equipe/equipe_api/blob/master/GUIDE.mdown)
 
-Looking to integrate your federation to the world of Equipe? This will guide you how to structure your web service to be compliant with https://app.equipe.com to import entires, enable search of riders, officials, horses, clubs and later get results when the show is finished. [Read more](https://github.com/equipe/equipe_api/blob/master/FEDERATION.mdown)
+### API
+
+This will guide you how to structure your web service to be compliant with https://app.equipe.com to import entires, enable search of riders, officials, horses, clubs and later get results when the show is finished. [Read more](FEDERATION.mdown)
+
+### Single sign on
+
+Allow single sign on for your already authenticated users in your system. [Read more](SINGLE_SIGN_ON.mdown)
 
 ## Accounting API
 
@@ -14,7 +20,7 @@ Use this API if you want to fetch all accounting information from Equipe. [Read 
 
 ## Translation
 
-The only way to make proper and professional translation of app.equipe.com and online.equipe.com is to have used the software during serveral shows. When you have done that and want to add support for your native language. Contact us and we will add you as a translator. [Read more](https://github.com/equipe/equipe_api/blob/master/TRANSLATION.mdown)
+The only way to make proper and professional translation of app.equipe.com and online.equipe.com is to have used the software during serveral shows. When you have done that and want to add support for your native language. Contact us and we will add you as a translator. [Read more](TRANSLATION.mdown)
 
 # License
 
