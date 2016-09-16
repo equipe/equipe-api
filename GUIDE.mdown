@@ -1,0 +1,18 @@
+# Federation integration guide
+
+These steps will guide you how to make seamless integration between your federation and Equipe. The prerequisites is that you already have a entry system where organizers and riders can login to mange entries.
+
+# Step 1 - Import entries to Equipe
+
+First of all we need to be able to import entries into Equipe. This is done by specifying the `shows_url` in the federation settings in Equipe. 
+
+![Image of Federation webservices](images/federation_webservices.png?raw=true)
+
+* User select File > Federation > Import entries.
+* Equipe makes a `HTTP GET` to the `shows_url` it return shows that the logged in user can import.
+* Equipe will ask the user to select show to import. 
+* Equipe will follow the `entries_url` in the response from `shows_url` and start importing entries. 
+
+This is a smart import, and the user can run this muliple times to get late entries. Changes done by the user in the Equipe will not be overridden by external changes.
+
+[Read more](FEDERATION.mdown#shows)
