@@ -1,6 +1,6 @@
 # Equipe Federation API
 
-Welcome to Equipe Federation API docs. Looking to integrate your federation to the world of Equipe? This will guide you how to structure your web service to be compliant with https://app.equipe.com to import entires, enable search of riders, officials, horses, clubs and later get results when the show is finished.
+Welcome to Equipe Federation API docs. Looking for the possibility to integrate your federation to the world of Equipe? This will guide you how to structure your web service to be compliant with https://app.equipe.com to import entires, enable search of riders, officials, horses, clubs and later get results when the show is finished.
 
 ## Web services
 
@@ -27,7 +27,7 @@ If the organizer does not have access to a specific end point, a 401 Unauthorize
 
 ## Shows
 
-You only need to return current shows. The user will be able to choose a show to import from this list. This end point should only return shows for the organizer that's making the request, specified by the **X-FEDERATION-ORGANIZER-ID** request header.
+You only need to return current shows. The user will be able to choose a show to import from this list. This end point should only return shows for the organizer that is making the request, specified by the **X-FEDERATION-ORGANIZER-ID** request header.
 
 Attribute | Type | Mandatory | Description
 --- | :---: | :---: | ---
@@ -221,9 +221,9 @@ clubs | Array | Club | Yes | Matching clubs
 
 ## Upload entry file
 
-This is a  useful options if the your federation is not yet ready to commit to our standard format. You can build your own service that converts the entry file given by the entry system you are using.
+This is a useful option if your federation is not yet ready to commit to our standard format. You can build your own service that converts the entry file given by the entry system you are using.
 
-* The user uploads the entry file to Equipe
+* The user upload the entry file to Equipe
 * Equipe will in the background make a post with the data untouched to `Entry file upload URL`, the Content-Type header is set as it was received by the user, the request.body contains the file content.
 * You convert the entry file, and return our format for entries, see above ``Entries``
 * Equipe import the information, and tracks changes. The user will be able to import the entries serveral times.
@@ -233,7 +233,7 @@ This is a  useful options if the your federation is not yet ready to commit to o
 We support 3 different ways of exporting results.
 
 * Submit the results directly to the federation in our format
-* Submit the results to external converter that transform our format to standard of the given federation, the file is downloaded and submitted manually to the federation by the user.
+* Submit the results to an external converter that transform our format to standard of the given federation, the file is downloaded and submitted manually to the federation by the user.
 * Download results in our format directly from the system
 
 ### Submit results
@@ -256,9 +256,9 @@ The result format has similar structure as the entries. But instead of entries, 
 
 Provide the `Results URL` in the settings of the Federation in app.equipe.com.
 
-When the user exports the results, our system will make an `HTTP POST` with content type of `application/json` the request body contain the results in json format. If you accept the file, return status `202 Accepted` to our system knows that the file is accepted.
+When the user exports the results, our system will make an `HTTP POST` with content type of `application/json` the request body contains the results in json format. If you accept the file, return status `202 Accepted` to our system knows that the file is accepted.
 
-In case of you own validation failes, the error needs to be communicated back to the user that tries to send the results.
+In case of your own validation fails, the error needs to be communicated back to the user that tries to send the results.
 
 Return `422 Unprocessable entity` with content type `422 Unprocessable entity` and the body should contain the error messages in json format as following
 
@@ -272,7 +272,7 @@ Return `422 Unprocessable entity` with content type `422 Unprocessable entity` a
 
 Provide the `Result File URL` in the settings of the Federation in app.equipe.com
 
-When the user initialize the export, our system will make an `HTTP POST` with content type of `application/json` the request body contain the results in json format. You transform the file and return in in the body with the correct content type set. We will the forward this to the user and the file will be downloaded automatically and the user can submit it to the federation.
+When the user initialize the export, our system will make an `HTTP POST` with content type of `application/json` the request body contain the results in json format. You transform the file and return in in the body with the correct content type set. We will then forward this to the user and the file will be downloaded automatically and the user can submit it to the federation.
 
 In case of invalid result data return json response contain the error message with the status code `422 Unprocessable entity` as the example above.
 
