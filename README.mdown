@@ -28,7 +28,7 @@ Use this API if you want to fetch all accounting information from Equipe. [Read 
 
 Do you want to render your own running clock? Subscribe the the live data stream to receive everything you need to build your own TV-graphics or Scoreboard integration. [Read more](TIMEKEEING_CLIENT.mdown)
 
-## Custom dressage client API
+## Dressage client API
 
 Nothing you normally do, but if you want to replace our own dressage client this will guide you. [Read more](DRESSAGE_CLIENT.mdown)
 
