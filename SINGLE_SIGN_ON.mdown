@@ -1,6 +1,6 @@
 # Equipe Federation Single Sign On
 
-Your users of the system needs to login to `https://app.equipe.com`, instead of another password for the user to remember, you can sign in users that you have already authenticated in your system. This also creates the organizer and user if they not already exists in Equipe and assigns them to your federation.
+Your users of the system needs to login to `https://app.equipe.com`, instead of another password for the user to remember, you can sign in users that you have already authenticated in your system. This also creates the organizer and user if they not already exists in Equipe and assigns them to your federation. You should only generate this login possibility to users that have the role of organizer.
 
 ```html
 <form action="your-single-sign-on-url" method="post">
