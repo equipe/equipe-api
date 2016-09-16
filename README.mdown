@@ -1,5 +1,9 @@
 # Equipe API
 
+## Federation integration guide
+
+Follow this 6 steps guide to getting started with full featured integration with Equipe. This is overview guide of the steps involved. [Read more](https://github.com/equipe/equipe_api/blob/master/GUIDE.mdown)
+
 ## Federation API
 
 Looking to integrate your federation to the world of Equipe? This will guide you how to structure your web service to be compliant with https://app.equipe.com to import entires, enable search of riders, officials, horses, clubs and later get results when the show is finished. [Read more](https://github.com/equipe/equipe_api/blob/master/FEDERATION.mdown)
