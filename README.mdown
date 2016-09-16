@@ -1,5 +1,11 @@
 # Equipe API
 
+In this repository we have gathered information on how to extend and integrate with Equipe. 
+
+## Translation
+
+The only way to make proper and professional translation of app.equipe.com and online.equipe.com is to have used the software during serveral shows. When you have done that and want to add support for your native language. Contact us and we will add you as a translator. [Read more](TRANSLATION.mdown)
+
 ## Federation
 
 ### Integration guide
@@ -16,11 +22,15 @@ Allow single sign on for your already authenticated users in your system. [Read 
 
 ## Accounting API
 
-Use this API if you want to fetch all accounting information from Equipe. [Read more](https://github.com/equipe/equipe_api/blob/master/ACCOUNTING.mdown)
+Use this API if you want to fetch all accounting information from Equipe. [Read more](ACCOUNTING.mdown)
 
-## Translation
+## Timekeeping client API
 
-The only way to make proper and professional translation of app.equipe.com and online.equipe.com is to have used the software during serveral shows. When you have done that and want to add support for your native language. Contact us and we will add you as a translator. [Read more](TRANSLATION.mdown)
+Do you want to render your own running clock? Subscribe the the live data stream to receive everything you need to build your own TV-graphics or Scoreboard integration. [Read more](TIMEKEEING_CLIENT.mdown)
+
+## Custom dressage client API
+
+Nothing you normally do, but if you want to replace our own dressage client this will guide you. [Read more](DRESSAGE_CLIENT.mdown)
 
 # License
 
