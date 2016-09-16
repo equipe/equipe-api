@@ -8,7 +8,7 @@ The only way to make proper and professional translation of app.equipe.com and o
 
 ## Federation
 
-### Integration guide
+### Guide
 
 Looking to integrate your federation to the world of Equipe? Follow this 6 steps guide to getting started with full featured integration with Equipe. This is overview guide of the steps involved. [Read more](https://github.com/equipe/equipe_api/blob/master/GUIDE.mdown)
 
