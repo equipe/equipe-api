@@ -299,7 +299,7 @@ income_tax | boolean | No | If income tax should apply (When used automatic for 
 income_tax_percent | float | No | Income tax percent
 club_discount_percent | float | No | Discount percent for riders that competes from the same organizer that runs the show
 penalty_fee | float | No | Penalty fee for starts marked with status `no-show`
-credit_card_fee_percent | float | No | Possibllty to add credit card fee % on invoices
+credit_card_fee_percents | Array[float] | No | Possibllty to add credit card fee % on invoices
 default_account | string | No | Defaults to `cash` <ul><li>prepaid</li><li>bank</li><li>cash</li><li>credit_card</li><li>swish</li></ul>
 prize_money_equal_ranked | integer | No | Defaults to `2` <ul><li><strong>1</strong> Highest prize money</li><li><strong>2</strong> Prize money splits</li></ul>
 result_name | string | No | Name of the person responsibly for the results to online.equipe.com
