@@ -24,6 +24,7 @@
   "competitions":[
     {
       "id":1,
+      "competition_no": "01",
       "name":"1.30 bed. A:1a",
       "height":"10",
       "discipline":"H",
@@ -46,6 +47,7 @@
     },
     {
       "id":2,
+      "competition_no": "02",      
       "name":"FEI Prix S:t Georges",
       "discipline":"D",
       "horse_pony":"R",
