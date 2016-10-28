@@ -14,7 +14,7 @@
     "starts_on":"2015-11-21",
     "ends_on":"2015-11-21",
     "foreign_tax_percent":15.0,
-    "credit_card_fee_percent":0.0,
+    "credit_card_fee_percents":[1.7, 5.5],
     "default_account":"cash",
     "logo_id":"10000",
     "logo_group":"svrf",
