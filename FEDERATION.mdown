@@ -365,7 +365,6 @@ fei_id | string | No | FEI ID for the person
 person_no | string | No | Either ISO 8601 formatted birth date, or only year of birth
 company | string | No | If the person is represented by a company, this name will be included on the invoice
 vat_no | string | No | VAT number for the company
-vat_obliged | boolean | No
 foreign_tax | boolean | No | Apply foreign tax leave as null to make the system auto calculate this
 account_number | string | No
 account_holder | string | No
