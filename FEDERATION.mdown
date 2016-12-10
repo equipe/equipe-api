@@ -408,6 +408,7 @@ fei_id | string | No | FEI ID
 country | string | No | The IOC code for the country in which the horse was born
 color | string | No | Color of the horse
 breed | string | No | Stud book of the horse in short, e.g. SWB or HANN
+race | string | No | Race of the horse
 height | string | No | Height of the horse
 reg_no | string | No | Registration number of the horse
 breeder | string | No
