@@ -4,22 +4,22 @@ These steps will guide you on how to make seamless integration between your fede
 
 # Step 1 - Sign in user
 
-This solves two problems, create the organizer and user in Equipe, and make it single sign on from your federation system. The user only needs to authenticate once. [Read more](SINGLE_SIGN_ON.mdown)
+This solves two problems, create the organizer and user in Equipe, and make it single sign on from your federation system. The user only needs to authenticate once. [Read more](SINGLE_SIGN_ON.md)
 
 # Step 2 - Import entries to Equipe
 
-First of all we need to be able to import entries into Equipe. This is done by specifying the `shows_url` in the settings for your federation in Equipe. 
+First of all we need to be able to import entries into Equipe. This is done by specifying the `shows_url` in the settings for your federation in Equipe.
 
 ![Image of Federation webservices](images/federation_webservices.png?raw=true)
 
 * User creates a new show in Equipe, and selects File > Federation > Import entries.
-* Equipe makes a `HTTP GET` with [headers](FEDERATION.mdown#authentication) to the `shows_url` it return shows that the logged in user are able to import.
-* Equipe will ask the user to select a show to import. 
-* Equipe will follow the `entries_url` with [headers](FEDERATION.mdown#authentication) in the response from `shows_url` and begin importing entries. 
+* Equipe makes a `HTTP GET` with [headers](FEDERATION.md#authentication) to the `shows_url` it return shows that the logged in user are able to import.
+* Equipe will ask the user to select a show to import.
+* Equipe will follow the `entries_url` with [headers](FEDERATION.md#authentication) in the response from `shows_url` and begin importing entries.
 
 This is a smart import, so the user can run this multiple times to fetch the lates changes. Updates in the show made in Equipe will not be overridden by the import. This is due to our tracking history.
 
-[Read more about the entry file format](FEDERATION.mdown#shows)
+[Read more about the entry file format](FEDERATION.md#shows)
 
 # Step 3 - Create judgement mapping
 
@@ -37,10 +37,10 @@ Normally we get all entries before hand. But often there will be changes during 
 
 To make sure you get the correct information back in the results, implement the following web services in your system which allows the user to bring in new people, horses and clubs to the show.
 
-  * [Search riders](FEDERATION.mdown#search-riders)
-  * [Search officials](FEDERATION.mdown#search-officials)
-  * [Search horses](FEDERATION.mdown#search-horses)
-  * [Search clubs](FEDERATION.mdown#search-clubs)
+  * [Search riders](FEDERATION.md#search-riders)
+  * [Search officials](FEDERATION.md#search-officials)
+  * [Search horses](FEDERATION.md#search-horses)
+  * [Search clubs](FEDERATION.md#search-clubs)
 
 This way you have the control to only return valid riders and horses, who have paid their licences.
 
@@ -54,11 +54,11 @@ When the show is finished, the user will submit results upstream to your system.
 * You run your own validation and return `202 Accepted` for success or `422 Unprocessable entity` with a json response that contains the validation error for failure.
 * User gets your feedback
 
-[Read more](FEDERATION.mdown#submit-results)
+[Read more](FEDERATION.md#submit-results)
 
 # Step 6 - Translation
 
-We have support for translation of both app.equipe.com and online.equipe.com (Live-result service). The first step is to translate online.equipe.com as since this is for riders and audience. When you have users that have run serveral shows in Equipe, the main app should also be translated. [Read more](TRANSLATION.mdown)
+We have support for translation of both app.equipe.com and online.equipe.com (Live-result service). The first step is to translate online.equipe.com as since this is for riders and audience. When you have users that have run serveral shows in Equipe, the main app should also be translated. [Read more](TRANSLATION.md)
 
 # Conclusion
 
@@ -67,4 +67,3 @@ We know by experiance that it can take some time to get all the above steps righ
 The web services above is the key, that will give a true seamless experience for the user, to import competitions and entries, run the show and export the results without having to download and upload files manually.
 
 We are ready to assist with your integration and explain in more detail and validate your json responses.
-
