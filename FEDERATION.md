@@ -306,6 +306,8 @@ prize_money_equal_ranked | integer | No | Defaults to `2` <ul><li><strong>1</str
 result_name | string | No | Name of the person responsibly for the results to online.equipe.com
 result_email | string | No | Email of the person responsibly for the results to online.equipe.com
 result_cell_phone | string | No | Cell phone of the person responsibly for the results to online.equipe.com
+publish_horse_labels | boolean | No | On publish to online.equipe.com make horse tags public
+publish_prize_money | boolean | No | On publish to online.equipe.com make prize money public
 
 ## Competition
 
