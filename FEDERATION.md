@@ -308,6 +308,7 @@ result_email | string | No | Email of the person responsibly for the results to 
 result_cell_phone | string | No | Cell phone of the person responsibly for the results to online.equipe.com
 publish_horse_labels | boolean | No | On publish to online.equipe.com make horse tags public
 publish_prize_money | boolean | No | On publish to online.equipe.com make prize money public
+publish_horse_no | boolean | No | On publish to online.equipe.com make horse no public
 
 ## Competition
 
