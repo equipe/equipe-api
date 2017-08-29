@@ -343,6 +343,9 @@ honorary_award | boolean | No | Prize in kind
 randomized | boolean | No | Competition is randomized
 category_merge | string | No | Value of <ul><li>category_by_category</li><li>all_categories_together</li><li>three_full_category</li></ul>
 club_discount_percent_applied | boolean | No | Apply discount for riders that competes for the same organizer that runs the show
+title | string | No | Header of the competition, in top of print outs
+subheader1 | string | No | Subheader
+subheader1 | string | No | Smaller header below the name of the competition on print outs
 
 ## Person
 
