@@ -414,6 +414,7 @@ Attribute | Type | Mandatory | Description
 --- | :---: | :---: | ---
 id | integer | Yes |When importing entries, this should be your primary key for this resource. When exporting, this will be our internal id and your primary key will be in the foreign_id attribute.
 name | string | No
+horse_no | integer | No
 born_year | string | No | 4-digits birth year
 sex | string | Yes | Valid values are S = Stallion, G = Gelding, M = Mare, unknown = Unknown. Defaults to unknown
 category | string | No | H = Horse, A, B, C, D, 1, 2 or 3. Defaults to H
