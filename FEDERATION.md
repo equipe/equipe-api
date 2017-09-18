@@ -316,7 +316,7 @@ Attribute | Type | Mandatory | Description
 --- | :---: | :---: | ---
 name | string | Yes
 competition_no | string | Yes | The number of the competition, needs to be unique within the show
-discipline | string | Yes | D = Dressage, H = Show Jumping, F = Eventing, A = Breed evaluation, D = Driving, L = List, U = Exhibition, E = Endurance, R = Reining
+discipline | string | Yes | D = Dressage, H = Show Jumping, F = Eventing, A = Breed evaluation, K = Driving, L = List, U = Exhibition, E = Endurance, R = Reining
 status | string | No | K = Club, L = Local, R = Regional, N = National, E = Elite, I = International
 starts_on | date | No | ISO 8601 formatted date
 start_time | string | No | HH:MM
@@ -345,7 +345,7 @@ category_merge | string | No | Value of <ul><li>category_by_category</li><li>all
 club_discount_percent_applied | boolean | No | Apply discount for riders that competes for the same organizer that runs the show
 title | string | No | Header of the competition, in top of print outs
 subheader1 | string | No | Subheader
-subheader1 | string | No | Smaller header below the name of the competition on print outs
+subheader2 | string | No | Smaller header below the name of the competition on print outs
 
 ## Person
 
