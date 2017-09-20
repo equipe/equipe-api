@@ -10,7 +10,7 @@ The only way to make proper and professional translation of app.equipe.com and o
 
 ### Guide
 
-Looking to integrate your federation to the world of Equipe? Follow this 6 steps guide to getting started with full featured integration with Equipe. This is overview guide of the steps involved. [Read more](https://github.com/equipe/equipe_api/blob/master/GUIDE.md)
+Looking to integrate your federation to the world of Equipe? Follow this 6 steps guide to getting started with full featured integration with Equipe. This is overview guide of the steps involved. [Read more](GUIDE.md)
 
 ### API
 
@@ -26,11 +26,15 @@ Use this API if you want to fetch all accounting information from Equipe. [Read 
 
 ## Timekeeping client API
 
-Do you want to render your own running clock? Subscribe the the live data stream to receive everything you need to build your own TV-graphics or Scoreboard integration. [Read more](TIMEKEEING_CLIENT.md)
+Do you want to render your own running clock? Subscribe the the live data stream to receive everything you need to build your own TV-graphics or Scoreboard integration. [Read more](TIMEKEEPING_CLIENT.md)
 
 ## Dressage client API
 
 Nothing you normally do, but if you want to replace our own dressage client this will guide you. [Read more](DRESSAGE_CLIENT.md)
+
+## Marking sheets API
+
+When you have put a lot of effort creating this marking sheets in Equipe, we want to make sure that you are able to re-use this information outside app.equipe.com. [Read more](MARKING_SHEET.md)
 
 # License
 

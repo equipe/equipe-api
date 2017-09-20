@@ -240,7 +240,7 @@ result_preview | string | Result summary for all rounds
 or | string | Reason <ul><li><strong>U</strong> = Retired</li><li><strong>D</strong> = Eliminated</li><li><strong>S</strong> = Disqualified</li></ul> *Use this with the combination of judgement.json eliminated_faults to know in which round the rider is eliminated or retired in*
 a | string | Status <ul><li><strong>Ö</strong> = Withdrawn</li><li><strong>E</strong> = Unpaid withdrawn</li><li><strong>U</strong> = No-show</li><li><strong>B</strong> = Changed competition</li><li><strong>R</strong> = Reserve</li></ul> *Rider count as not started*
 
-> This is also where you fetch the start list for jump off / following round, after the timekeeping operater switch. Starts qualified for jump off will have a non-null value in ord_omh. 
+> This is also where you fetch the start list for jump off / following round, after the timekeeping operater switch. Starts qualified for jump off will have a non-null value in ord_omh.
 
 ## Development
 
@@ -314,4 +314,4 @@ receivedTimekeepingOutput(data){
 }
 ```
 
-See full working example in `examples/equipe_timekeeing_client`
+See full working example in `examples/equipe_timekeeping_client`

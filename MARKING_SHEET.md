@@ -1,8 +1,8 @@
 # Federation Marking Sheet API
 
-Marking sheets is used for Dressage, Freestype, Para-dressage, Eventing and more. These sheets is created within app, and mapped to your specifided judgement id or rule code.
+Marking sheets is used for Dressage, Freestyle, Para-dressage, Eventing and more. These sheets is created within app, and mapped to your specified judgement id or rule code.
 
-As you will put a lot of effort creating this sheets we want to make sure that you are able to re-use this informaiton outside app.equipe.com.
+As you will put a lot of effort creating this sheets we want to make sure that you are able to re-use this information outside app.equipe.com.
 
 
 ## Authentication
