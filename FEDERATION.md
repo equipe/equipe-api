@@ -29,6 +29,8 @@ If the organizer does not have access to a specific end point, a 401 Unauthorize
 
 You only need to return current shows. The user will be able to choose a show to import from this list. This end point should only return shows for the organizer that is making the request, specified by the **X-FEDERATION-ORGANIZER-ID** request header.
 
+The response must validate json-schema [shows.json](https://app.equipe.com/api/schemas/shows.json)
+
 Attribute | Type | Mandatory | Description
 --- | :---: | :---: | ---
 id | integer | Yes | Your primary key for the show
@@ -64,6 +66,8 @@ entries_url | url | Yes | Full url including protocol, host and path to the Entr
 
 Should return all entries for the show. All resources are represented in the top-level.
 
+The response must validate json-schema [entries.json](https://app.equipe.com/api/schemas/entries.json)
+
 `GET https://example.com/shows/24/entries.json`
 
 ```json
@@ -84,6 +88,8 @@ Values that have been changed by the user will not be overridden by changes from
 ## Search riders
 
 Lets users search and import individual riders to the show.
+
+The response must validate json-schema [riders.json](https://app.equipe.com/api/schemas/riders.json)
 
 ```json
 {
@@ -155,6 +161,8 @@ riders | Array | Person | Yes | Matching riders
 
 Lets users search and import individual officials to the show.
 
+The response must validate json-schema [officials.json](https://app.equipe.com/api/schemas/officials.json)
+
 ```json
 {
   "officials": []
@@ -176,6 +184,8 @@ officials | Array | Person | Yes | Matching officials
 ## Search horses
 
 Lets users search and import individual horses to the show.
+
+The response must validate json-schema [horses.json](https://app.equipe.com/api/schemas/horses.json)
 
 ```json
 {
@@ -201,6 +211,8 @@ horses | Array | Horse | Yes | Matching horses
 ## Search clubs
 
 Lets users search and import individual clubs to the show.
+
+The response must validate json-schema [clubs.json](https://app.equipe.com/api/schemas/clubs.json)
 
 ```json
 {
@@ -260,7 +272,7 @@ When the user exports the results, our system will make an `HTTP POST` with cont
 
 In case of your own validation fails, the error needs to be communicated back to the user that tries to send the results.
 
-Return `422 Unprocessable entity` with content type `422 Unprocessable entity` and the body should contain the error messages in json format as following
+Return `422 Unprocessable entity` with content type `application/json` and the body should contain the error messages in json format as following
 
 ```json
 {
@@ -282,213 +294,11 @@ This option is default if non of the above is specified. It will export the resu
 
 # Models
 
-## Show
-
-
-Attribute | Type | Mandatory | Description
---- | :---: | :---: | ---
-id | integer | Yes | Your primary key for the show
-name | string | Yes | Name of the show
-starts_on | string | No | ISO 8601 formatted start date
-ends_on | string | No | ISO 8601 formatted end date
-currency | string | No | ISO 4217 formmated currency code used for overall economy for the show
-foreign_tax | boolean | No | If foreign tax should apply (When used automatic for people not from foreign_tax_skip)
-foreign_tax_percent | decimal | No | Foreign tax percent
-foreign_tax_skip | string | No | The IOC code, foreign tax but not for people from this country, this is the country code where the show is located.
-income_tax | boolean | No | If income tax should apply (When used automatic for people from foreign_tax_skip-country without company)
-income_tax_percent | float | No | Income tax percent
-discount_club_id | integer | No | Primary key of the club that get discount
-discount_club_percent | float | No | Discount percent for riders that competes from the same organizer that runs the show
-penalty_fee | float | No | Penalty fee for starts marked with status `no-show`
-credit_card_fee_percents | Array[float] | No | Possibllty to add credit card fee % on invoices
-default_account | string | No | Defaults to `cash` <ul><li>prepaid</li><li>bank</li><li>cash</li><li>credit_card</li><li>swish</li></ul>
-prize_money_equal_ranked | integer | No | Defaults to `2` <ul><li><strong>1</strong> Highest prize money</li><li><strong>2</strong> Prize money splits</li></ul>
-result_name | string | No | Name of the person responsibly for the results to online.equipe.com
-result_email | string | No | Email of the person responsibly for the results to online.equipe.com
-result_cell_phone | string | No | Cell phone of the person responsibly for the results to online.equipe.com
-publish_horse_labels | boolean | No | On publish to online.equipe.com make horse tags public
-publish_prize_money | boolean | No | On publish to online.equipe.com make prize money public
-publish_horse_no | boolean | No | On publish to online.equipe.com make horse no public
-
-## Competition
-
-Attribute | Type | Mandatory | Description
---- | :---: | :---: | ---
-name | string | Yes
-competition_no | string | Yes | The number of the competition, needs to be unique within the show
-discipline | string | Yes | D = Dressage, H = Show Jumping, F = Eventing, A = Breed evaluation, K = Driving, L = List, U = Exhibition, E = Endurance, R = Reining
-status | string | No | K = Club, L = Local, R = Regional, N = National, E = Elite, I = International
-starts_on | date | No | ISO 8601 formatted date
-start_time | string | No | HH:MM
-horse_pony | string | No | R = Horse, P = Pony
-team | boolean | No
-judgement_id | string | (Yes) | This is your federation id of judgement. In Equipe you configure the mapping between the judgement in Equipe with your judgement id. This number needs to be uniq within each discipline.
-fence_height | integer | (Yes) | If show jumping, height in cm
-arena | string | No | Name of the arena
-entry_fee | decimal |
-starting_fee | decimal |
-late_entry_fee | decimal |
-prize_money | Array[decimal] | No | Prize money split
-prize_money_currency | string | No | ISO 4217 formatted currency for prize money
-young_horse_entry_fee | decimal | No |  Young horses entry fee
-young_horse_starting_fee | decimal | No |  Young horses Starting fee
-young_horse_late_entry | decimal | No |  Young horses late entry
-young_horse_prize_money | Array[decimal] | No | Young horses prize money split
-admin_fee | decimal | No | Admin fee
-team | boolean | No | Team competition
-team_entry_fee | decimal | No | Team entry fee
-team_prize_money | Array[decimal] | No | Prize money split team
-open_for_young_horses | boolean | No | Open for young horses
-honorary_award | boolean | No | Prize in kind
-randomized | boolean | No | Competition is randomized
-category_merge | string | No | Value of <ul><li>category_by_category</li><li>all_categories_together</li><li>three_full_category</li></ul>
-club_discount_percent_applied | boolean | No | Apply discount for riders that competes for the same organizer that runs the show
-title | string | No | Header of the competition, in top of print outs
-subheader1 | string | No | Subheader
-subheader2 | string | No | Smaller header below the name of the competition on print outs
-
-## Person
-
-Attribute | Type | Mandatory | Description
---- | :---: | :---: | ---
-id | integer | Yes |When importing entries, this should be your primary key for this resource. When exporting, this will be our internal id and your primary key will be in the foreign_id attribute.
-first_name | string | Yes
-last_name | string | Yes
-address | string | No
-zipcode | string | No
-city | string | No
-address_country | string | No | Full name of the country used for the address
-country | string | Yes | The IOC code for the country for which the rider competes
-work_phone | string | No
-home_phone | string | No
-cell_phone | string | No
-fax | string | No
-email | string | No
-licence | string | No | National licence
-licence_year | integer | No | Year the licence is valid for
-club_id | integer | Yes
-fei_id | string | No | FEI ID for the person
-person_no | string | No | Either ISO 8601 formatted birth date, or only year of birth
-company | string | No | If the person is represented by a company, this name will be included on the invoice
-vat_no | string | No | VAT number for the company
-foreign_tax | boolean | No | Apply foreign tax leave as null to make the system auto calculate this
-account_number | string | No
-account_holder | string | No
-bank_name | string | No
-iban | string | No
-bic | string | No
-invoice_no | integer | No | Invoice number generated by the system on print out
-official | boolean | No | Flag this person as an official
-arrived | boolean | No
-notes | text | No
-payments | Object | No | Object that contains prepayments. Key is the account name, it will update or create the first payment with this account name. See example.
-
-#### Example
-
-```json
-{
-  "id": 9622,
-  "first_name": "Jon",
-  "last_name": "Stenqvist",
-  "address": "Sundstorget 3",
-  "city": "Helsingborg",
-  "zipcode": "252 21",
-  "address_country": "Sweden",
-  "country": "SWE",
-  "email": "jon.stenqvist@equipe.com",
-  "company": "Equipe AB",
-  "notes": "Please stable with Hampus Nordin's horses",
-  "payments": {
-      "prepaid": {
-          "amount": 250,
-          "description": "Notes",
-          "created_at": "2017-05-06"
-      }
-  }  
-},
-```
-
-## Horse
-
-Attribute | Type | Mandatory | Description
---- | :---: | :---: | ---
-id | integer | Yes |When importing entries, this should be your primary key for this resource. When exporting, this will be our internal id and your primary key will be in the foreign_id attribute.
-name | string | No
-horse_no | integer | No
-born_year | string | No | 4-digits birth year
-sex | string | Yes | Valid values are S = Stallion, G = Gelding, M = Mare, unknown = Unknown. Defaults to unknown
-category | string | No | H = Horse, A, B, C, D, 1, 2 or 3. Defaults to H
-licence | string | No | National licence
-fei_id | string | No | FEI ID
-country | string | No | The IOC code for the country in which the horse was born
-color | string | No | Color of the horse
-breed | string | No | Stud book of the horse in short, e.g. SWB or HANN
-race | string | No | Race of the horse
-height | string | No | Height of the horse
-reg_no | string | No | Registration number of the horse
-breeder | string | No
-owner | string | No
-sire | string | No
-dam | string | No
-dams_dam | string | No
-dam_sire | string | No
-dams_damsire | string | No
-notes | text | No
-
-#### Example
-
-```json
-{
-  "id": 96571,
-  "name": "Lady Amaretto",
-  "reg_no": "3214443243333",
-  "owner": "Cathy Cuffe",
-  "height": "165",
-  "color": "Bay",
-  "sire": "Captain Clover",
-  "dam": "",
-  "dam_sire": "Cavalier Royale",
-  "born_year": 2008,
-  "sex": "M",
-  "category": "H"
-}
-```
-
-## Club
-
-Attribute | Type | Mandatory | Description
---- | :---: | :---: | ---
-id | integer | Yes |When importing entries, this should be your primary key for this resource. When exporting, this will be our internal id and your primary key will be in the foreign_id attribute.
-name | string | Yes
-short | string | No
-logo_id | string | Yes | Refers to our central repository for logos which are shared between all our systems
-logo_group | string | Yes
-
-See separate documentation about logo_id and logo_group.
-
-#### Example
-
-```json
-{
-  "id": 10001,
-  "name": "Helsingborgs Fältrittklubb",
-  "short": "HFRK",
-  "logo_id": "0235",
-  "logo_group": "svrf"
-}
-```
-
-## Start
-
-Attribute | Type | Mandatory | Description
---- | :---: | :---: | ---
-id | integer | Yes |When importing entries, this should be your primary key for this resource. When exporting, this will be our internal id and your primary key will be in the foreign_id attribute.
-competition_no | string | Yes | Refers to Competition competition_no
-rider_id | integer | Yes | Primary key of the rider
-horse_id | integer | No | Primary key of the horse
-payer_id | integer | No | Primary key of the payer defaults to rider
-category | string | No | H = Horse, A, B, C, D, 1, 2 or 3. Defaults to H
-section | string | No | A or B, defaults to A
-status | string | No | Can be empty, withdrawn, unpaid, no_show, changed, reserve or starting
-late_entry | boolean | No | If true, the late entry fee will be applied
-outside_comp | boolean | No |If true, this start will not be ranked
+* [Show](models/SHOW.md)
+* [Competition](models/COMPETITION.md)
+* [Person](models/PERSON.md)
+* [Horse](models/HORSE.md)
+* [Club](models/CLUB.md)
+* [Start](models/START.md)
+* [Rider (only for search riders)](models/RIDER.md)
+* [Official (only for search officials)](models/RIDER.md)
