@@ -68,7 +68,7 @@ Should return all entries for the show. All resources are represented in the top
 
 The response must validate json-schema [entries.json](https://app.equipe.com/api/schemas/entries.json)
 
-> Does it take long time to process entries? Return `202 ACCEPTED` until the data is ready and can be delivered. Equipe will continue to poll the url for 10 minutes or until it receive a non `202 ACCEPTED` status.
+> Does it take long time to collect and build entries response? Return `202 ACCEPTED` until the data is ready and can be served. The *entries_url* will continue to be polled for 10 minutes or until it receive a non `202 ACCEPTED` status.
 
 `GET https://example.com/shows/24/entries.json`
 
