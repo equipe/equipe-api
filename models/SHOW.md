@@ -30,7 +30,7 @@ result_cell_phone | string | No | "" |  | Cell phone of the person responsibly f
 publish_horse_labels | boolean | No | false |  | Publish horse labels to online.equipe.com
 publish_prize_money | boolean | No | true |  | Publish prize money to online.equipe.com
 publish_horse_no | boolean | No | true |  | Publish horse no to online.equipe.com
-custom_field_names | object | No |  |  | Object where key is person, horse or start. See [Custom field](CUSTOM_FIELD.MD)
+custom_field_names | object | No |  |  | Object where key is person, horse or start. See [Custom field](CUSTOM_FIELD.md)
 
 **Example value of custom_field_names**
 ```json
