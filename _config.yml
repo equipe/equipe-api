@@ -1,2 +1,33 @@
-title: Equipe API
-theme: jekyll-theme-primer
+# ----
+# Site
+
+title: Equipe
+description: Jekyll template for API documentation.
+url: https://example.com
+google_analytics_key:
+permalink: pretty
+
+collections:
+  documentation:
+    title: Documentation
+    position: 1
+  api:
+    title: APIs
+    position: 2
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: default
+
+types:
+  - get
+  - put
+  - delete
+  - post
