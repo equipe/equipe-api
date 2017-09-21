@@ -2,8 +2,8 @@
 # Site
 
 title: Equipe
-description: Jekyll template for API documentation.
-url: https://example.com
+description: API documentation for Equipe https://app.equipe.com
+url: http://api-docs.equipe.com
 google_analytics_key:
 permalink: pretty
 
