@@ -238,6 +238,13 @@ h3 .endpoint {
 	}
 }
 
+.endpoint.form {
+	color: #42A5F5;
+	&:after {
+		content: "FORM";
+	}
+}
+
 .main {
 	margin: 0 0 0 210px;
 	border-left: 1px solid #eee;

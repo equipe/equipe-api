@@ -11,9 +11,15 @@ collections:
   documentation:
     title: Documentation
     position: 1
+  federation_api:
+    title: Federation APIs
+    position: 2
+  models:
+    title: Federation Models
+    position: 3
   api:
     title: APIs
-    position: 2
+    position: 4
 
 plugins:
   - jekyll-sitemap
