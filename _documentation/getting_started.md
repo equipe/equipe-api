@@ -1,9 +1,10 @@
 ---
 title: Getting Started
+description: Before you start your integration read through this documentation
 position: 1
 ---
 
-Welcome to our API.
+Welcome to our API docs.
 
 This API document is designed for those interested in developing for our platform.
 

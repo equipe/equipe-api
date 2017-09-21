@@ -2,6 +2,8 @@
 title: Start
 position: 5.0
 ---
+**Bold** attributes is required
+{: .info }
 <table>
 <thead>
 <th>Attribute</th>
@@ -11,7 +13,9 @@ position: 5.0
 </thead>
 <tbody>
 <tr>
-<td><strong>id</strong></td>
+<td>
+<strong>id</strong>
+<span class="searchable">id</span></td>
 <td style="text-align: center">integer</td>
 <td style="text-align: center"></td>
 <td></td>
@@ -20,7 +24,9 @@ position: 5.0
 <td colspan="5">When importing entries, this should be your primary key for this resource. When exporting, this will be our internal id and your primary key will be in the foreign_id attribute</td>
 </tr>
 <tr>
-<td>competition_<wbr>no</td>
+<td>
+competition_<wbr>no
+<span class="searchable">competition_no</span></td>
 <td style="text-align: center">string</td>
 <td style="text-align: center"></td>
 <td></td>
@@ -29,7 +35,9 @@ position: 5.0
 <td colspan="5">Competition no, the competition must exist in competitions</td>
 </tr>
 <tr>
-<td><strong>rider_<wbr>id</strong></td>
+<td>
+<strong>rider_<wbr>id</strong>
+<span class="searchable">rider_id</span></td>
 <td style="text-align: center">integer</td>
 <td style="text-align: center"></td>
 <td></td>
@@ -38,7 +46,9 @@ position: 5.0
 <td colspan="5">ID of the rider, the rider must exist in people</td>
 </tr>
 <tr>
-<td>payer_<wbr>id</td>
+<td>
+payer_<wbr>id
+<span class="searchable">payer_id</span></td>
 <td style="text-align: center">integer</td>
 <td style="text-align: center"></td>
 <td></td>
@@ -47,7 +57,9 @@ position: 5.0
 <td colspan="5">ID of the payer, the payer must exist in people</td>
 </tr>
 <tr>
-<td>horse_<wbr>id</td>
+<td>
+horse_<wbr>id
+<span class="searchable">horse_id</span></td>
 <td style="text-align: center">integer</td>
 <td style="text-align: center"></td>
 <td></td>
@@ -56,7 +68,9 @@ position: 5.0
 <td colspan="5">ID of the horse, the horse must exist in people</td>
 </tr>
 <tr>
-<td>category</td>
+<td>
+category
+<span class="searchable">category</span></td>
 <td style="text-align: center">string</td>
 <td style="text-align: center">"H"</td>
 <td></td>
@@ -65,7 +79,9 @@ position: 5.0
 <td colspan="5">One of "H", "A", "B", "C", "D", "E", "1", "2", "3"</td>
 </tr>
 <tr>
-<td>section</td>
+<td>
+section
+<span class="searchable">section</span></td>
 <td style="text-align: center">string</td>
 <td style="text-align: center">"A"</td>
 <td></td>
@@ -74,7 +90,9 @@ position: 5.0
 <td colspan="5">A = Section A, B = Section B (Young horses)</td>
 </tr>
 <tr>
-<td>late_<wbr>entry</td>
+<td>
+late_<wbr>entry
+<span class="searchable">late_entry</span></td>
 <td style="text-align: center">boolean</td>
 <td style="text-align: center">false</td>
 <td></td>
@@ -83,7 +101,9 @@ position: 5.0
 <td colspan="5">When true, the late entry fee will be applied</td>
 </tr>
 <tr>
-<td>status</td>
+<td>
+status
+<span class="searchable">status</span></td>
 <td style="text-align: center">string</td>
 <td style="text-align: center">""</td>
 <td></td>
@@ -92,7 +112,9 @@ position: 5.0
 <td colspan="5">One of "", "withdrawn", "unpaid", "no_show", "changed", "reserve", "starting"</td>
 </tr>
 <tr>
-<td>outside_<wbr>comp</td>
+<td>
+outside_<wbr>comp
+<span class="searchable">outside_comp</span></td>
 <td style="text-align: center">boolean</td>
 <td style="text-align: center">false</td>
 <td></td>
@@ -101,7 +123,9 @@ position: 5.0
 <td colspan="5">When true, this start will not be ranked</td>
 </tr>
 <tr>
-<td>custom_<wbr>fields</td>
+<td>
+custom_<wbr>fields
+<span class="searchable">custom_fields</span></td>
 <td style="text-align: center">object</td>
 <td style="text-align: center"></td>
 <td></td>
