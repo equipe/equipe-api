@@ -34,4 +34,4 @@ The response must validate json-schema [officials.json](https://app.equipe.com/a
 
 #### Models
 
-* [Official](models/OFFICIAL.md)
+* [Official](#modelsOFFICIAL)

@@ -52,4 +52,4 @@ The response must validate json-schema [riders.json](https://app.equipe.com/api/
 
 #### Models
 
-* [Rider](models/RIDER.md)
+* [Rider](#modelsRIDER)

@@ -33,4 +33,4 @@ The response must validate json-schema [clubs.json](https://app.equipe.com/api/s
 
 #### Models
 
-* [Club](models/CLUB.md)
+* [Club](#modelsCLUB)

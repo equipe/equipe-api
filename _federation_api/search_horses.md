@@ -50,4 +50,4 @@ The response must validate json-schema [horses.json](https://app.equipe.com/api/
 
 #### Models
 
-* [Horse](models/HORSE.md)
+* [Horse](#modelsHORSE)

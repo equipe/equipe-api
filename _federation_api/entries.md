@@ -77,9 +77,9 @@ Values that have been changed by the user will not be overridden by changes from
 
 #### Models
 
-* [Show](models/SHOW.md)
-* [Competition](models/COMPETITION.md)
-* [Person](models/PERSON.md)
-* [Horse](models/HORSE.md)
-* [Club](models/CLUB.md)
-* [Start](models/START.md)
+* [Show](#modelsSHOW)
+* [Competition](#modelsCOMPETITION)
+* [Person](#modelsPERSON)
+* [Horse](#modelsHORSE)
+* [Club](#modelsCLUB)
+* [Start](#modelsSTART)
