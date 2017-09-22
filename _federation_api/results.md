@@ -34,7 +34,7 @@ Make sure that you have specified **Results URL** under settings for your federa
 
 #### Format
 
-The result format has similar structure as the entries. But instead of entries, we export the starts. [See example](examples/results.json)
+The result format has similar structure as the entries. But instead of entries, we export the starts. [See example](https://github.com/equipe/equipe_api/blob/master/examples/results.json)
 
 ```json
 {
