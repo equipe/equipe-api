@@ -4,21 +4,21 @@ In this repository we have gathered information on how to extend and integrate w
 
 ## Translation
 
-The only way to make proper and professional translation of app.equipe.com and online.equipe.com is to have used the software during serveral shows. When you have done that and want to add support for your native language. Contact us and we will add you as a translator. [Read more](TRANSLATION.md)
+The only way to make proper and professional translation of app.equipe.com and online.equipe.com is to have used the software during serveral shows. When you have done that and want to add support for your native language. Contact us and we will add you as a translator. [Read more](http://api-docs.equipe.com/#moretranslation)
 
 ## Federation
 
 ### Guide
 
-Looking to integrate your federation to the world of Equipe? Follow this 6 steps guide to getting started with full featured integration with Equipe. This is overview guide of the steps involved. [Read more](GUIDE.md)
+Looking to integrate your federation to the world of Equipe? Follow this 6 steps guide to getting started with full featured integration with Equipe. This is overview guide of the steps involved. [Read more](http://api-docs.equipe.com/#federation_apiguide)
 
 ### API
 
-This will guide you how to structure your web service to be compliant with https://app.equipe.com to import entires, enable search of riders, officials, horses, clubs and later get results when the show is finished. [Read more](FEDERATION.md)
+This will guide you how to structure your web service to be compliant with https://app.equipe.com to import entires, enable search of riders, officials, horses, clubs and later get results when the show is finished. [Read more](http://api-docs.equipe.com)
 
 ### Single sign on
 
-Allow single sign on for your already authenticated users in your system. [Read more](SINGLE_SIGN_ON.md)
+Allow single sign on for your already authenticated users in your system. [Read more](http://api-docs.equipe.com/#federation_apisingle_sign_on)
 
 ## Accounting API
 
