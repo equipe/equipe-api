@@ -2,6 +2,14 @@
 title: Errors
 description: When something goes wrong
 position: 2.1
+right_code: |
+  ~~~ json
+  [
+    "The property '#/people/0/id' of type string did not match the following type: integer in schema file:///Users/jon/code/equipe_app/docs/api/schemas/entries.json#",
+    "The property '#/entries/0/competition_no' of type integer did not match the following type: string in schema file:///Users/jon/code/equipe_app/docs/api/schemas/entries.json#"
+  ]  
+  ~~~
+  {: title="Validation error" }
 ---
 We communicate errors as they occur. Data validation errors will be presented the user requesting the information. When validation errors happens we will show the errors and with the data being validated under the link **Show context**
 

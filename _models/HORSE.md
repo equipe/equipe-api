@@ -2,7 +2,7 @@
 title: Horse
 position: 3.0
 ---
-**Bold** attributes is required
+Attributes in **Bold** is required
 {: .info }
 <table>
 <thead>
@@ -13,7 +13,7 @@ position: 3.0
 </thead>
 <tbody>
 <tr>
-<td>
+<td id="horse_id">
 <strong>id</strong>
 <span class="searchable">id</span></td>
 <td style="text-align: center">integer</td>
@@ -24,7 +24,7 @@ position: 3.0
 <td colspan="5">On importing entries, this should be your primary key for this resource. When exporting, this will be our internal id and your primary key will be in the foreign_id attribute</td>
 </tr>
 <tr>
-<td>
+<td id="horse_name">
 <strong>name</strong>
 <span class="searchable">name</span></td>
 <td style="text-align: center">string</td>
@@ -32,7 +32,7 @@ position: 3.0
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="horse_horse_no">
 horse_<wbr>no
 <span class="searchable">horse_no</span></td>
 <td style="text-align: center">integer</td>
@@ -43,7 +43,7 @@ horse_<wbr>no
 <td colspan="5">Unless horse no is given, all newly imported horses will be sorted by name and given a number automatic, that is preferable</td>
 </tr>
 <tr>
-<td>
+<td id="horse_born_year">
 born_<wbr>year
 <span class="searchable">born_year</span></td>
 <td style="text-align: center">string</td>
@@ -54,7 +54,7 @@ born_<wbr>year
 <td colspan="5">4-digits birth year</td>
 </tr>
 <tr>
-<td>
+<td id="horse_sex">
 sex
 <span class="searchable">sex</span></td>
 <td style="text-align: center">string</td>
@@ -65,7 +65,7 @@ sex
 <td colspan="5">S = Stallion, G = Gelding, M = Mare, unknown = Unknown</td>
 </tr>
 <tr>
-<td>
+<td id="horse_category">
 category
 <span class="searchable">category</span></td>
 <td style="text-align: center">string</td>
@@ -76,7 +76,7 @@ category
 <td colspan="5">H = Horse, A, B, C, D, E, 1, 2 or 3</td>
 </tr>
 <tr>
-<td>
+<td id="horse_licence">
 licence
 <span class="searchable">licence</span></td>
 <td style="text-align: center">string</td>
@@ -87,7 +87,7 @@ licence
 <td colspan="5">National licence</td>
 </tr>
 <tr>
-<td>
+<td id="horse_licence_year">
 licence_<wbr>year
 <span class="searchable">licence_year</span></td>
 <td style="text-align: center">string or integer</td>
@@ -98,7 +98,7 @@ licence_<wbr>year
 <td colspan="5">The year licence is valid. 4 digits</td>
 </tr>
 <tr>
-<td>
+<td id="horse_fei_id">
 fei_<wbr>id
 <span class="searchable">fei_id</span></td>
 <td style="text-align: center">string</td>
@@ -106,7 +106,7 @@ fei_<wbr>id
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="horse_country">
 country
 <span class="searchable">country</span></td>
 <td style="text-align: center">string</td>
@@ -117,7 +117,7 @@ country
 <td colspan="5">The IOC code for the country in which the horse was born</td>
 </tr>
 <tr>
-<td>
+<td id="horse_color">
 color
 <span class="searchable">color</span></td>
 <td style="text-align: center">string</td>
@@ -125,7 +125,7 @@ color
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="horse_breed">
 breed
 <span class="searchable">breed</span></td>
 <td style="text-align: center">string</td>
@@ -136,7 +136,7 @@ breed
 <td colspan="5">Stud book of the horse in short, e.g. SWB or HANN</td>
 </tr>
 <tr>
-<td>
+<td id="horse_race">
 race
 <span class="searchable">race</span></td>
 <td style="text-align: center">string</td>
@@ -144,7 +144,7 @@ race
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="horse_height">
 height
 <span class="searchable">height</span></td>
 <td style="text-align: center">string</td>
@@ -152,7 +152,7 @@ height
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="horse_reg_no">
 reg_<wbr>no
 <span class="searchable">reg_no</span></td>
 <td style="text-align: center">string</td>
@@ -163,7 +163,7 @@ reg_<wbr>no
 <td colspan="5">Registration number of the horse</td>
 </tr>
 <tr>
-<td>
+<td id="horse_breeder">
 breeder
 <span class="searchable">breeder</span></td>
 <td style="text-align: center">string</td>
@@ -174,7 +174,7 @@ breeder
 <td colspan="5">Breeder of the horse</td>
 </tr>
 <tr>
-<td>
+<td id="horse_owner">
 owner
 <span class="searchable">owner</span></td>
 <td style="text-align: center">string</td>
@@ -185,7 +185,7 @@ owner
 <td colspan="5">Current owner of the horse</td>
 </tr>
 <tr>
-<td>
+<td id="horse_sire">
 sire
 <span class="searchable">sire</span></td>
 <td style="text-align: center">string</td>
@@ -193,7 +193,7 @@ sire
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="horse_dam">
 dam
 <span class="searchable">dam</span></td>
 <td style="text-align: center">string</td>
@@ -201,7 +201,7 @@ dam
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="horse_dams_dam">
 dams_<wbr>dam
 <span class="searchable">dams_dam</span></td>
 <td style="text-align: center">string</td>
@@ -209,7 +209,7 @@ dams_<wbr>dam
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="horse_dam_sire">
 dam_<wbr>sire
 <span class="searchable">dam_sire</span></td>
 <td style="text-align: center">string</td>
@@ -217,7 +217,7 @@ dam_<wbr>sire
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="horse_dams_damsire">
 dams_<wbr>damsire
 <span class="searchable">dams_damsire</span></td>
 <td style="text-align: center">string</td>
@@ -225,7 +225,7 @@ dams_<wbr>damsire
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="horse_notes">
 notes
 <span class="searchable">notes</span></td>
 <td style="text-align: center">string</td>
@@ -233,7 +233,7 @@ notes
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="horse_custom_fields">
 custom_<wbr>fields
 <span class="searchable">custom_fields</span></td>
 <td style="text-align: center">object</td>
@@ -241,7 +241,7 @@ custom_<wbr>fields
 <td></td>
 </tr>
 <tr>
-<td colspan="5">The object key refers to the key in [custom_field_names](SHOW.md) on show</td>
+<td colspan="5">The object key refers to the key in <a href="#show_custom_field_names">Show#custom_field_names</a></td>
 </tr>
 </tbody>
 </table>

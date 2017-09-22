@@ -20,6 +20,9 @@ collections:
   api:
     title: APIs
     position: 4
+  more:
+    title: More
+    position: 5
 
 plugins:
   - jekyll-sitemap

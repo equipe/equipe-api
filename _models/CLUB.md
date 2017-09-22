@@ -14,7 +14,7 @@ right_code: |
   {: title="Example record of Club" }
   
 ---
-**Bold** attributes is required
+Attributes in **Bold** is required
 {: .info }
 <table>
 <thead>
@@ -25,7 +25,7 @@ right_code: |
 </thead>
 <tbody>
 <tr>
-<td>
+<td id="club_id">
 <strong>id</strong>
 <span class="searchable">id</span></td>
 <td style="text-align: center">integer</td>
@@ -36,7 +36,7 @@ right_code: |
 <td colspan="5">On importing entries, this should be your primary key for this resource. When exporting, this will be our internal id and your primary key will be in the foreign_id attribute</td>
 </tr>
 <tr>
-<td>
+<td id="club_name">
 <strong>name</strong>
 <span class="searchable">name</span></td>
 <td style="text-align: center">string</td>
@@ -44,7 +44,7 @@ right_code: |
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="club_short">
 short
 <span class="searchable">short</span></td>
 <td style="text-align: center">string</td>
@@ -52,7 +52,7 @@ short
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="club_logo_id">
 logo_<wbr>id
 <span class="searchable">logo_id</span></td>
 <td style="text-align: center">string</td>
@@ -63,7 +63,7 @@ logo_<wbr>id
 <td colspan="5">Refers to our central repository for logos which are shared between all our systems. When logo_id is a number and less then 4 digits, prefix it with zero. Example 54 should be 0054</td>
 </tr>
 <tr>
-<td>
+<td id="club_logo_group">
 logo_<wbr>group
 <span class="searchable">logo_group</span></td>
 <td style="text-align: center">string</td>

@@ -1,5 +1,6 @@
 ---
 title: Authentication
+description: Add the API key to all requests as a GET parameter or set X-API-KEY header.
 position: 1
 right_code: |
   ~~~ bash
@@ -15,9 +16,10 @@ right_code: |
   {: title="Curl with parameters" }
 ---
 
-You need to be authenticated for all API requests. You can find or regenerate the API key on your profile page.
+Login to your account. Visit you profile page and click show API-Key. This key should be set in the **X-API-KEY** header or **api_key** parameter on every request.
+{: .info }
 
-Add the API key to all requests as a GET parameter or set X-API-KEY header.
+You need to be authenticated for all API requests. You can manage your **API-Key** from your profile. You will be prompted to enter your password to view your key or regenerate it.
 
 Nothing will work unless you include this API key
 {: .error }

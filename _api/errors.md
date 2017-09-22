@@ -1,7 +1,18 @@
 ---
 title: Errors
 description: Commonly used HTTP status codes
-position: 2
+position: 10
+right_code: |
+  ~~~ http
+  HTTP/1.1 200 OK
+  ~~~
+  {: title="Success" }
+
+  ~~~ http
+  HTTP/1.1 401 Unauthorized
+  ~~~
+  {: title="Error" }
+
 ---
 
 | Code | Name                   | Description                      |

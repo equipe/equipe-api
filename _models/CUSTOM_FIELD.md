@@ -2,7 +2,7 @@
 title: Custom field
 position: 8.0
 ---
-**Bold** attributes is required
+Attributes in **Bold** is required
 {: .info }
 <table>
 <thead>
@@ -13,7 +13,7 @@ position: 8.0
 </thead>
 <tbody>
 <tr>
-<td>
+<td id="custom_field_name">
 <strong>name</strong>
 <span class="searchable">name</span></td>
 <td style="text-align: center">string</td>
@@ -21,7 +21,7 @@ position: 8.0
 <td></td>
 </tr>
 <tr>
-<td>
+<td id="custom_field_type">
 <strong>type</strong>
 <span class="searchable">type</span></td>
 <td style="text-align: center">string</td>
@@ -32,7 +32,7 @@ position: 8.0
 <td colspan="5">One of "string", "boolean", "number"</td>
 </tr>
 <tr>
-<td>
+<td id="custom_field_align">
 <strong>align</strong>
 <span class="searchable">align</span></td>
 <td style="text-align: center">string</td>
@@ -43,7 +43,7 @@ position: 8.0
 <td colspan="5">One of "left", "center", "right"</td>
 </tr>
 <tr>
-<td>
+<td id="custom_field_publish">
 <strong>publish</strong>
 <span class="searchable">publish</span></td>
 <td style="text-align: center">boolean</td>

@@ -2,7 +2,7 @@
 title: Start
 position: 5.0
 ---
-**Bold** attributes is required
+Attributes in **Bold** is required
 {: .info }
 <table>
 <thead>
@@ -13,7 +13,7 @@ position: 5.0
 </thead>
 <tbody>
 <tr>
-<td>
+<td id="start_id">
 <strong>id</strong>
 <span class="searchable">id</span></td>
 <td style="text-align: center">integer</td>
@@ -24,7 +24,7 @@ position: 5.0
 <td colspan="5">When importing entries, this should be your primary key for this resource. When exporting, this will be our internal id and your primary key will be in the foreign_id attribute</td>
 </tr>
 <tr>
-<td>
+<td id="start_competition_no">
 competition_<wbr>no
 <span class="searchable">competition_no</span></td>
 <td style="text-align: center">string</td>
@@ -35,7 +35,7 @@ competition_<wbr>no
 <td colspan="5">Competition no, the competition must exist in competitions</td>
 </tr>
 <tr>
-<td>
+<td id="start_rider_id">
 <strong>rider_<wbr>id</strong>
 <span class="searchable">rider_id</span></td>
 <td style="text-align: center">integer</td>
@@ -46,7 +46,7 @@ competition_<wbr>no
 <td colspan="5">ID of the rider, the rider must exist in people</td>
 </tr>
 <tr>
-<td>
+<td id="start_payer_id">
 payer_<wbr>id
 <span class="searchable">payer_id</span></td>
 <td style="text-align: center">integer</td>
@@ -57,7 +57,7 @@ payer_<wbr>id
 <td colspan="5">ID of the payer, the payer must exist in people</td>
 </tr>
 <tr>
-<td>
+<td id="start_horse_id">
 horse_<wbr>id
 <span class="searchable">horse_id</span></td>
 <td style="text-align: center">integer</td>
@@ -68,7 +68,7 @@ horse_<wbr>id
 <td colspan="5">ID of the horse, the horse must exist in people</td>
 </tr>
 <tr>
-<td>
+<td id="start_category">
 category
 <span class="searchable">category</span></td>
 <td style="text-align: center">string</td>
@@ -79,7 +79,7 @@ category
 <td colspan="5">One of "H", "A", "B", "C", "D", "E", "1", "2", "3"</td>
 </tr>
 <tr>
-<td>
+<td id="start_section">
 section
 <span class="searchable">section</span></td>
 <td style="text-align: center">string</td>
@@ -90,7 +90,7 @@ section
 <td colspan="5">A = Section A, B = Section B (Young horses)</td>
 </tr>
 <tr>
-<td>
+<td id="start_late_entry">
 late_<wbr>entry
 <span class="searchable">late_entry</span></td>
 <td style="text-align: center">boolean</td>
@@ -101,7 +101,7 @@ late_<wbr>entry
 <td colspan="5">When true, the late entry fee will be applied</td>
 </tr>
 <tr>
-<td>
+<td id="start_status">
 status
 <span class="searchable">status</span></td>
 <td style="text-align: center">string</td>
@@ -112,7 +112,7 @@ status
 <td colspan="5">One of "", "withdrawn", "unpaid", "no_show", "changed", "reserve", "starting"</td>
 </tr>
 <tr>
-<td>
+<td id="start_outside_comp">
 outside_<wbr>comp
 <span class="searchable">outside_comp</span></td>
 <td style="text-align: center">boolean</td>
@@ -123,7 +123,7 @@ outside_<wbr>comp
 <td colspan="5">When true, this start will not be ranked</td>
 </tr>
 <tr>
-<td>
+<td id="start_custom_fields">
 custom_<wbr>fields
 <span class="searchable">custom_fields</span></td>
 <td style="text-align: center">object</td>
@@ -131,7 +131,7 @@ custom_<wbr>fields
 <td></td>
 </tr>
 <tr>
-<td colspan="5">The object key refers to the key in [custom_field_names](SHOW.md) on show</td>
+<td colspan="5">The object key refers to the key in <a href="#show_custom_field_names">Show#custom_field_names</a></td>
 </tr>
 </tbody>
 </table>

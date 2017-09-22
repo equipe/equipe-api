@@ -1,11 +1,11 @@
 ---
 title: Translation
-position: 2
 description: Translation of app.equipe.com
+position: 1
 ---
+
 Translation should be done and maintained by a active user of the system.
 {: .info }
-
 
 <img src="images/start_reason.png?raw=true" alt="Image of Federation webservices" style="width: 100%"/>
 

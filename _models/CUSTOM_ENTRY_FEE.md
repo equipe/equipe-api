@@ -12,7 +12,7 @@ right_code: |
   {: title="Example record of Custom entry fee" }
   
 ---
-**Bold** attributes is required
+Attributes in **Bold** is required
 {: .info }
 <table>
 <thead>
@@ -23,7 +23,7 @@ right_code: |
 </thead>
 <tbody>
 <tr>
-<td>
+<td id="custom_entry_fee_name">
 <strong>name</strong>
 <span class="searchable">name</span></td>
 <td style="text-align: center">string</td>
@@ -34,7 +34,7 @@ right_code: |
 <td colspan="5">Name of the fee</td>
 </tr>
 <tr>
-<td>
+<td id="custom_entry_fee_vat">
 <strong>vat</strong>
 <span class="searchable">vat</span></td>
 <td style="text-align: center">number</td>
@@ -45,7 +45,7 @@ right_code: |
 <td colspan="5">VAT included by %</td>
 </tr>
 <tr>
-<td>
+<td id="custom_entry_fee_amount">
 <strong>amount</strong>
 <span class="searchable">amount</span></td>
 <td style="text-align: center">number</td>

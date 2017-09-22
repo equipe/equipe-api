@@ -2,7 +2,7 @@
 title: Payment
 position: 6.0
 ---
-**Bold** attributes is required
+Attributes in **Bold** is required
 {: .info }
 <table>
 <thead>
@@ -13,7 +13,7 @@ position: 6.0
 </thead>
 <tbody>
 <tr>
-<td>
+<td id="payment_amount">
 <strong>amount</strong>
 <span class="searchable">amount</span></td>
 <td style="text-align: center">number</td>
@@ -24,7 +24,7 @@ position: 6.0
 <td colspan="5">The amount that is prepaid</td>
 </tr>
 <tr>
-<td>
+<td id="payment_description">
 description
 <span class="searchable">description</span></td>
 <td style="text-align: center">string</td>
@@ -35,7 +35,7 @@ description
 <td colspan="5">Notes for this payment</td>
 </tr>
 <tr>
-<td>
+<td id="payment_created_at">
 created_<wbr>at
 <span class="searchable">created_at</span></td>
 <td style="text-align: center">string</td>
