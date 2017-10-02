@@ -40,7 +40,7 @@ Supported locales is sv, en, es, nl, fi, fr and da
 
 ### Generate auth token
 
-Concat the values of organizer_id, organizer_name, name, email, cell_phone and your `api key`. Make a `SHA256` hexdigest of the result. We will use this to verify that your are the sender of the information and that it is untouched. Your federation `api_key` serves as the shared secret.
+Concatenate the values of organizer_id, organizer_name, name, email, cell_phone and your `api key`. Make a `SHA256` hexdigest of the result. We will use this to verify that your are the sender of the information and that it is untouched. Your federation `api_key` serves as the shared secret.
 
 #### Example
 
