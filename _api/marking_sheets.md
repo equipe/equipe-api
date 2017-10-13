@@ -43,12 +43,12 @@ right_code: |
   {: title="Response" }
 ---
 
-Marking Sheets is used for Dressage, Freestyle, Para-dressage, Eventing and more. These sheets is created within app, and mapped to your specified judgement id or rule code.
+Marking Sheets are used for Dressage, Freestyle, Para-dressage, Eventing and more. These sheets are created within app, and mapped to your specified judgement id or rule code.
 
 As you will put a lot of effort creating this sheets we want to make sure that you are able to re-use this information outside app.equipe.com.
 {: .success }
 
-This will return all marking sheets, both FEI and created specific for your own federation.
+This will return all marking sheets, both the FEI and those created specific for your own federation.
 
 ~~~ bash
 curl /federations/YOUR_FEDERATION_ID/marking_sheets.json?api_key=YOUR_APP_KEY
