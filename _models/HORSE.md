@@ -106,6 +106,22 @@ fei_<wbr>id
 <td></td>
 </tr>
 <tr>
+<td id="horse_ueln">
+ueln
+<span class="searchable">ueln</span></td>
+<td style="text-align: center">string</td>
+<td style="text-align: center"></td>
+<td></td>
+</tr>
+<tr>
+<td id="horse_chip_no">
+chip_<wbr>no
+<span class="searchable">chip_no</span></td>
+<td style="text-align: center">string</td>
+<td style="text-align: center"></td>
+<td></td>
+</tr>
+<tr>
 <td id="horse_country">
 country
 <span class="searchable">country</span></td>
