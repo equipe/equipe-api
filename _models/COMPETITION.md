@@ -128,7 +128,7 @@ start_<wbr>time
 horse_<wbr>pony
 <span class="searchable">horse_pony</span></td>
 <td style="text-align: center">string</td>
-<td style="text-align: center">"H"</td>
+<td style="text-align: center">"R"</td>
 <td></td>
 </tr>
 <tr>
