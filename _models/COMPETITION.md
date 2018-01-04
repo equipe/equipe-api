@@ -124,6 +124,17 @@ start_<wbr>time
 <td colspan="5">Start time of the competition must be in the format of HH:MM</td>
 </tr>
 <tr>
+<td id="competition_dressage_lock_start_times">
+dressage_<wbr>lock_<wbr>start_<wbr>times
+<span class="searchable">dressage_lock_start_times</span></td>
+<td style="text-align: center">boolean</td>
+<td style="text-align: center">false</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="5">Lock start times so they are not updated automatic</td>
+</tr>
+<tr>
 <td id="competition_horse_pony">
 horse_<wbr>pony
 <span class="searchable">horse_pony</span></td>
@@ -397,6 +408,28 @@ club_<wbr>discount_<wbr>percent_<wbr>applied
 </tr>
 <tr>
 <td colspan="5">Apply club discount for fees on this competition. Club discount is defined under Show</td>
+</tr>
+<tr>
+<td id="competition_reduce_prize_money_when_fewer_than">
+reduce_<wbr>prize_<wbr>money_<wbr>when_<wbr>fewer_<wbr>than
+<span class="searchable">reduce_prize_money_when_fewer_than</span></td>
+<td style="text-align: center">number</td>
+<td style="text-align: center">null</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="5">When fewer starts than the given value, the prize will be reduced with reduce_prize_money_when_fewer_than_percent</td>
+</tr>
+<tr>
+<td id="competition_reduce_prize_money_when_fewer_than_percent">
+reduce_<wbr>prize_<wbr>money_<wbr>when_<wbr>fewer_<wbr>than_<wbr>percent
+<span class="searchable">reduce_prize_money_when_fewer_than_percent</span></td>
+<td style="text-align: center">number</td>
+<td style="text-align: center">50</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="5">The percent to reduce the prize money with when lower then X number of starts in the competition</td>
 </tr>
 <tr>
 <td id="competition_title">
