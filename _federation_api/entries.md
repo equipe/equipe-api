@@ -42,7 +42,7 @@ right_code: |
     ],
     "entries": [
       {
-        "id": 1,
+        "id": "2f5e3700-95b6-47ea-a96c-99ea9cca6dbe",
         "competition_no": "1",
         "rider_id": "c0cdc695-c646-4b32-ab68-5fa92eca2fc5",
         "horse_id": "81ce6fc1-426b-4a77-9371-1605f51c9eef",
