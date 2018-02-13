@@ -162,7 +162,7 @@ always_<wbr>income_<wbr>tax
 <td id="show_discount_club_id">
 discount_<wbr>club_<wbr>id
 <span class="searchable">discount_club_id</span></td>
-<td style="text-align: center">integer or null</td>
+<td style="text-align: center">string or null</td>
 <td style="text-align: center">null</td>
 <td></td>
 </tr>
