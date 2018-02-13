@@ -5,7 +5,7 @@ position: 2.1
 right_code: |
   ~~~ json
   [
-    "The property '#/people/0/id' of type string did not match the following type: integer in schema file:///Users/jon/code/equipe_app/docs/api/schemas/entries.json#",
+    "The property '#/people/0/id' of type integer did not match the following type: string in schema file:///Users/jon/code/equipe_app/docs/api/schemas/entries.json#",
     "The property '#/entries/0/competition_no' of type integer did not match the following type: string in schema file:///Users/jon/code/equipe_app/docs/api/schemas/entries.json#"
   ]  
   ~~~

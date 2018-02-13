@@ -7,7 +7,7 @@ right_code: |
   ~~~ json
   {
     "officials": [
-      "id": 1234,
+      "id": "3db1f0f6-957b-4269-8431-ced00cd93180",
       "first_name": "Jon",
       "last_name": "Stenqvist",
       "official": true

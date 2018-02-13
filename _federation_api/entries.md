@@ -7,7 +7,7 @@ right_code: |
   ~~~ json
   {
     "show": {
-      "id": 1,
+      "id": "fc1bf64e-1f6d-4838-ab45-1d4f0a079288",
       "name": "Mini show 2017",
       "currency": "SEK"
     },
@@ -27,7 +27,7 @@ right_code: |
     ],
     "people": [
       {
-        "id": 1,
+        "id": "c0cdc695-c646-4b32-ab68-5fa92eca2fc5",
         "first_name": "Jon",
         "last_name": "Stenqvist",
         "person_no": "2010-10-12"
@@ -35,7 +35,7 @@ right_code: |
     ],
     "horses": [
       {
-        "id": 1,
+        "id": "81ce6fc1-426b-4a77-9371-1605f51c9eef",
         "name": "Seed",
         "category": "H"
       }
@@ -44,9 +44,9 @@ right_code: |
       {
         "id": 1,
         "competition_no": "1",
-        "rider_id": 1,
-        "horse_id": 1,
-        "payer_id": 1
+        "rider_id": "c0cdc695-c646-4b32-ab68-5fa92eca2fc5",
+        "horse_id": "81ce6fc1-426b-4a77-9371-1605f51c9eef",
+        "payer_id": "c0cdc695-c646-4b32-ab68-5fa92eca2fc5"
       }
     ]
   }

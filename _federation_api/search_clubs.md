@@ -8,7 +8,7 @@ right_code: |
   {
     "clubs": [
       {
-        "id":235,
+        "id":"2eb955ce-8a6f-46a7-96a2-b4c09c16f379",
         "name":"Helsingborgs FRK",
         "logo_id":"0235",
         "logo_group":"svrf"

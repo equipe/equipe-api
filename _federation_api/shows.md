@@ -8,14 +8,14 @@ right_code: |
   {
      "shows":[
         {
-           "id":24,
+           "id":"f34a80c1-069f-4498-846a-e3fca05a7f00",
            "name":"International CSI 3* Horse Show 2016",
            "starts_on":"2016-08-09",
            "ends_on":"2016-08-14",
            "entries_url":"https://example.com/shows/24/entries.json"
         },
         {
-           "id":23,
+           "id":"9305e1ed-8d8a-4242-ad12-08e1ea4cf046",
            "name":"Jumping Championships (YR, J, C) 2016",
            "starts_on":"2016-07-28",
            "ends_on":"2016-07-30",
