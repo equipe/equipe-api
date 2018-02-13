@@ -190,6 +190,17 @@ judgement_<wbr>id
 <td colspan="5">The judgement identifier, in Equipe you configure the mapping between the judgement in Equipe with your judgement id. This value needs to be uniq within each discipline. Use descriptive name for easier mapping</td>
 </tr>
 <tr>
+<td id="competition_allow_individual_marking_sheets">
+allow_<wbr>individual_<wbr>marking_<wbr>sheets
+<span class="searchable">allow_individual_marking_sheets</span></td>
+<td style="text-align: center">boolean</td>
+<td style="text-align: center">false</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="5">When discipline is dressage, this allow individual marking sheet per start in this competition</td>
+</tr>
+<tr>
 <td id="competition_fence_height">
 fence_<wbr>height
 <span class="searchable">fence_height</span></td>
