@@ -16,7 +16,7 @@ Attributes in **Bold** is required
 <td id="start_id">
 <strong>id</strong>
 <span class="searchable">id</span></td>
-<td style="text-align: center">integer</td>
+<td style="text-align: center">string</td>
 <td style="text-align: center"></td>
 <td></td>
 </tr>
@@ -38,7 +38,7 @@ competition_<wbr>no
 <td id="start_rider_id">
 <strong>rider_<wbr>id</strong>
 <span class="searchable">rider_id</span></td>
-<td style="text-align: center">integer</td>
+<td style="text-align: center">string</td>
 <td style="text-align: center"></td>
 <td></td>
 </tr>
@@ -49,7 +49,7 @@ competition_<wbr>no
 <td id="start_payer_id">
 payer_<wbr>id
 <span class="searchable">payer_id</span></td>
-<td style="text-align: center">integer</td>
+<td style="text-align: center">string</td>
 <td style="text-align: center"></td>
 <td></td>
 </tr>
@@ -60,7 +60,7 @@ payer_<wbr>id
 <td id="start_horse_id">
 horse_<wbr>id
 <span class="searchable">horse_id</span></td>
-<td style="text-align: center">integer</td>
+<td style="text-align: center">string</td>
 <td style="text-align: center"></td>
 <td></td>
 </tr>

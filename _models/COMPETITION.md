@@ -28,7 +28,7 @@ Attributes in **Bold** is required
 <td id="competition_id">
 id
 <span class="searchable">id</span></td>
-<td style="text-align: center">integer</td>
+<td style="text-align: center">string</td>
 <td style="text-align: center"></td>
 <td></td>
 </tr>
@@ -67,6 +67,17 @@ alias
 </tr>
 <tr>
 <td colspan="5">Override generated name of the competition</td>
+</tr>
+<tr>
+<td id="competition_open_for_entry">
+open_<wbr>for_<wbr>entry
+<span class="searchable">open_for_entry</span></td>
+<td style="text-align: center">boolean</td>
+<td style="text-align: center">false</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="5">Open for entry via Rider Declaration</td>
 </tr>
 <tr>
 <td id="competition_discipline">

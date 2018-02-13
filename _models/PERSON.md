@@ -35,7 +35,7 @@ Attributes in **Bold** is required
 <td id="person_id">
 <strong>id</strong>
 <span class="searchable">id</span></td>
-<td style="text-align: center">integer</td>
+<td style="text-align: center">string</td>
 <td style="text-align: center"></td>
 <td></td>
 </tr>
@@ -159,7 +159,7 @@ licence_<wbr>year
 <td id="person_club_id">
 club_<wbr>id
 <span class="searchable">club_id</span></td>
-<td style="text-align: center">integer or null</td>
+<td style="text-align: center">string or null</td>
 <td style="text-align: center">null</td>
 <td></td>
 </tr>
