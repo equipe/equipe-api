@@ -5,7 +5,7 @@ description: General settings for the show
 right_code: |
   ~~~ json
   {
-    "id":1,
+    "id":"fc1bf64e-1f6d-4838-ab45-1d4f0a079288",
     "name":"My Show 2017",
     "currency":"SEK"
   }

@@ -4,7 +4,7 @@ position: 4.0
 right_code: |
   ~~~ json
   {
-    "id":10001,
+    "id":"fc1bf64e-1f6d-4838-ab45-1d4f0a079288",
     "name":"Helsingborgs Fältrittklubb",
     "short":"HFRK",
     "logo_id":"0235",
