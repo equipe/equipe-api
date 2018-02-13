@@ -40,7 +40,7 @@ The response must validate json-schema [shows.json](https://app.equipe.com/api/s
 
 Attribute | Type | Mandatory | Description
 --- | :---: | :---: | ---
-id | integer | Yes | Your primary key for the show
+id | string | Yes | Your primary key for the show
 name | string | Yes | Name of the show
 starts_on | string | No | ISO 8601 (YYYY-MM-DD) formatted start date
 ends_on | string | No | ISO 8601 (YYYY-MM-DD) formatted end date
