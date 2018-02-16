@@ -182,7 +182,7 @@ admin_<wbr>team
 <td id="competition_judgement_id">
 judgement_<wbr>id
 <span class="searchable">judgement_id</span></td>
-<td style="text-align: center">string</td>
+<td style="text-align: center">string or null</td>
 <td style="text-align: center"></td>
 <td></td>
 </tr>
