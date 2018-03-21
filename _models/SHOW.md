@@ -324,6 +324,17 @@ publish_<wbr>horse_<wbr>no
 <td colspan="5">Publish horse no to online.equipe.com</td>
 </tr>
 <tr>
+<td id="show_horse_tax_person">
+horse_<wbr>tax_<wbr>person
+<span class="searchable">horse_tax_person</span></td>
+<td style="text-align: center">boolean</td>
+<td style="text-align: center">false</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="5">Makes it possible to set a tax person on each horse</td>
+</tr>
+<tr>
 <td id="show_custom_field_names">
 custom_<wbr>field_<wbr>names
 <span class="searchable">custom_field_names</span></td>
