@@ -134,7 +134,7 @@ licence_<wbr>year
 <td id="_club_id">
 club_<wbr>id
 <span class="searchable">club_id</span></td>
-<td style="text-align: center">integer or null</td>
+<td style="text-align: center">string or null</td>
 <td style="text-align: center">null</td>
 <td></td>
 </tr>

@@ -125,7 +125,7 @@ chip_<wbr>no
 <td id="horse_country">
 country
 <span class="searchable">country</span></td>
-<td style="text-align: center">string</td>
+<td style="text-align: center">string or null</td>
 <td style="text-align: center">""</td>
 <td>^[A-Z]{3}$</td>
 </tr>
@@ -247,6 +247,17 @@ notes
 <td style="text-align: center">string</td>
 <td style="text-align: center">""</td>
 <td></td>
+</tr>
+<tr>
+<td id="horse_tax_person_id">
+tax_<wbr>person_<wbr>id
+<span class="searchable">tax_person_id</span></td>
+<td style="text-align: center">string or null</td>
+<td style="text-align: center"></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="5">ID of the tax person for this horse, the tax person must exist in people</td>
 </tr>
 <tr>
 <td id="horse_custom_fields">
