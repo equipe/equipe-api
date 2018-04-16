@@ -79,6 +79,17 @@ individual_<wbr>marking_<wbr>sheet_<wbr>id
 <td colspan="5">Dressage only. The judgement identifier for the individual marking sheet, can only be used when Competition allow_individual_marking_sheets is set to true</td>
 </tr>
 <tr>
+<td id="start_quantity">
+quantity
+<span class="searchable">quantity</span></td>
+<td style="text-align: center">integer</td>
+<td style="text-align: center">1</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="5">Extra fee only (Competition with discipline L and allow_many true). The number of times the fee is charged. Don't include this attribute unless it's used.</td>
+</tr>
+<tr>
 <td id="start_category">
 category
 <span class="searchable">category</span></td>
