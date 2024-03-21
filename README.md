@@ -36,6 +36,18 @@ Nothing you normally do, but if you want to replace our own dressage client this
 
 When you have put a lot of effort creating this marking sheets in Equipe, we want to make sure that you are able to re-use this information outside app.equipe.com. [Read more](MARKING_SHEET.md)
 
+## Extensions
+
+Expand the functionality in Equipe by creating extensions. These can include user interfaces, actions that a user can initiate, or webhooks for events to which you can subscribe. [Read more](EXTENSION.md)
+
+## REST API
+
+Create, update and delete resources in Equipe. [Read more](REST.md)
+
+## Batch API
+
+Create or update multiple resources in one requests, and setup relationships based on external ids. [Read more](BATCH.md)
+
 # License
 
 Equipe API docs are licensed under [Creative Commons (CC BY-SA 4.0)](http://creativecommons.org/licenses/by-sa/4.0/).
