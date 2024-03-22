@@ -2,12 +2,13 @@
 
 This API endpoint enables the batch processing of multiple models including people, horses, clubs, competitions, schedules and starts in a specific meeting.
 
-- `unique_by` Specifies the field to identify unique records.
-- `skip_user_changed` Don't override manually changes done by humans (non imports etc)
-- `where` Conditions to narrow down the operation.
-- `replace` Boolean indicating if existing records should be replaced. Only supported when `where` conditions also set.
-- `abort_if_any` Conditions to abort the operation if any criteria match.
-- `records` An array of records to be processed.
+- The top-level `key` one of `people`, `horses`, `clubs`, `competitions`, `schedules` and `starts`
+  - `unique_by` Specifies the field to identify unique records.
+  - `skip_user_changed` Don't override manually changes done by humans (non imports etc)
+  - `where` Conditions to narrow down the operation.
+  - `replace` Boolean indicating if existing records should be replaced. Only supported when `where` conditions also set.
+  - `abort_if_any` Conditions to abort the operation if any criteria match.
+  - `records` An array of records to be processed.
 
 In the example below, the start list will not be updated if any of the starts is set as rid (marked as ridden).
 
