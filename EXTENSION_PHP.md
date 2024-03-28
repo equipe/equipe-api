@@ -139,3 +139,57 @@ if ($decoded->payload->target == "modal" || $decoded->payload->target == "browse
 }
 ?>
 ```
+
+## Work with Laravel
+Laravel is a good starting place when you are a more experienced PHP developer. It offers a nice structure and many tools are directly avaialbe.
+To get everything working with iframes, you need to setup a few settings.
+
+### Laravel iframe
+To Allow Equipe to iframe our extension, we need to set x-Frame-Options.
+
+Use `php artisan make:middelware FrameHeadersMiddleware` to make a Middleware.
+
+Add `$request->header('X-Frame-Options', 'ALLOW FROM https://app.equipe.com/');`
+
+After that it should like the example below.
+
+```php
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+
+class FrameHeadersMiddleware
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     */
+    public function handle(Request $request, Closure $next): Response
+    {
+        $request->header('X-Frame-Options', 'ALLOW FROM https://app.equipe.com/');
+        return $next($request);
+    }
+}
+
+
+```
+
+We need to register this MiddleWare so that Laravel will use it.
+In `app\Http\kernel.php`  add `App\Http\Middleware\FrameHeadersMiddleware::class` to protected list `$middleware`
+
+### Laravel Cookies
+To setup the session correctly go to `config\session.php` 
+
+Make sure that the `secure` and `same_site` are set as follows:
+```php
+'secure' => true,
+
+...
+
+'same_site' => 'none',
+```
