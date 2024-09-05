@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Computer</title>
+  <style>
+    html {
+      font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir, "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica, "Helvetica Neue", sans-serif;
+    }
+    img {
+      margin: 15px auto;
+      display: block;
+    }
+    p {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="pc-display-horizontal.svg" height="100" width="100">
+  <p>Computer</p>
+  <script>
+    const TimeTicks = {
+      timeZoneOffset: (new Date()).getTimezoneOffset() * 1000 * 60,
+
+      now() {
+        return Date.now() - TimeTicks.timeZoneOffset;
+      },
+
+      ticksToTime(duration) {
+        var milliseconds = parseInt((duration % 1000)),
+          seconds = parseInt((duration / 1000) % 60),
+          minutes = parseInt((duration / (1000 * 60)) % 60),
+          hours = parseInt((duration / (1000 * 60 * 60)) % 24);
+
+        hours = (hours < 10) ? '0' + hours : hours;
+        minutes = (minutes < 10) ? '0' + minutes : minutes;
+        seconds = (seconds < 10) ? '0' + seconds : seconds;
+        if (milliseconds === 0)
+          milliseconds = '000';
+        else
+          if (milliseconds < 10)
+            milliseconds = '0' + milliseconds;
+          else
+            if (milliseconds < 100)
+              milliseconds = '0' + milliseconds;
+
+        return hours + ':' + minutes + ':' + seconds + '.' + milliseconds;
+      },
+
+      timeToTicks(time) {
+        var parts = time.split(/[:.]/);
+        var hours = (parseInt(parts.shift(), 10) || 0) * 1000 * 60 * 60;
+        var minutes = (parseInt(parts.shift(), 10) || 0) * 1000 * 60;
+        var seconds = (parseInt(parts.shift(), 10) || 0) * 1000;
+        var milliseconds = (parseInt(parts.shift(), 10) || 0);
+        return hours + minutes + seconds + milliseconds;
+      }
+    }
+
+    function postMessageToParent(message) {
+      window.parent.postMessage(message, '*');
+    }
+
+    function sendRunningTime() {
+      let ticks = Math.floor(TimeTicks.now() / 100) * 100;
+      let time = TimeTicks.ticksToTime(ticks);
+
+      postMessageToParent({ type: 'runningTime', payload: { ticks, time } });
+    }
+    setInterval(sendRunningTime, 100);
+
+    function requestManualTime(node) {
+      postMessageToParent({ type: 'pulse', payload: { node, timeTicks: TimeTicks.now() } });
+    }
+
+    window.addEventListener('message', async (event) => {
+      const { type, payload } = event.data;
+
+      if (type === 'cmd' && payload.cmd === 'trigger')
+        requestManualTime(payload.node);
+    });
+  </script>
+</body>
+
+</html>

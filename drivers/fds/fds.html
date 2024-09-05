@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>FDS TBox</title>
+  <style>
+    html {
+      font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir, "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica, "Helvetica Neue", sans-serif;
+    }
+
+    img {
+      margin: 15px auto;
+      display: block;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    p.error {
+      color: rgb(147, 24, 24);
+    }
+
+    button {
+      display: block;
+      margin: auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="fds_logo.png" height="38" width="100">
+
+  <p id="message">FDS TBox Driver for Equipe</p>
+
+  <button type="button" id="connect">Connect</button>
+
+  <script>
+    const DLE = 0x10;
+    const SOF = 0x02;
+    const EOF = 0x03;
+
+    const FLAGS_NONE = 0x00;
+    const MSG_ID_WRITE = 0x02;
+    const MSG_ID_START_SYNCHRO = 0x0A;
+    const MSG_ID_MANUAL_TIME = 0x0F;
+
+    const PARAM_ID_USB_TICK = 0x3D; // Parameter ID for USB Time Tick Out
+    const PARAM_ID_USB_CDC_SETTINGS = 0x3C;
+
+    const BYTE_NA = 0x00;
+
+    const TICK_VALUE_0_1_SEC = 0x01; // Value for 0.1 sec interval
+    const TICK_VALUE_DISABLED = 0x00;
+
+    const EVENT_PROTOCOL_ALGE = 0x03;
+
+    const SYNCHRO_TYPE_DEVICE = 0x02;
+
+    let port;
+    let writer;
+    let reader;
+    let sequentialNumber = 0;
+
+    function calculateLRC(data) {
+      let LRC1 = 0, LRC2 = 0;
+      data.forEach(byte => {
+        LRC1 = (LRC1 + byte) & 0xFF;
+        LRC2 = (LRC2 + LRC1) & 0xFF;
+      });
+      return [LRC2, LRC1];
+    }
+
+    function incrementSequentialNumber() {
+      sequentialNumber = (sequentialNumber + 1) & 0xFF;
+    }
+
+    function appendBuffer(buffer1, buffer2) {
+      var tmp = new Uint8Array(buffer1.byteLength + buffer2.byteLength);
+      tmp.set(new Uint8Array(buffer1), 0);
+      tmp.set(new Uint8Array(buffer2), buffer1.byteLength);
+      return tmp.buffer;
+    };
+
+    function postMessageToParent(message) {
+      window.parent.postMessage(message, '*');
+    }
+
+    function timeToTicks(time) {
+      var parts = time.split(/[:.]/);
+      var hours = (parseInt(parts.shift(), 10) || 0) * 1000 * 60 * 60;
+      var minutes = (parseInt(parts.shift(), 10) || 0) * 1000 * 60;
+      var seconds = (parseInt(parts.shift(), 10) || 0) * 1000;
+      var milliseconds = (parseInt(parts.shift(), 10) || 0);
+      return hours + minutes + seconds + milliseconds;
+    }
+
+    async function writeFrame(payload) {
+      const [LRC2, LRC1] = calculateLRC(payload);
+
+      const command = new Uint8Array([DLE, SOF, ...payload, DLE, EOF, LRC2, LRC1]);
+      // console.log('writeFrame ', command);
+      await writer.write(command);
+    }
+
+    async function setUSBSettings(value) {
+      await writeFrame([incrementSequentialNumber(), FLAGS_NONE, MSG_ID_WRITE, PARAM_ID_USB_CDC_SETTINGS, BYTE_NA, value]);
+    }
+
+    async function setUSBTimeTickOut(value) {
+      await writeFrame([incrementSequentialNumber(), FLAGS_NONE, MSG_ID_WRITE, PARAM_ID_USB_TICK, value]);
+    }
+
+    async function requestManualTime(value) {
+      const node = parseInt(value, 10) - 1; // FDS supports node 0-7 not alpha nodes
+      await writeFrame([incrementSequentialNumber(), FLAGS_NONE, MSG_ID_MANUAL_TIME, BYTE_NA, node]);
+    }
+
+    async function startSynchro() {
+
+      function getSecondsFromMidnight() {
+        const now = new Date();
+        const hours = now.getUTCHours();
+        const minutes = now.getUTCMinutes();
+        const seconds = now.getUTCSeconds();
+        const offset = now.getTimezoneOffset() * 60;
+        return (hours * 3600) + (minutes * 60) + seconds - offset;
+      }
+
+      function getTimeBytes(seconds) {
+        return [
+          (seconds >> 24) & 0xFF, // Byte 2
+          (seconds >> 16) & 0xFF, // Byte 3
+          (seconds >> 8) & 0xFF,  // Byte 4
+          seconds & 0xFF          // Byte 5
+        ].reverse()
+      }
+
+      function getDaysSince2001() {
+        const startDate = new Date('2001-01-01T00:00:00Z');
+        const now = new Date();
+        const timeDiff = now - startDate; // Difference in milliseconds
+        return Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
+      }
+
+      function getDaysBytes(days) {
+        return [
+          (days >> 8) & 0xFF, // Byte 8
+          days & 0xFF         // Byte 9
+        ].reverse()
+      }
+
+      await writeFrame([incrementSequentialNumber(), FLAGS_NONE, MSG_ID_START_SYNCHRO, BYTE_NA, ...getTimeBytes(getSecondsFromMidnight()), 0x00, 0x00, ...getDaysBytes(getDaysSince2001()), 0x00, 0x00, SYNCHRO_TYPE_DEVICE]);
+    }
+
+    async function listenForData() {
+      let buffer = new Uint8Array;
+      let pending = false;
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) {
+          reader.releaseLock();
+          break;
+        }
+        if (value) {
+          pending = value[value.length - 1] !== 13;
+          buffer = appendBuffer(buffer, value);
+
+          if (!pending) {
+            const string = new TextDecoder().decode(buffer)
+            const data = string.match(/(C(\d+)M?\s+)?([0-9:.]{10,12})/)
+
+            if (data) {
+              const node = data[2]
+              const time = data[3].padEnd(12, '0')
+              const timeTicks = timeToTicks(time)
+
+              if (node)
+                postMessageToParent({ type: 'pulse', payload: { timeTicks, node } })
+              else
+                postMessageToParent({ type: 'runningTime', payload: { time, ticks: timeTicks } })
+            }
+
+            buffer = new Uint8Array;
+          }
+        }
+      }
+    }
+
+    async function connect() {
+      port = await navigator.serial.requestPort();
+      await port.open({ baudRate: 19200, dataBits: 8, parity: 'none', stopBits: 1 });
+      writer = port.writable.getWriter();
+      reader = port.readable.getReader();
+
+      await setUSBSettings(EVENT_PROTOCOL_ALGE);
+      await setUSBTimeTickOut(TICK_VALUE_0_1_SEC);
+      await startSynchro();
+
+      postMessageToParent({ type: 'frame', payload: { action: 'hide' } });
+
+      listenForData();
+    }
+
+    document.getElementById('connect').addEventListener('click', async () => {
+      try {
+        await connect();
+      }
+      catch (error) {
+        const message = document.getElementById('message');
+        message.textContent = error.message;
+        message.classList.add('error');
+        console.error('Error: ', error);
+      }
+    });
+
+    window.addEventListener('message', async (event) => {
+      const { type, payload } = event.data;
+
+      if (type === 'connect')
+        await connect();
+      else if (type === 'cmd' && payload.cmd === 'trigger')
+        await requestManualTime(payload.node);
+    });
+  </script>
+</body>
+
+</html>
