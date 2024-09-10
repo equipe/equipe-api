@@ -26,7 +26,7 @@ right_code: |
         "owner": "Jon Stenqvist",
         "reg_no": "DE431311320706",
         "chip_no": "752098100464709"
-      }    
+      }
     ]
   }
   ~~~
@@ -40,11 +40,8 @@ right_code: |
 Make sure that you have specified **Search horses URL** under settings for your federation in app.equipe.com.
 {: .info }
 
-first_name
-: First name starts with
-
-last_name
-: Last name starts with
+name
+: Name of the horse starts with
 
 The response must validate json-schema [horses.json](https://app.equipe.com/api/schemas/horses.json)
 
