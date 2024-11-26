@@ -227,11 +227,12 @@
     window.addEventListener('message', async (event) => {
       const { type, payload } = event.data;
 
-      if (type === 'connect')
-        await connect();
-      else if (type === 'cmd' && payload.cmd === 'trigger')
+      if (type === 'cmd' && payload.cmd === 'trigger')
         await requestManualTime(payload.node);
     });
+
+    // Notify parent about the frame size
+    postMessageToParent({ type: 'frame', payload: { action: 'size', width: 300, height: 150 } });
   </script>
 </body>
 
