@@ -53,6 +53,8 @@ The updates is the same you you can find under the scene source `"update:"`
 
 ### Response
 
+The update is pushed live to all devices that are rendering this scoreboard and scene.
+
 ```json
 {
   "sceneIndex": 0,
