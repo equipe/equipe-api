@@ -1,5 +1,9 @@
 # Equipe Timekeeping Client API
 
+> [!IMPORTANT]
+> This is an example of connecting to a software running locally on the show ground. Now you should have a look at [timekeeping/outputs](timekeeping/outputs/README.md)
+
+> [!TIP]
 > This is only if you have very specific use case, or want to hook up your existing graphics solution with Equipe. We have built in support for TV-graphics, LED-screens and Info Screens.
 
 ## Introduction

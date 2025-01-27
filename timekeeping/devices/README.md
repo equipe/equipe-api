@@ -32,9 +32,4 @@ To get started, you can use the provided examples and modify them to suit your n
 
 Once you have built and tested your driver, you can submit it as a pull request to this repository. Make sure to include any necessary documentation and instructions for using your driver.
 
-## Additional Resources
-
-- [Equipe API Documentation](https://github.com/equipe/equipe-api/blob/master/TIMEKEEPING_CLIENT.md#realtime-data)
-- [Equipe Timekeeping Driver Debugger](equipe_timekeeping_driver_debugger.html)
-
 Feel free to reach out if you have any questions or need further assistance.
