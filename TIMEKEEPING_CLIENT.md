@@ -1,21 +1,21 @@
 # Equipe Timekeeping Client API
 
 > [!IMPORTANT]
-> This is an example of connecting to a software running locally on the show ground. Now you should have a look at [timekeeping/outputs](timekeeping/outputs/README.md)
+> This is an example of connecting to a timekeeping bridge software running locally on the showground. Now days you should have a look at [timekeeping/outputs](timekeeping/outputs/README.md)
 
 > [!TIP]
-> This is only if you have very specific use case, or want to hook up your existing graphics solution with Equipe. We have built in support for TV-graphics, LED-screens and Info Screens.
+> This is only if you have a very specific use case or want to hook up your existing graphics solution with Equipe. We have built-in support for TV graphics, LED screens, and Info Screens.
 
 ## Introduction
 
-* Find out your organizer_id, show_id and competition_id by looking at the url, or browsing the api end points
+* Find out your organizer_id, show_id, and competition_id by looking at the URL or browsing the API endpoints
 * GET starts.json
 * GET people.json and horses.json if you need full details about the rider or horse
-* Connect via WebSocket to Equipe ATU Connector for realtime data events
+* Connect via WebSocket to Equipe ATU Connector for real-time data events
 
 ## Authentication
 
-Login to your account. Visit you profile page and click show API-Key. This key should be set in the X-API-KEY header on every request.
+Log in to your account. Visit your profile page and click show API-Key. This key should be set in the X-API-KEY header on every request.
 
 ## Shows
 
@@ -56,10 +56,9 @@ kq | integer | ID
 clabb | string | Competition number
 klass | string | Name of the competition
 
-
 ## Judgement details
 
-This gives details how the result list is sorted, where you find time and faults in the different rounds.
+This gives details on how the result list is sorted, where you find time and faults in the different rounds.
 
 `GET /meetings/:show_id/competitions/:competition_id/H/judgement.json`
 
@@ -161,7 +160,7 @@ rnr | integer | Person ID
 hnr | integer | Horse ID
 a | string | See below
 
-It get more details about the rider or horse use
+To get more details about the rider or horse use
 
 `GET /meetings/:show_id/people/:person_id`
 
@@ -244,7 +243,7 @@ result_preview | string | Result summary for all rounds
 or | string | Reason <ul><li><strong>U</strong> = Retired</li><li><strong>D</strong> = Eliminated</li><li><strong>S</strong> = Disqualified</li></ul> *Use this with the combination of judgement.json eliminated_faults to know in which round the rider is eliminated or retired in*
 a | string | Status <ul><li><strong>Ö</strong> = Withdrawn</li><li><strong>E</strong> = Unpaid withdrawn</li><li><strong>U</strong> = No-show</li><li><strong>B</strong> = Changed competition</li><li><strong>R</strong> = Reserve</li></ul> *Rider count as not started*
 
-> This is also where you fetch the start list for jump off / following round, after the timekeeping operater switch. Starts qualified for jump off will have a non-null value in ord_omh.
+> This is also where you fetch the start list for jump off / following round, after the timekeeping operator switch. Starts qualified for jump off will have a non-null value in ord_omh.
 
 ## Development
 
@@ -254,7 +253,7 @@ Create a test show, where you can play with the timekeeping. Install the Equipe 
 
 ## Realtime data
 
-You get realtime timekeeping events by connecting to the Equipe ATU Connector via WebSocket and listen for the event `output` with this you are able to rebuild the timekeeping state.
+You get real-time timekeeping events by connecting to the Equipe ATU Connector via WebSocket and listen for the event `output` with this you are able to rebuild the timekeeping state.
 
 ```json
 {
@@ -285,7 +284,7 @@ You get realtime timekeeping events by connecting to the Equipe ATU Connector vi
 }
 ```
 
-When output event is recevied, check the state of running/countDown and trigger your own timer.
+When output event is received, check the state of running/countDown and trigger your own timer.
 
 ```javascript
 receivedTimekeepingOutput(data){
