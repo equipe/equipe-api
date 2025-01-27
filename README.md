@@ -28,9 +28,9 @@ Use this API if you want to fetch all accounting information from Equipe. [Read 
 
 Do you want to render your own running clock? Subscribe the the live data stream to receive everything you need to build your own TV-graphics or Scoreboard integration. [Read more](TIMEKEEPING_CLIENT.md)
 
-## Timekeeping drivers
+## Timekeeping devices and outputs
 
-This project demonstrates how to build a new driver for timekeeping devices using an HTML file that interfaces with timekeeping hardware and communicates with a parent window. You can build your own and submit as PR here and we may include it to Equipe itself. [Read more](drivers/README.md)
+This project demonstrates how to build a new driver for timekeeping devices using an HTML file that interfaces with timekeeping hardware and communicates with a parent window. You can build your own and submit as PR here and we may include it to Equipe itself. [Read more](timekeeping/README.md)
 
 ## Dressage client API
 
@@ -58,4 +58,4 @@ Equipe API docs are licensed under [Creative Commons (CC BY-SA 4.0)](http://crea
 
 ---
 
-If you have a specific feature request or find a bug, [please open a GitHub issue](https://github.com/equipe/equipe_api/issues/new). We encourage you to fork these docs for local reference and happily accept pull requests with improvements.
+If you have a specific feature request or find a bug, [please open a GitHub issue](https://github.com/equipe/equipe-api/issues/new). We encourage you to fork these docs for local reference and happily accept pull requests with improvements.

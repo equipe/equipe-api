@@ -38,7 +38,7 @@
 </head>
 
 <body>
-  <img src="fds_logo.png" height="38" width="100">
+  <img src="https://logo.equipeassets.com/logos/assets/61085/logo/200/76/ffffff00/64161751abea460a4077b9d6d7d18940.png" height="38" width="100">
 
   <p id="message">FDS TBox Driver for Equipe</p>
 
@@ -200,6 +200,7 @@
     async function connect() {
       port = await navigator.serial.requestPort();
       await port.open({ baudRate: 19200, dataBits: 8, parity: 'none', stopBits: 1 });
+      await port.setSignals({ dataTerminalReady: true });
       writer = port.writable.getWriter();
       reader = port.readable.getReader();
 
@@ -227,12 +228,11 @@
     window.addEventListener('message', async (event) => {
       const { type, payload } = event.data;
 
-      if (type === 'cmd' && payload.cmd === 'trigger')
+      if (type === 'connect')
+        await connect();
+      else if (type === 'cmd' && payload.cmd === 'trigger')
         await requestManualTime(payload.node);
     });
-
-    // Notify parent about the frame size
-    postMessageToParent({ type: 'frame', payload: { action: 'size', width: 300, height: 150 } });
   </script>
 </body>
 

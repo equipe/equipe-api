@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Realtime Data Output</title>
+</head>
+<body>
+  <button id="fullscreen-btn">Go fullscreen</button>
+  <h1>Realtime Data Output</h1>
+  <div id="output"></div>
+
+  <script>
+    const fullscreenBtn = document.getElementById('fullscreen-btn');
+
+    fullscreenBtn.addEventListener('click', () => {
+      if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen();
+      }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement) {
+        fullscreenBtn.style.display = 'none';
+      } else {
+        fullscreenBtn.style.display = 'inline-block';
+      }
+    });
+
+    window.addEventListener('message', (event) => {
+      const data = event.data;
+      const outputEl = document.getElementById('output');
+      if (data?.type) {
+        const newEl = document.createElement('pre');
+        newEl.textContent = JSON.stringify(data, null, 2);
+        outputEl.insertBefore(newEl, outputEl.firstChild);
+      }
+    });
+  </script>
+</body>
+</html>

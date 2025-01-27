@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scoreboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0a0a 30%, #222 70%);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+
+      color: #f1f1f1;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .heading {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .divider {
+      width: 90%;
+      margin: 0.5rem auto 1.5rem;
+      border: none;
+      border-top: 2px solid rgba(255,255,255,0.15);
+    }
+
+    .competitor {
+      margin-bottom: 2rem;
+    }
+
+    .rider-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      font-size: 3rem;
+      font-weight: 500;
+      color: #f1f1f1;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      margin: 0.3rem 0;
+    }
+
+    .horse-info {
+      font-size: 3rem;
+      font-weight: 500;
+      color: #f1f1f1;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      margin: 0.3rem 0;
+    }
+
+    .timekeeping {
+      display: inline-flex;
+      align-items: center;
+      font-size: 5rem;
+      font-weight: 600;
+      color: #66ff66;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+
+    .timekeeping .time,
+    .timekeeping .faults {
+      padding: 0 0.5rem;
+    }
+
+    .separator {
+      margin: 0 1rem;
+      font-size: 3rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .lost-connection {
+      background-color:hsl(0, 100.00%, 51.40%);
+      padding: 0.25rem 0.75rem;
+      font-size: 1.25rem;
+      margin: 0 auto;
+      width: 80%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2030;
+      text-align: center;
+      border-radius: 0 0 6px 6px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      color: #fff;
+
+      & p {
+        margin: 0.125rem 0;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="lost-connection hidden" id="lostConnection">
+    Not receiving any data
+    <p>Ensure the timekeeping is open</p>
+    <p>Close and re-open this window</p>
+  </div>
+
+  <div class="heading">Scoreboard</div>
+  <hr class="divider">
+
+  <div class="competitor">
+    <div class="rider-info">
+      <span id="start_no"></span>
+      <span class="separator">|</span>
+      <span id="rider"></span>
+    </div>
+    <div class="horse-info">
+      <span id="horse"></span>
+    </div>
+  </div>
+  <hr class="divider">
+
+  <div class="timekeeping">
+    <span class="time" id="time"></span>
+    <span class="separator" id="time_faults_separator">|</span>
+    <span class="faults" id="faults"></span>
+  </div>
+
+  <script>
+    let state = {}
+    let lastUpdate = Date.now()
+
+    const ShowJumpingEvent = {
+      "555": "NS",
+      "666": "RET",
+      "777": "RESET",
+      "888": "WDN",
+      "889": "NO-SHOW",
+      "998": "DSQ",
+      "999": "ELI"
+    }
+
+    const fixedTo = (number, places) => {
+      if (isFinite(number)) {
+        const factor = 10 ** places;
+        const value = Math.round(number * factor) / factor;
+        return value.toFixed(places);
+      }
+      return null;
+    }
+
+    const render = () => {
+      document.getElementById('start_no').textContent = state.startNo
+      document.getElementById('rider').textContent = state.rider
+      document.getElementById('horse').textContent = state.horse
+      if (state.countDown) {
+        document.getElementById('time').textContent = state.countDownValue
+        document.getElementById('faults').textContent = ''
+        document.getElementById('time_faults_separator').style.display = 'none'
+
+      }
+      else {
+        document.getElementById('time').textContent = state.time
+        document.getElementById('faults').textContent = state.faults
+        document.getElementById('time_faults_separator').style.display = 'inline'
+      }
+    }
+
+    setInterval(() => {
+      if (lastUpdate && Date.now() - lastUpdate > 1000) {
+        lostConnection.classList.remove('hidden')
+      } else {
+        lostConnection.classList.add('hidden')
+      }
+    }, 1000);
+
+    window.addEventListener('message', (event) => {
+      const data = event.data;
+      if (data?.type === 'output') {
+        // Make sure to copy the data to avoid reference issues
+        state = { ...state, ...data.payload }
+        if (state.running)
+          state.time = state.baseTime
+        if (state.rank === 999)
+          state.rank = ''
+        state.isEliminated = !!ShowJumpingEvent[data.fenceFaults];
+        render();
+      }
+      else if (data?.type === 'runningTime' && data.payload?.time) {
+        state.daytime = data.payload.time.substring(0, 8)
+        lastUpdate = Date.now()
+        render();
+      }
+    });
+  </script>
+</body>
+</html>

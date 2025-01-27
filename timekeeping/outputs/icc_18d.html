@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ICC 205 18D</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    .logo-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .scoreboard {
+      display: grid;
+      grid-template-rows: repeat(4, auto);
+      gap: 1rem;
+      width: 90%;
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+
+    .line {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .line-label {
+      font-weight: bold;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      background: #353851;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background:rgb(38, 40, 59);
+    }
+
+    .toggle-button {
+      padding: 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+
+    .daytime {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .lost-connection {
+      background-color:hsl(0, 100.00%, 51.40%);
+      padding: 0.25rem 0.75rem;
+      font-size: 1.25rem;
+      margin: 0 auto;
+      width: 80%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2030;
+      text-align: center;
+      border-radius: 0 0 6px 6px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      color: #fff;
+
+      & p {
+        margin: 0.125rem 0;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="lost-connection hidden" id="lostConnection">
+    Not receiving any data
+    <p>Ensure the timekeeping is open</p>
+    <p>Close and re-open this window</p>
+  </div>
+
+  <div class="logo-header">
+    <h1>ICC 205 18D</h1>
+  </div>
+
+  <div class="toolbar">
+    <div>
+      <select id="modeToggle" class="toggle-button">
+        <option value="timekeeping" selected>Timekeeping</option>
+        <option value="daytime">Daytime</option>
+        <option value="blank">Blank</option>
+      </select>
+    </div>
+
+    <button class="button" id="connect">Connect</button>
+    <button class="button" id="disconnect">Disconnect</button>
+  </div>
+
+  <div class="scoreboard">
+    <div class="line">
+      <div class="line-label">Line 1 (Start #):</div>
+      <div id="line1Value"></div>
+    </div>
+    <div class="line">
+      <div class="line-label">Line 2 (Penalties):</div>
+      <div id="line2Value"></div>
+    </div>
+    <div class="line">
+      <div class="line-label">Line 3 (Rank):</div>
+      <div id="line3Value"></div>
+    </div>
+    <div class="line">
+      <div class="line-label">Line 4 (Time):</div>
+      <div id="line4Value"></div>
+    </div>
+  </div>
+
+  <p class="daytime" id="daytime">
+  </p>
+
+  <script>
+    let lastUpdate = Date.now()
+    let state = {
+      running: false,
+      countDown: false,
+      highResulution: true
+    }
+    let port;
+    let writer;
+    let previousSent = {};
+
+    const CC = {
+      SOH:  '\x01',
+      STX:  '\x02',
+      EOT:  '\x04',
+      BS:   '\x08',
+      LF:   '\x0A',
+      DC4:  '\x14',
+      SPC:  ' '
+    }
+
+    const line1 = document.getElementById('line1Value')
+    const line2 = document.getElementById('line2Value')
+    const line3 = document.getElementById('line3Value')
+    const line4 = document.getElementById('line4Value')
+    const modeToggle = document.getElementById('modeToggle')
+    const lostConnection = document.getElementById('lostConnection')
+    const daytime = document.getElementById('daytime')
+
+    async function setupPort() {
+      try {
+        if (!port) {
+          port = await navigator.serial.requestPort();
+          await port.open({ baudRate: 9600, dataBits: 8, stopBits: 1, parity: "none" });
+          console.log("Port opened.");
+        }
+
+        const encoder = new TextEncoderStream();
+        encoder.readable.pipeTo(port.writable);
+        writer = encoder.writable.getWriter();
+        console.log("Writer ready.");
+      } catch (error) {
+        console.error("Error setting up port:", error);
+      }
+    }
+
+    async function writeMessage(line, message) {
+      try {
+        if (!writer) {
+          console.error("Writer is not initialized. Call setupPort() first.");
+          return;
+        }
+
+        const STX = String.fromCharCode(0x02)
+        const LF = String.fromCharCode(0x0A)
+        const brightness = " ";
+        const data = isFinite(message) ? message : (message || '')
+
+        const frame = `${STX}${line}${brightness}${data}${LF}`;
+        await writer.write(frame);
+      } catch (error) {
+        console.error("Error writing message:", error);
+      }
+    }
+
+    async function closePort() {
+      try {
+        if (writer) {
+          await writer.close();
+          console.log("Writer closed.");
+        }
+        if (port) {
+          await port.close();
+          console.log("Port closed.");
+        }
+      } catch (error) {
+        console.error("Error closing port:", error);
+      } finally {
+        port = null;
+        writer = null;
+      }
+    }
+
+    function padLeftNumber(str, totalLength, padChar = ' ') {
+      return String(`${isFinite(str) ? str : ''}`).padStart(totalLength, padChar);
+    }
+
+    function insertString(base, insert, position) {
+      return base.slice(0, position) + insert + base.slice(position);
+    }
+
+    function buildEquipe20518D(startNo, time, rank, faults) {
+      const { SOH, DC4, STX, BS, LF, SPC, EOT } = CC;
+
+      const formattedStartNo = padLeftNumber(startNo, 3)
+      const formattedRank = padLeftNumber(rank, 3)
+      const formattedTime = padLeftNumber(parseFloat(time).toFixed(2), 7)
+      const formattedFaults = padLeftNumber(parseFloat(faults).toFixed(2), 7)
+
+      const line1 = SOH + DC4 + 'S02' + STX + BS + insertString(formattedStartNo, SPC + STX, 1) + SPC + insertString(formattedTime, ' ', 2) + SPC + EOT
+      const line2 = SOH + DC4 + 'S02' + STX + BS + LF + insertString(formattedRank, SPC + STX, 1) + SPC + insertString(formattedFaults, ' ', 2) + SPC + EOT
+
+      return line1 + line2;
+    }
+
+    function buildDateTimeRow(daytime) {
+      const { SOH, DC4, STX, BS, LF, SPC, EOT } = CC;
+
+      const line1 = SOH + DC4 + 'S02' + STX + BS + SPC + SPC + STX + SPC + SPC + SPC + daytime + SPC + EOT
+      const line2 = SOH + DC4 + 'S02' + STX + BS + LF + SPC + SPC + STX + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + EOT
+
+      return line1 + line2;
+    }
+
+    function clearDisplay() {
+      const { SOH, DC4, STX, BS, LF, SPC, EOT } = CC;
+      const line1 = SOH + DC4 + 'S02' + STX + BS + SPC + SPC + STX + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + EOT
+      const line2 = SOH + DC4 + 'S02' + STX + BS + LF + SPC + SPC + STX + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + SPC + EOT
+      return line1 + line2;
+    }
+
+    function sendToDisplay() {
+      if (!writer)
+        return;
+
+      if (modeToggle.value == 'daytime') {
+        if (previousSent.daytime === state.daytime)
+          return;
+
+        let daytimeRow = buildDateTimeRow(state.daytime);
+        writer.write(daytimeRow);
+        previousSent.daytime = state.daytime;
+        return;
+      }
+
+      if (modeToggle.value == 'blank') {
+        writer.write(clearDisplay());
+        return;
+      }
+
+      let time = state.countDown ? state.countDownValue : state.time
+
+      if (previousSent.startNo === state.startNo && previousSent.time === time && previousSent.rank === state.rank && previousSent.faults === state.faults)
+        return;
+
+      let data = buildEquipe20518D(state.startNo, time, state.rank, state.faults);
+
+      previousSent.startNo = state.startNo
+      previousSent.time = time
+      previousSent.rank = state.rank
+      previousSent.faults = state.faults
+
+      writer.write(data);
+    }
+
+    document.getElementById("connect").addEventListener("click", async () => {
+      previousSent = {}
+      if (!port) {
+        await setupPort();
+      }
+    });
+
+    document.getElementById("disconnect").addEventListener("click", async () => {
+      await closePort();
+    });
+
+    const render = () => {
+      line1.textContent = state.startNo
+      line2.textContent = state.faults
+      line3.textContent = state.rank
+      line4.textContent = state.countDown ? state.countDownValue : state.time
+      daytime.textContent = state.daytime
+
+      sendToDisplay();
+    }
+
+    setInterval(() => {
+      if (lastUpdate && Date.now() - lastUpdate > 1000) {
+        lostConnection.classList.remove('hidden')
+      } else {
+        lostConnection.classList.add('hidden')
+      }
+    }, 1000);
+
+    window.addEventListener('message', (event) => {
+      const data = event.data;
+      if (data?.type === 'output') {
+        // Make sure to copy the data to avoid reference issues
+        state = { ...state, ...data.payload }
+        if (state.running)
+          state.time = state.baseTime
+        if (state.rank === 999)
+          state.rank = ''
+        render();
+      }
+      else if (data?.type === 'runningTime' && data.payload?.time) {
+        state.daytime = data.payload.time.substring(0, 8)
+        lastUpdate = Date.now()
+        render();
+      }
+    });
+  </script>
+</body>
+</html>
