@@ -4,16 +4,16 @@ This directory contains various HTML files used for displaying real-time data fo
 
 ## Files
 
-### `window.html`
+### [Window](window.html)
 This file displays a scoreboard with rider and horse information, as well as timekeeping data. It includes a connection status indicator to show if data is being received.
 
-### `icc_18d.html`
+### [ICC18D](icc_18d.html)
 This file is used for displaying data on an ICC 205 18D scoreboard. It includes options to connect and disconnect from a serial port, and allows toggling between different display modes (timekeeping, daytime, blank).
 
-### `fds_mled.html`
+### [FDS_MLED](fds_mled.html)
 This file is used for displaying data on an FDS MLED scoreboard. It includes options to connect and disconnect from a serial port, and allows toggling between different display modes (timekeeping, daytime, blank). It also includes an option to toggle the display of 1/10 second resolution.
 
-### `debug.html`
+### [DEBUG](debug.html)
 This file is used for debugging purposes. It displays real-time data output in a simple format and includes a button to toggle fullscreen mode.
 
 ## How They Work
