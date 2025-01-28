@@ -351,6 +351,11 @@
         render();
       }
     });
+
+    window.addEventListener('unload', async () => {
+      if (writer) writer.releaseLock();
+      if (port) await port.close();
+    });
   </script>
 </body>
 </html>
