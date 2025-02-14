@@ -1,4 +1,4 @@
-# Scoreboards
+# Scene
 
 > [!IMPORTANT]
 > Working in progress: This is a starting point for documenting some of the aspects of the scene JSON that builds up the graphics in our Equipe.
