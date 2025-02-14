@@ -1,7 +1,7 @@
 # Scoreboard
 
 > [!TIP]
-> Read also about the [scene](SCOREBOARDS.md) json.
+> Read also about the [scene json](SCENE.md) structure.
 
 You can control the graphics with Stream Deck for example using the REST API on Scoreboard.
 
