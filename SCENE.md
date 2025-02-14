@@ -13,6 +13,7 @@ The rules can appear in several places within the scene JSON. They can be define
 
 The order of the scenes matters because the scoreboard will display the first scene that meets the criteria.
 
+See the rules block in the following example scene. The descriptions of matchers and additional comments are written directly in the scene.
 
 ```json
 {
