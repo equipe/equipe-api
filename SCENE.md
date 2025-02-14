@@ -240,3 +240,97 @@ The order of the scenes matters because the scoreboard will display the first sc
   ]
 }
 ```
+
+What can you make rules on? Pretty much anything in the state of the scoreboard. I would recommend to install (React Developer Tools)[https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi] in your browser to see whats avaialbile.
+
+The most common are
+
+`running`
+`waiting`
+`countDown`
+`nodeActivated` (start, split, finish)
+`current`.`rank`
+
+```json
+{
+  "id": 1,
+  "running": false,
+  "countDown": false,
+  "nodeActivated": null,
+  "countDownDiff": null,
+  "timekeepingOutputId": 92,
+  "baseTime": "1.65",
+  "time": "1.65",
+  "phase": 2,
+  "round": 2,
+  "previousTime": 0.64,
+  "faults": 0,
+  "fenceFaults": 0,
+  "timeFaults": 0,
+  "totalFaults": null,
+  "countDownValue": "-44.4",
+  "timeToBeatDiff": "+0.83",
+  "isEliminated": false
+  "current": {
+      "id": 1,
+      "ord": 1002,
+      "st": 3,
+      "rider_name": "Nick van Sante",
+      "rider_name_order": "van SanteNick",
+      "rider_first_name": "Nick",
+      "rider_last_name": "van Sante",
+      "rider_short_name": "N. van Sante",
+      "horse_name": "Racal B",
+      "horse_no": 3,
+      "club_name": null,
+      "logo_id": "NED",
+      "logo_group": "flags48",
+      "clabb_no": "1",
+      "result_at": "2025-02-14T07:27:58.456193",
+      "last_result_at": "2025-02-14T07:49:05.490056",
+      ...
+      "horse": {
+          "hnr": 3,
+          "fo": "1986",
+          "far": "Rasso",
+          "mor": "Cabella",
+          "mormor": "",
+          "mmf": "",
+          "morfar": "Calypso I",
+          "farg": "Bay",
+          "breed": "BAVAR",
+          "uppfodare": "Heinrich Sommer Simbach",
+          "agare": "D. Charles",
+          "f_land": "GER",
+          "regnr": "",
+          "kon": "val"
+      }
+  },
+  "currentRound": {
+      "fault_format": "%g",
+      "new_start_signal": false,
+      "output_base_time_as_time": null,
+      "sum_in_total": false,
+      "is_decisive": true,
+      "order_by_ridden": true,
+      ...
+  },
+  "rankedCount": 3,
+  "remainingCount": 0,
+  "participantsCount": 3,
+  "timeToBeat": {
+      "id": 2,
+      "time": 0.82,
+      "roundNo": 2,
+      "holderShortName": "T. Kerssies",
+      "type": "time_to_beat"
+  },
+  "previous": {
+      "comment": "Same as current"
+  },
+  "competition": {
+    "clabb": "1",
+    "klass": "1.00m Table A. Two phases, the second against the clock (274.1.5.2)",
+  }
+}
+```
