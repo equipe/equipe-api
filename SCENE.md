@@ -1,7 +1,7 @@
 # Scene
 
 > [!IMPORTANT]
-> Working in progress: This is a starting point for documenting some of the aspects of the scene JSON that builds up the graphics in our Equipe.
+> Working in progress: This is a starting point for documenting some of the aspects of the scene JSON that builds the graphics in our Equipe.
 
 ## Introduction
 
@@ -241,15 +241,22 @@ The order of the scenes matters because the scoreboard will display the first sc
 }
 ```
 
-What can you make rules on? Pretty much anything in the state of the scoreboard. I would recommend to install (React Developer Tools)[https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi] in your browser to see whats avaialbile.
+## State
 
-The most common are
+> [!TIP]
+> Recommend installing (React Developer Tools)[https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi] in your browser to see the state of the scoreboard and what’s available.
+
+What can you make rules on? Pretty much anything in the state of the scoreboard.
+
+*The most common are*
 
 `running`
 `waiting`
 `countDown`
 `nodeActivated` (start, split, finish)
 `current`.`rank`
+
+Below is an example snapshot of the state in a show jumping competition. This will differ depending on the state.
 
 ```json
 {
@@ -270,7 +277,7 @@ The most common are
   "totalFaults": null,
   "countDownValue": "-44.4",
   "timeToBeatDiff": "+0.83",
-  "isEliminated": false
+  "isEliminated": false,
   "current": {
       "id": 1,
       "ord": 1002,
@@ -287,24 +294,8 @@ The most common are
       "logo_group": "flags48",
       "clabb_no": "1",
       "result_at": "2025-02-14T07:27:58.456193",
-      "last_result_at": "2025-02-14T07:49:05.490056",
-      ...
-      "horse": {
-          "hnr": 3,
-          "fo": "1986",
-          "far": "Rasso",
-          "mor": "Cabella",
-          "mormor": "",
-          "mmf": "",
-          "morfar": "Calypso I",
-          "farg": "Bay",
-          "breed": "BAVAR",
-          "uppfodare": "Heinrich Sommer Simbach",
-          "agare": "D. Charles",
-          "f_land": "GER",
-          "regnr": "",
-          "kon": "val"
-      }
+      "last_result_at": "2025-02-14T07:49:05.490056"
+      // ...existing code...
   },
   "currentRound": {
       "fault_format": "%g",
@@ -312,8 +303,8 @@ The most common are
       "output_base_time_as_time": null,
       "sum_in_total": false,
       "is_decisive": true,
-      "order_by_ridden": true,
-      ...
+      "order_by_ridden": true
+      // ...existing code...
   },
   "rankedCount": 3,
   "remainingCount": 0,
@@ -330,7 +321,8 @@ The most common are
   },
   "competition": {
     "clabb": "1",
-    "klass": "1.00m Table A. Two phases, the second against the clock (274.1.5.2)",
+    "klass": "1.00m Table A. Two phases, the second against the clock (274.1.5.2)"
+    // ...existing code...
   }
 }
 ```
