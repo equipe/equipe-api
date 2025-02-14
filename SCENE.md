@@ -244,7 +244,7 @@ The order of the scenes matters because the scoreboard will display the first sc
 ## State
 
 > [!TIP]
-> Recommend installing (React Developer Tools)[https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi] in your browser to see the state of the scoreboard and what’s available.
+> Recommend installing [React Developer Tools](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) in your browser to see the state of the scoreboard and what’s available.
 
 What can you make rules on? Pretty much anything in the state of the scoreboard.
 
