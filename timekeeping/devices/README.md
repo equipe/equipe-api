@@ -9,7 +9,7 @@ To get started, you can use the provided examples and modify them to suit your n
 ### Examples
 
 - **Equipe Timekeeping Driver Debugger**: This is a tool to help you debug and test your timekeeping driver.
-  **Note:** When testing, Equipe now opens your driver in a separate popup window instead of embedding it in an inline frame.
+  **Note:** Equipe now opens your driver in a separate popup window instead of embedding it in an inline frame.
   [Equipe Timekeeping Driver Debugger](equipe_timekeeping_driver_debugger.html)
 
 - **Simple Computer Clock Example**: This example uses the computer's clock as a timekeeping device.
