@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,36 +22,35 @@
     <h1 class="mt-4">Equipe Timekeeping Driver Debugger</h1>
 
     <p class="lead mt-3">
-      This will demonstrate how to build a new driver for a timekeeping devices. You create a html file that we will
-      load.
-      This frame communicate with the timekeeping hardware and sends and listen for message from the parent window.
+      This will demonstrate how to build a new driver for a timekeeping device. You create an HTML file that we will load.
+      This popup communicates with the timekeeping hardware and sends and listens for messages from the parent window.
     </p>
 
     <pre><code class="language-javascript">
-      // Example how to implement the computer as a driver for Equipe Timekeeping
+// Example implementation of the computer as a driver for Equipe Timekeeping
 
-      function postMessageToParent(message) {
-        window.parent.postMessage(message, '*');
-      }
+function postMessageToParent(message) {
+  // Note: Using window.opener since the driver runs in a popup.
+  window.opener.postMessage(message, '*');
+}
 
-      function sendRunningTime() {
-        let ticks = Math.floor(TimeTicks.now() / 100) * 100;
-        let time = TimeTicks.ticksToTime(ticks);
+function sendRunningTime() {
+  let ticks = Math.floor(TimeTicks.now() / 100) * 100;
+  let time = TimeTicks.ticksToTime(ticks);
+  postMessageToParent({ type: 'runningTime', payload: { ticks, time } });
+}
+setInterval(sendRunningTime, 100); // Start sending running time every 100ms
 
-        postMessageToParent({ type: 'runningTime', payload: { ticks, time } });
-      }
-      setInterval(sendRunningTime, 100); // This is just the computer, so it can just start
+function requestManualTime(node) {
+  postMessageToParent({ type: 'pulse', payload: { node, timeTicks: TimeTicks.now() } });
+}
 
-      function requestManualTime(node) {
-        postMessageToParent({ type: 'pulse', payload: { node, timeTicks: TimeTicks.now() } });
-      }
-
-      window.addEventListener('message', (event) => {
-        const { type, payload } = event.data;
-
-        if (type === 'cmd' && payload.cmd === 'trigger')
-          requestManualTime(payload.node);
-      });
+window.addEventListener('message', (event) => {
+  const { type, payload } = event.data;
+  if (type === 'cmd' && payload.cmd === 'trigger') {
+    requestManualTime(payload.node);
+  }
+});
     </code></pre>
 
     <h2 class="mt-5">Events</h2>
@@ -65,44 +63,50 @@
     </ul>
 
     <h3 class="mt-5">Equipe <i class="bi bi-arrow-right"></i> Driver</h3>
-    <p>Once the driver frame is loaded, Equipe will show the iframe i the top right corner to the user, there should be
-      one button to connect and maybe a link to your documentation if extra steps is nessesary. The reason we have a button is that the the serial port can only be initialized by a user gesture.</p>
+    <p>
+      Once the driver popup is loaded, Equipe will not show an inline frame anymore. Instead, it opens the driver in a popup window.
+      The popup is created via a user gesture because the serial port can only be initialized on such an event.
     </p>
 
     <pre><code class="language-javascript">{ type: "cmd", payload: { cmd: "trigger", node: "1" }}</code></pre>
-    <p>When you manually press the button to start or stop the timekeeping, Equipe will request a manual pulse. It is
-      mandatory to implement this feature so that when you receive this command, you return a pulse on the requested
-      node.</p>
+    <p>
+      When you manually press the button to start or stop timekeeping, Equipe will request a manual pulse.
+      It is mandatory to implement this feature so that when you receive this command, you return a pulse on the requested node.
+    </p>
 
-
-    <p>Equipe will also pass a output event, that can be used if you want to render your own scoreboards or similar. Use it if you find a need for it. <a href="https://github.com/equipe/equipe-api/blob/master/TIMEKEEPING_CLIENT.md#realtime-data">Read more about this event here</a></p>
-    <pre><code class="language-javascript">{"type":"output","payload":{"id":10946,"rank":999,"running":true,"countDown":false,"countDownDiff":null,"timekeepingOutputId":1,"action":"output","baseTime":"0.0","time":0,"timeToBeatTime":null,"timeToBeatDiff":null,"phase":1,"round":1,"previousTime":null,"faults":0,"fenceFaults":null,"timeFaults":0,"totalFaults":null,"startNo":13,"rider":"Jon Stenqvist","horse":"Especially For You"}}</code></pre>
+    <p>
+      Equipe will also pass an output event that can be used if you want to render your own scoreboards or similar.
+      Use it if needed. <a href="https://github.com/equipe/equipe-api/blob/master/TIMEKEEPING_CLIENT.md#realtime-data">Read more about this event here</a>
+    </p>
+    <pre><code class="language-javascript">
+{"type":"output","payload":{"id":10946,"rank":999,"running":true,"countDown":false,"countDownDiff":null,"timekeepingOutputId":1,"action":"output","baseTime":"0.0","time":0,"timeToBeatTime":null,"timeToBeatDiff":null,"phase":1,"round":1,"previousTime":null,"faults":0,"fenceFaults":null,"timeFaults":0,"totalFaults":null,"startNo":13,"rider":"Jon Stenqvist","horse":"Especially For You"}}
+    </code></pre>
 
     <h3 class="mt-5">Driver <i class="bi bi-arrow-right"></i> Equipe</h3>
-
-    <p>Equipe expects to receive a periodic time every 1 / 10 sec.</p>
+    <p>Equipe expects to receive a periodic time update every 1 / 10 sec.</p>
     <pre><code class="language-javascript">{ type: "runningTime", payload: { time: "00:00:00.000", ticks: 0 }}</code></pre>
 
-    <p>Pulses from photoscells and buttons</p>
+    <p>Pulses from photocells and buttons</p>
     <p>Example message for a pulse</p>
     <pre><code class="language-javascript">{ type: "pulse", payload: { timeTicks: 58591200, node: "1", resends: "0", batteryLevel: "5", RSSI: "-40" }}</code></pre>
 
     <dl>
       <dt>timeTicks (Integer)</dt>
-      <dd>timeTicks 58591200 equals to 16:16:31.200</dd>
+      <dd>58591200 equals to 16:16:31.200</dd>
       <dt>node (String)</dt>
       <dd>The node/lane that was triggered</dd>
       <dt>resends (String)</dt>
-      <dd>Optional, information only to the timekeeper if the connection is bad and it required severals resends</dd>
+      <dd>Optional, info if several resends were required due to a bad connection</dd>
       <dt>batteryLevel (String)</dt>
-      <dd>Optional, battery level in the range of 1-5 no decimals</dd>
+      <dd>Optional, battery level in the range of 1-5 (no decimals)</dd>
       <dt>RSSI (String)</dt>
-      <dd>Optional, signal strength -30 is amazing, -90 is unusable</dd>
+      <dd>Optional, signal strength (e.g., -30 is excellent, -90 is unusable)</dd>
     </dl>
 
-    <p>Once you are connected to the hardware, and if you don't have something to show in the frame. You can ask Equipe to hide it.</p>
+    <p>
+      Once you are connected to the hardware, if there’s nothing to show in the popup you can ask Equipe to hide it.
+    </p>
     <pre><code class="language-javascript">{ type: "frame", payload: { action: "hide" }}</code></pre>
-
 
     <fieldset class="mt-5">
       <h3>Test your driver here</h3>
@@ -111,10 +115,9 @@
         <div class="input-group">
           <span class="input-group-text"><i class="bi bi-link"></i></span>
           <input type="text" class="form-control" placeholder="URL" value="fds.html" id="driverUrlInput">
-          <button type="button" class="btn btn-outline-success" id="loadButton">Load</button>
+          <button type="button" class="btn btn-outline-success" id="loadButton">Open Popup</button>
         </div>
-        <div class="form-text">Give the URL to you timekeeping driver here to make sure it works before include it as a
-          driver in Equipe.</div>
+        <div class="form-text">Enter the URL to your timekeeping driver to test it before including it as a driver in Equipe.</div>
       </div>
 
       <div class="row">
@@ -134,12 +137,12 @@
         </div>
         <div class="col">
           <div class="input-group mb-3">
-            <span class="input-group-text"><i class="bi bi-bookmark"></i></i></span>
+            <span class="input-group-text"><i class="bi bi-bookmark"></i></span>
             <input type="text" class="form-control" placeholder="Node" value="1" id="nodeInput">
             <button class="btn btn-outline-primary" type="button" id="requestManualPulseButton">Request time</button>
           </div>
         </div>
-        <div class="form-text">When you driver is working the running time and ticks should be visible here</div>
+        <div class="form-text">When your driver is working, the running time and ticks should appear here.</div>
       </div>
 
       <table class="table table-striped">
@@ -155,8 +158,6 @@
         <tbody id="pulsesBody">
         </tbody>
       </table>
-
-      <iframe id="driverFrame"></iframe>
     </fieldset>
   </div>
 
@@ -164,49 +165,21 @@
     hljs.highlightAll();
 
     const runningTimeInput = document.getElementById('runningTimeInput');
+    const runningTicksInput = document.getElementById('runningTicksInput');
     const driverUrlInput = document.getElementById('driverUrlInput');
     const loadButton = document.getElementById('loadButton');
-    const driverFrame = document.getElementById('driverFrame');
-    const pulses = document.getElementById('pulses');
     const requestManualPulseButton = document.getElementById('requestManualPulseButton');
     const nodeInput = document.getElementById('nodeInput');
     const pulsesBody = document.getElementById('pulsesBody');
 
-    const TimeTicks = {
-      ticksToTime(duration) {
-        var milliseconds = parseInt((duration % 1000)),
-          seconds = parseInt((duration / 1000) % 60),
-          minutes = parseInt((duration / (1000 * 60)) % 60),
-          hours = parseInt((duration / (1000 * 60 * 60)) % 24);
-
-        hours = (hours < 10) ? '0' + hours : hours;
-        minutes = (minutes < 10) ? '0' + minutes : minutes;
-        seconds = (seconds < 10) ? '0' + seconds : seconds;
-        if (milliseconds === 0)
-          milliseconds = '000';
-        else
-          if (milliseconds < 10)
-            milliseconds = '0' + milliseconds;
-          else
-            if (milliseconds < 100)
-              milliseconds = '0' + milliseconds;
-
-        return hours + ':' + minutes + ':' + seconds + '.' + milliseconds;
-      },
-
-      timeToTicks(time) {
-        var parts = time.split(/[:.]/);
-        var hours = (parseInt(parts.shift(), 10) || 0) * 1000 * 60 * 60;
-        var minutes = (parseInt(parts.shift(), 10) || 0) * 1000 * 60;
-        var seconds = (parseInt(parts.shift(), 10) || 0) * 1000;
-        var milliseconds = (parseInt(parts.shift(), 10) || 0);
-        return hours + minutes + seconds + milliseconds;
-      }
-    }
+    const expandUrl = url => {
+      const link = document.createElement('a');
+      link.href = url;
+      return link.href;
+    };
 
     window.addEventListener('message', (event) => {
       const { type, payload } = event.data;
-
       if (type === 'runningTime') {
         runningTimeInput.value = payload.time;
         runningTicksInput.value = payload.ticks;
@@ -219,34 +192,37 @@
         code.textContent = JSON.stringify(event.data);
         hljs.highlightElement(code);
         pulse.appendChild(code);
-
         const row = pulsesBody.insertRow(0);
         row.insertCell().textContent = type;
         row.insertCell().textContent = payload.node;
         row.insertCell().textContent = payload.timeTicks;
-        row.insertCell().textContent = TimeTicks.ticksToTime(payload.timeTicks);
-        row.insertCell().appendChild(pulse)
+        row.insertCell().textContent = payload.timeTicks ? new Date(payload.timeTicks).toLocaleTimeString() : '';
+        row.insertCell().appendChild(pulse);
       }
       else if (type === 'frame' && payload.action === 'hide') {
-        driverFrame.style.display = 'none';
+        // With a popup, you might choose to ignore the hide command
+        // or show a status message instead.
       }
-    });
-
-    driverFrame.addEventListener('load', () => {
-      // driverFrame.contentWindow.postMessage({ type: 'connect' }, '*');
-      loadButton.classList.add('disabled');
     });
 
     loadButton.addEventListener('click', () => {
-      driverFrame.src = driverUrlInput.value;
-    });
-
-    driverUrlInput.addEventListener('input', (event) => {
-      loadButton.classList.remove('disabled');
+      const expandedUrl = expandUrl(driverUrlInput.value);
+      if (window.driverPopup && !window.driverPopup.closed) {
+        if (window.driverPopup.location.href !== expandedUrl) {
+          window.driverPopup.location.href = expandedUrl;
+        }
+        window.driverPopup.focus();
+      } else {
+        window.driverPopup = window.open(expandedUrl, 'driverPopup', 'width=600,height=400,scrollbars=yes');
+      }
+      loadButton.classList.add('disabled');
     });
 
     requestManualPulseButton.addEventListener('click', () => {
-      driverFrame.contentWindow.postMessage({ type: 'cmd', payload: { cmd: 'trigger', node: nodeInput.value } }, '*');
+      if (window.driverPopup && !window.driverPopup.closed) {
+        window.driverPopup.postMessage({ type: 'cmd', payload: { cmd: 'trigger', node: nodeInput.value } }, '*');
+      }
     });
   </script>
 </body>
+</html>

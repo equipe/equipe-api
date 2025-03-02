@@ -92,7 +92,7 @@
     };
 
     function postMessageToParent(message) {
-      window.parent.postMessage(message, '*');
+      window.opener.postMessage(message, '*');
     }
 
     function timeToTicks(time) {
