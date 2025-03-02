@@ -42,10 +42,32 @@
       background-color: #353851;
       color: #fff;
     }
+    .close-button {
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 14px;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+    .close-button:hover {
+      background-color: #e63946;
+      color: #fff;
+      transform: scale(1.1);
+    }
     header {
       display: flex;
       margin: 15px 5px;
       justify-content: space-between;
+      align-items: center;
+      font-size: 0.950rem;
     }
   </style>
 </head>
@@ -76,69 +98,58 @@
   </div>
 
   <script>
-    const daytimeElement = document.getElementById('daytime')
+    const daytimeElement = document.getElementById('daytime');
 
-    const TimeTicks = {
-      timeZoneOffset: (new Date()).getTimezoneOffset() * 1000 * 60,
+    // Function to post messages to the parent (using window.opener since this driver runs in a popup)
+    function postMessageToParent(message) {
+      window.opener.postMessage(message, '*');
+    }
 
-      now() {
-        return Date.now() - TimeTicks.timeZoneOffset;
-      },
-
-      ticksToTime(duration) {
-        var milliseconds = parseInt((duration % 1000)),
-          seconds = parseInt((duration / 1000) % 60),
-          minutes = parseInt((duration / (1000 * 60)) % 60),
-          hours = parseInt((duration / (1000 * 60 * 60)) % 24);
-
+    // Create an inline worker to handle running time without being throttled.
+    const workerCode = `
+      function ticksToTime(duration) {
+        var milliseconds = parseInt(duration % 1000),
+            seconds = parseInt((duration / 1000) % 60),
+            minutes = parseInt((duration / (1000 * 60)) % 60),
+            hours = parseInt((duration / (1000 * 60 * 60)) % 24);
         hours = (hours < 10) ? '0' + hours : hours;
         minutes = (minutes < 10) ? '0' + minutes : minutes;
         seconds = (seconds < 10) ? '0' + seconds : seconds;
         if (milliseconds === 0)
           milliseconds = '000';
-        else
-          if (milliseconds < 10)
-            milliseconds = '0' + milliseconds;
-          else
-            if (milliseconds < 100)
-              milliseconds = '0' + milliseconds;
-
+        else if (milliseconds < 10)
+          milliseconds = '0' + milliseconds;
+        else if (milliseconds < 100)
+          milliseconds = '0' + milliseconds;
         return hours + ':' + minutes + ':' + seconds + '.' + milliseconds;
-      },
-
-      timeToTicks(time) {
-        var parts = time.split(/[:.]/);
-        var hours = (parseInt(parts.shift(), 10) || 0) * 1000 * 60 * 60;
-        var minutes = (parseInt(parts.shift(), 10) || 0) * 1000 * 60;
-        var seconds = (parseInt(parts.shift(), 10) || 0) * 1000;
-        var milliseconds = (parseInt(parts.shift(), 10) || 0);
-        return hours + minutes + seconds + milliseconds;
       }
-    }
+      function sendTime() {
+        const now = Date.now();
+        const ticks = Math.floor(now / 100) * 100;
+        const time = ticksToTime(ticks);
+        self.postMessage({ ticks, time });
+      }
+      setInterval(sendTime, 100);
+    `;
+    const blob = new Blob([workerCode], { type: 'application/javascript' });
+    const worker = new Worker(URL.createObjectURL(blob));
 
-    function postMessageToParent(message) {
-      window.opener.postMessage(message, '*');
-    }
-
-    function sendRunningTime() {
-      let ticks = Math.floor(TimeTicks.now() / 100) * 100;
-      let time = TimeTicks.ticksToTime(ticks);
-
-      daytimeElement.textContent = time.substring(0, 8)
-
+    // Receive messages from the worker and update the UI/send running time to the parent.
+    worker.onmessage = function(e) {
+      const { ticks, time } = e.data;
+      daytimeElement.textContent = time.substring(0, 8);
       postMessageToParent({ type: 'runningTime', payload: { ticks, time } });
-    }
-    setInterval(sendRunningTime, 100);
+    };
 
     function requestManualTime(node) {
-      postMessageToParent({ type: 'pulse', payload: { node, timeTicks: TimeTicks.now() } });
+      postMessageToParent({ type: 'pulse', payload: { node, timeTicks: Date.now() } });
     }
 
     window.addEventListener('message', async (event) => {
       const { type, payload } = event.data;
-
-      if (type === 'cmd' && payload.cmd === 'trigger')
+      if (type === 'cmd' && payload.cmd === 'trigger') {
         requestManualTime(payload.node);
+      }
     });
 
     document.querySelectorAll('.grid-container a').forEach((link) => {
@@ -148,8 +159,8 @@
       });
     });
 
-    postMessageToParent({ type: 'frame', payload: { action: 'size', width: 200, height: 100 } });
+    // Initially notify the parent of the driver size.
+    postMessageToParent({ type: 'frame', payload: { action: 'size', width: 300, height: 180 } });
   </script>
 </body>
-
 </html>
