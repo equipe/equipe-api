@@ -38,7 +38,7 @@ clabb | string | Competition number
 klass | string | Name of the competition
 
 
-### Pulling (Retrieving) a Start List
+## Retrieving a Start List
 
 ```http
 GET meetings/:meeting_id/competitions/:kq/starts.json  HTTP/1.1
@@ -312,7 +312,7 @@ utt | boolean | Hors Concours
 utl | boolean | In case of a Teem member and Must Count
 ord_omh | integer or null | Order in jump-off OR overriden start order from result registraion
 
-### Push result list
+## Push Result List
 
 Utilizing the [Batch API](http://api-docs.equipe.com/#federation_apisingle_sign_on), to update the start list in Equipe could look like this.
 
