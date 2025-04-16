@@ -276,7 +276,8 @@ It's possible to add extra columns (for example, the FEI ID of the rider and hor
     "premie": 0,
     "result_at": null
   }
-]```
+]
+```
 
 Attribute | Type | Description
 --- | --- | ---
