@@ -1,7 +1,7 @@
 # Start and result lists
 
 > [!NOTE]
-> See a script that uses this documentation to fetch competitions and start lists, and to send results.
+> See a [script](examples/push_and_pull.rb) that uses this documentation to fetch competitions and start lists, and to send results.
 
 You can pull and push start and result lists from Equipe.
 
