@@ -5,7 +5,7 @@
 ### List people
 
 ```http
-POST /meetings/{{meeting_id}}/people HTTP/1.1
+GET /meetings/{{meeting_id}}/people HTTP/1.1
 X-Api-Key: {{api_key}}
 Accept: application/json
 Content-Type: application/json
