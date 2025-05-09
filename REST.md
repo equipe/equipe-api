@@ -65,7 +65,7 @@ Content-Type: application/json
 
 {
   "first_name": "Jon",
-  "last_name": Stenqvist,
+  "last_name": "Stenqvist",
   "custom_fields": {
     "url_to_photo": "https://placehold.co/400x400"
   }
