@@ -58,7 +58,7 @@ Content-Type: application/json
 ### Update a person
 
 ```http
-PUT /meetings/{{meeting_id}}/people/{{person_id}} HTTP/1.1
+PATCH /meetings/{{meeting_id}}/people/{{person_id}} HTTP/1.1
 X-Api-Key: {{api_key}}
 Accept: application/json
 Content-Type: application/json
