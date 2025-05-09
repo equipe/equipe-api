@@ -55,6 +55,23 @@ Content-Type: application/json
 ]
 ```
 
+### Update a person
+
+```http
+PUT /meetings/{{meeting_id}}/people/{{person_id}} HTTP/1.1
+X-Api-Key: {{api_key}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "first_name": "Jon",
+  "last_name": Stenqvist,
+  "custom_fields": {
+    "url_to_photo": "https://placehold.co/400x400"
+  }
+}
+```
+
 ### Create a payment for person
 
 ```http
@@ -72,8 +89,7 @@ Content-Type: application/json
 }
 ```
 
+
 ## Batch API
 
 Create or update multiple resources in one requests, and setup relationships based on external ids. [Read more](BATCH.md)
-
-
