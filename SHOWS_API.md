@@ -2,7 +2,7 @@
 
 Public API hosted on online.equipe.com. No authentication required.
 
-This endpoint allows organizers to integrate their show calendar into their own website by fetching the JSON and rendering it however they like. The response combines shows from both online.equipe.com (results, live scoring) and entry.equipe.com (entries, registration) into a single list.
+This endpoint allows organizers to integrate their show calendar into their own website by fetching the JSON and rendering it however they like. The response combines shows from both online.equipe.com (results, live scoring) and entry.equipe.com (entries, registration) into a single list. The list of shows is updated every midnight.
 
 ## Finding your organizer URL
 
