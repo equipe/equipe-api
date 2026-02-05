@@ -44,6 +44,10 @@ When you have put a lot of effort creating this marking sheets in Equipe, we wan
 
 Expand the functionality in Equipe by creating extensions. These can include user interfaces, actions that a user can initiate, or webhooks for events to which you can subscribe. [Read more](EXTENSION.md)
 
+## Shows API
+
+Public API for organizers to display their show calendar on their own website. Combines shows from both online.equipe.com and entry.equipe.com, including links to results and entry. [Read more](SHOWS_API.md)
+
 ## REST API
 
 Create, update and delete resources in Equipe. [Read more](REST.md)
