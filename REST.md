@@ -1,5 +1,17 @@
 # Equipe Rest API
 
+## Request bodies
+
+The endpoints below take the attributes of a write request wrapped in the name
+of the resource — `{"person": {...}}`, `{"payment": {...}}` — sent as
+`Content-Type: application/json`.
+
+Without the wrapper the request still succeeds, but Equipe adds the wrapper for
+you and keeps only the fields it already knows about; anything else is dropped
+before it reaches the endpoint, with no error. A misspelled field name is
+answered with `200 OK` and simply has no effect. Wrap the body yourself and
+Equipe rejects what it does not understand instead of ignoring it.
+
 ## People
 
 ### List people
@@ -55,6 +67,9 @@ Content-Type: application/json
 ]
 ```
 
+Fields are added to this response over time, so the sample above is not
+exhaustive.
+
 ### Update a person
 
 ```http
@@ -64,10 +79,12 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "first_name": "Jon",
-  "last_name": "Stenqvist",
-  "custom_fields": {
-    "url_to_photo": "https://placehold.co/400x400"
+  "person": {
+    "first_name": "Jon",
+    "last_name": "Stenqvist",
+    "custom_fields": {
+      "url_to_photo": "https://placehold.co/400x400"
+    }
   }
 }
 ```
@@ -81,13 +98,20 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "account": "bank",
-  "direction": "in",
-  "amount": 340,
-  "description": "Betalning",
-  "created_at": "2024-03-08 14:40:00 +0100"
+  "payment": {
+    "account": "bank",
+    "direction": "in",
+    "amount": 340,
+    "description": "Betalning",
+    "created_at": "2024-03-08 14:40:00 +0100"
+  }
 }
 ```
+
+`direction` is `in` for money you have received and `out` for money you have paid
+out. It decides the sign of the stored amount, so send `amount` unsigned. A
+payment that reaches Equipe without `direction` is stored as `out` — which is
+what happens to the whole example above if you leave off the `payment` wrapper.
 
 
 ## Batch API
