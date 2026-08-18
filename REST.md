@@ -8,9 +8,25 @@ of the resource — `{"person": {...}}`, `{"payment": {...}}` — sent as
 
 Without the wrapper the request still succeeds, but Equipe adds the wrapper for
 you and keeps only the fields it already knows about; anything else is dropped
-before it reaches the endpoint, with no error. A misspelled field name is
-answered with `200 OK` and simply has no effect. Wrap the body yourself and
-Equipe rejects what it does not understand instead of ignoring it.
+before it reaches the endpoint, with no error. As long as the body still carries
+one field Equipe recognises, a misspelled field name is answered with `200 OK`
+and simply has no effect. Misspell every field in the body and there is nothing
+left to wrap, which is answered with `422` and
+`{"errors":{"person":["can't be blank"]}}`.
+
+Wrapping the body yourself is what puts your own field names in front of the
+endpoint. What the endpoint then does with a name it does not know differs
+between the two:
+
+- `PATCH .../people/{{person_id}}` rejects it. `{"person": {"first_name": "Jon",
+  "lsat_name": "Stenqvist"}}` fails with `500` — an unknown attribute
+  `lsat_name` — rather than reporting success and changing nothing.
+- `POST .../economies/payments` still ignores it. `{"payment": {"account":
+  "bank", "direction": "in", "amount": 340, "descriptoin": "Betalning"}}` is
+  answered with `201 Created` and stores an empty description. Wrapping that
+  body is worth doing for a different reason: `direction` is not a stored field,
+  so it is one of the keys the automatic wrapping discards — see
+  [Create a payment for person](#create-a-payment-for-person).
 
 ## People
 
