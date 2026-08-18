@@ -25,11 +25,14 @@ req = Net::HTTP::Patch.new(uri)
 req['X-Api-Key']     = api_key
 req['Accept']        = 'application/json'
 req['Content-Type']  = 'application/json'
+# The attributes must be wrapped in "person" — see "Request bodies" in REST.md
 req.body = {
-  first_name: first_name,
-  last_name: last_name,
-  custom_fields: {
-    url_to_photo: photo_url
+  person: {
+    first_name: first_name,
+    last_name: last_name,
+    custom_fields: {
+      url_to_photo: photo_url
+    }
   }
 }.to_json
 
