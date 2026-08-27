@@ -3,12 +3,14 @@
 This API endpoint enables the batch processing of multiple models including people, horses, clubs, competitions, schedules, teams and starts in a specific meeting.
 
 - The top-level `key` one of `people`, `horses`, `clubs`, `competitions`, `schedules`, `teams` and `starts`
-  - `unique_by` Specifies the field to identify unique records.
+  - `unique_by` Required. Specifies the field to identify unique records.
   - `skip_user_changed` Don't override manually changes done by humans (non imports etc)
   - `where` Conditions to narrow down the operation.
   - `replace` Boolean indicating if existing records should be replaced. Only supported when `where` conditions also set.
   - `abort_if_any` Conditions to abort the operation if any criteria match.
   - `records` An array of records to be processed.
+
+Relationships are set by naming the record you point at, like `"rider": { "foreign_id": "939" }`. Look it up by a column that exists on that record. `foreign_id` is normally the one you want, since it holds the id from your own system.
 
 In the example below, the start list will not be updated if any of the starts is set as rid (marked as ridden).
 
@@ -305,4 +307,43 @@ In this team competition example:
 - Each start is linked to a rider, horse, the team, and the club
 - The competition has `team: true` to enable team functionality
 - All relationships are maintained through `foreign_id` references
+
+## Errors
+
+When something in the batch cannot be carried out you get a `422` back with the reason.
+
+```json
+{
+  "errors": [
+    {
+      "attribute": "unique_by",
+      "message": "starts: unique_by is required",
+      "code": "blank"
+    }
+  ]
+}
+```
+
+`attribute` points at the part of your request to look at, and the message starts with the collection it came from. The ones you are most likely to hit:
+
+- `unique_by is required` The instruction has no `unique_by`, so there is no way to tell which record a row is.
+- `personer has no column id` A relationship is looked up by a column that table does not have. Riders are keyed by `rnr`, not `id`.
+- `rider must be given as an object of columns to look it up by` A relationship was sent as a plain value instead of an object.
+
+When a record is rejected by validation you get the same shape, plus the record as it was about to be saved.
+
+```json
+{
+  "errors": [
+    {
+      "attribute": "last_name",
+      "message": "can't be blank",
+      "code": "blank"
+    }
+  ],
+  "record": {}
+}
+```
+
+Collections are processed in the order `people`, `horses`, `clubs`, `competitions`, `schedules`, `teams`, `starts`, and the batch is not one transaction. If `starts` fails, the people and horses from the same request are already saved. Sending the whole batch again is safe, since every record is matched on its `unique_by` and updated instead of added twice.
 
