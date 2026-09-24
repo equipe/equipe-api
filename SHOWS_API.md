@@ -7,7 +7,7 @@ This endpoint allows organizers to integrate their show calendar into their own 
 ## Finding your organizer URL
 
 1. Sign in to online.equipe.com from app.equipe.com
-2. Go to one of your shows, then **Admin > Organizer**
+2. Go to one of your shows, then **Admin > Course designers**
 3. Check the address bar — it will look something like `https://online.equipe.com/organizers/1683/course_designers`
 4. Replace the path after the organizer ID with `/shows.json?from=YYYY-MM-DD&to=YYYY-MM-DD`, e.g. `https://online.equipe.com/organizers/1683/shows.json?from=2026-01-01&to=2026-12-31`
 
