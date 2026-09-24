@@ -92,7 +92,7 @@ Attribute | Type | Description
 rnr | integer | Primary key, person id
 name | text | Name
 name_order | text | Last name, First name
-address | string | Street adress
+address | string | Street address
 zipcode | string | Postal code
 city | string | City
 address_country | string | Country

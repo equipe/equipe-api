@@ -4,7 +4,7 @@ In this repository we have gathered information on how to extend and integrate w
 
 ## Translation
 
-The only way to make proper and professional translation of app.equipe.com and online.equipe.com is to have used the software during serveral shows. When you have done that and want to add support for your native language. Contact us and we will add you as a translator. [Read more](http://api-docs.equipe.com/#moretranslation)
+The only way to make proper and professional translation of app.equipe.com and online.equipe.com is to have used the software during several shows. When you have done that and want to add support for your native language. Contact us and we will add you as a translator. [Read more](http://api-docs.equipe.com/#moretranslation)
 
 ## Federation
 
@@ -14,7 +14,7 @@ Looking to integrate your federation to the world of Equipe? Follow this 6 steps
 
 ### API
 
-This will guide you how to structure your web service to be compliant with https://app.equipe.com to import entires, enable search of riders, officials, horses, clubs and later get results when the show is finished. [Read more](http://api-docs.equipe.com)
+This will guide you how to structure your web service to be compliant with https://app.equipe.com to import entries, enable search of riders, officials, horses, clubs and later get results when the show is finished. [Read more](http://api-docs.equipe.com)
 
 ### Single sign on
 
