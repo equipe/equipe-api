@@ -45,7 +45,7 @@ class equipeExtensionController extends Controller
             abort(400);
         }
 
-        // handle custom trigers Modals, Browsers & Webhooks
+        // handle custom triggers Modals, Browsers & Webhooks
         if (isset($equipeData->payload->name)) {
             switch ($equipeData->payload->name) {
                 case "webhook":

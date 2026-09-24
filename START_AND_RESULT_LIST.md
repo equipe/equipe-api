@@ -310,7 +310,7 @@ a | string | Status of the Start, S = Starting, all other are different version 
 lag_id | integer or null | Team ID if part of a team
 utt | boolean | Hors Concours
 utl | boolean | In case of a Teem member and Must Count
-ord_omh | integer or null | Order in jump-off OR overriden start order from result registraion
+ord_omh | integer or null | Order in jump-off OR overridden start order from result registration
 
 ## Push Result List
 

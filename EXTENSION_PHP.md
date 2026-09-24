@@ -4,7 +4,7 @@ Starting point working with extensions and a PHP backend
 
 ## Context
 
-An Equipe Extension can have mutiple forms. Equipe send webhooks automatic or manual triggerd, show an iframe in a modal or direct a user to a webpage.
+An Equipe Extension can have multiple forms. Equipe send webhooks automatic or manual triggered, show an iframe in a modal or direct a user to a webpage.
 When using webhooks the data is send in the body of the POST request. When working with iframe or direct link the information is decoded in a JWT token and can be read through decoding it with a preset secret.
 
 ## Read data from Request
@@ -42,7 +42,7 @@ $key = env("EQUIPE_SECRET");
 //get token
 $jwt = $_GET['token'];
 
-//decoded token, it automaticly is returned as an object. No need to use json_decode
+//decoded token, it automatically is returned as an object. No need to use json_decode
 JWT::$leeway = 60; // $leeway in seconds
 $decoded = JWT::decode($jwt, new Key($key, 'HS256'));
 
@@ -67,7 +67,7 @@ $decoded->payload->url
 ```
 
 ## Handle webhook
-In this example we have the code for a webhook in an seperate PHP file.
+In this example we have the code for a webhook in a separate PHP file.
 There is a difference between automatic triggered events and manual triggered events
 
 **Automatic** webhooks have there `event_name` set as the webhook describes
@@ -88,7 +88,7 @@ The following do currently exist:
 ```php
 switch($decoded->event_name) {
   case "results":
-    // process resuts webhook
+    // process results webhook
     break;
   case "points":
     // process dressage points webhook
@@ -111,7 +111,7 @@ if($decoded->event_name == "action" && $decoded->payload->target == "webhook") {
 ```
 ## Displaying modal
 When working with a modal you have to keep in mind that all data is shown in a iframe. The browser must receive from you allowens to store and return cookies from you.
-In a plain PHP enviroment the following is required to start the script with
+In a plain PHP environment the following is required to start the script with
 
 ```php
 // allow cookie to be set in iframe
@@ -131,7 +131,7 @@ if ($decoded->payload->target == "modal" || $decoded->payload->target == "browse
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
 <!-- dont forget to apply the class extension to the body -->
-  <body class="extenion">
+  <body class="extension">
 
   </body>
 </html>
@@ -141,7 +141,7 @@ if ($decoded->payload->target == "modal" || $decoded->payload->target == "browse
 ```
 
 ## Work with Laravel
-Laravel is a good starting place when you are a more experienced PHP developer. It offers a nice structure and many tools are directly avaialbe.
+Laravel is a good starting place when you are a more experienced PHP developer. It offers a nice structure and many tools are directly available.
 To get everything working with iframes, you need to setup a few settings.
 
 ### Laravel iframe
