@@ -88,7 +88,7 @@ open_<wbr>for_<wbr>entry
 <td></td>
 </tr>
 <tr>
-<td colspan="5">D = Dressage, H = Show Jumping, F = Eventing, A = Breed evaluation, K = Driving, L = List, U = Exhibition, E = Endurance, R = Reining</td>
+<td colspan="5">D = Dressage, H = Show Jumping, F = Eventing, A = Breed evaluation, K = Driving, L = List, U = Exhibition, E = Endurance, R = Reining, W = Working Equitation, C = Combined Training</td>
 </tr>
 <tr>
 <td id="competition_allow_many">
@@ -129,10 +129,10 @@ start_<wbr>time
 <span class="searchable">start_time</span></td>
 <td style="text-align: center">string</td>
 <td style="text-align: center"></td>
-<td>\A\d{2}:\d{2}\z</td>
+<td>\A([01]?[0-9]|2[0-3])(:[0-5][0-9]){1,2}\z</td>
 </tr>
 <tr>
-<td colspan="5">Start time of the competition must be in the format of HH:MM</td>
+<td colspan="5">Start time of the competition must be in the format of HH:MM(:SS)</td>
 </tr>
 <tr>
 <td id="competition_dressage_lock_start_times">

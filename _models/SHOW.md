@@ -345,5 +345,16 @@ custom_<wbr>field_<wbr>names
 <tr>
 <td colspan="5">Object where key is person, horse or start. See <a href="#modelsCUSTOM_FIELD">Custom field</a></td>
 </tr>
+<tr>
+<td id="show_extensions">
+extensions
+<span class="searchable">extensions</span></td>
+<td style="text-align: center">array</td>
+<td style="text-align: center">[]</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="5">Names of published Equipe extensions to install on the show when it is imported. Extensions already installed are left untouched and extensions are never uninstalled by an import</td>
+</tr>
 </tbody>
 </table>

@@ -92,10 +92,10 @@ licence_<wbr>year
 <span class="searchable">licence_year</span></td>
 <td style="text-align: center">string or integer</td>
 <td style="text-align: center"></td>
-<td>\A\d{4}\z</td>
+<td>\A\d{4}(-\d{2}-\d{2})?\z</td>
 </tr>
 <tr>
-<td colspan="5">The year licence is valid. 4 digits</td>
+<td colspan="5">The year licence is valid (YYYY) or the date it expires (YYYY-MM-DD)</td>
 </tr>
 <tr>
 <td id="horse_fei_id">

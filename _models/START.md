@@ -57,6 +57,17 @@ payer_<wbr>id
 <td colspan="5">ID of the payer, the payer must exist in people</td>
 </tr>
 <tr>
+<td id="start_receiver_id">
+receiver_<wbr>id
+<span class="searchable">receiver_id</span></td>
+<td style="text-align: center">string</td>
+<td style="text-align: center"></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="5">ID of the receiver, the receiver must exist in people</td>
+</tr>
+<tr>
 <td id="start_horse_id">
 horse_<wbr>id
 <span class="searchable">horse_id</span></td>
@@ -96,9 +107,6 @@ category
 <td style="text-align: center">string</td>
 <td style="text-align: center">"H"</td>
 <td></td>
-</tr>
-<tr>
-<td colspan="5">One of "H", "A", "B", "C", "D", "E", "1", "2", "3"</td>
 </tr>
 <tr>
 <td id="start_section">

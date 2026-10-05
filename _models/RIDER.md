@@ -128,7 +128,7 @@ licence_<wbr>year
 <span class="searchable">licence_year</span></td>
 <td style="text-align: center">string or integer or null</td>
 <td style="text-align: center"></td>
-<td>\A\d{4}\z</td>
+<td>\A\d{4}(-\d{2}-\d{2})?\z</td>
 </tr>
 <tr>
 <td id="_club_id">
@@ -303,6 +303,17 @@ do_<wbr>not_<wbr>charge_<wbr>vat
 </tr>
 <tr>
 <td colspan="5">When true, VAT for all fees with respect_do_not_charge_vat set to true will excluded</td>
+</tr>
+<tr>
+<td id="_outside_eu">
+outside_<wbr>eu
+<span class="searchable">outside_eu</span></td>
+<td style="text-align: center">boolean</td>
+<td style="text-align: center">false</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="5">When true and do_not_charge_vat is true, the invoice will show the outside EU sentence</td>
 </tr>
 <tr>
 <td id="_official">
