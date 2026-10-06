@@ -13,12 +13,15 @@ collections:
     position: 1
   federation_api:
     title: Federation APIs
+    description: The web services you build. Equipe calls them when a user imports entries, searches or sends results.
     position: 2
   models:
     title: Federation Models
+    description: The records in the entries we import and the results we send.
     position: 3
   api:
     title: APIs
+    description: Equipe's own API, which your system calls.
     position: 4
   more:
     title: More

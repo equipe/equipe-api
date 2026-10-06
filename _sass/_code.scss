@@ -1,0 +1,154 @@
+pre {
+  margin: 0;
+  padding: 1rem 1.125rem;
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  tab-size: 2;
+
+  code {
+    font-size: inherit;
+  }
+}
+
+.left-docs pre {
+  border: 1px solid $border;
+  background: $page;
+}
+
+.right-code pre {
+  border: 1px solid rgba(#fff, 0.08);
+  background: rgba(#fff, 0.03);
+  color: $code-text;
+}
+
+// The code blocks that follow each other at the top of a section, with a
+// tab for each (main.js). A block alone has its title over it.
+.code-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 0.625rem;
+
+  button {
+    padding: 0.375rem 0.625rem;
+    border: 0;
+    border-radius: 0.375rem;
+    background: transparent;
+    color: $muted;
+    font: inherit;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.2;
+    cursor: pointer;
+
+    &:hover {
+      background: $sunken;
+      color: $navy;
+    }
+
+    &[aria-selected="true"] {
+      background: #fff;
+      box-shadow: 0 0 0 1px $border;
+      color: $navy;
+      font-weight: 600;
+    }
+  }
+}
+
+.code-title {
+  @include caps-label;
+  margin: 0 0 0.5rem;
+  color: $muted;
+}
+
+.right-code {
+  .code-tabs button {
+    color: rgba(#fff, 0.7);
+
+    &:hover {
+      background: rgba(#fff, 0.06);
+      color: #fff;
+    }
+
+    &[aria-selected="true"] {
+      background: rgba(#fff, 0.12);
+      box-shadow: none;
+      color: #fff;
+    }
+  }
+
+  .code-title {
+    color: rgba(#fff, 0.55);
+  }
+}
+
+// Highlighting, in the colours of the palette: names in indigo, strings in
+// green, numbers in amber and keywords in red. On white each takes its text
+// step; on the rail, its soft one.
+.highlight {
+  .c, .c1, .cm, .cs, .cp {
+    color: $muted;
+    font-style: italic;
+  }
+
+  .p, .pi, .w, .o {
+    color: $muted;
+  }
+
+  .nl, .na, .nt, .nc, .nn {
+    color: $indigo-text;
+  }
+
+  .s, .s1, .s2, .sb, .sx, .sd, .se, .sh, .si, .sr, .ss {
+    color: $green-text;
+  }
+
+  .m, .mi, .mf, .mh, .mo, .il {
+    color: $amber-text;
+  }
+
+  .k, .kc, .kd, .kn, .kp, .kr, .kt, .no {
+    color: $red-text;
+  }
+
+  .ne, .nf {
+    font-weight: 600;
+  }
+
+  .nv, .nb {
+    color: $indigo;
+  }
+
+  .err {
+    color: $red-text;
+  }
+}
+
+.right-code .highlight {
+  .c, .c1, .cm, .cs, .cp,
+  .p, .pi, .w, .o {
+    color: $code-quiet;
+  }
+
+  .nl, .na, .nt, .nc, .nn, .nv, .nb {
+    color: $indigo-soft;
+  }
+
+  .s, .s1, .s2, .sb, .sx, .sd, .se, .sh, .si, .sr, .ss {
+    color: $green-soft;
+  }
+
+  .m, .mi, .mf, .mh, .mo, .il {
+    color: $amber;
+  }
+
+  .k, .kc, .kd, .kn, .kp, .kr, .kt, .no, .err {
+    color: $red-soft;
+  }
+
+  .ne, .nf {
+    color: #fff;
+  }
+}

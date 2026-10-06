@@ -1,0 +1,281 @@
+// The head of the start page: the guide's steps as a course plan, with its
+// key on the rail beside it.
+.hero {
+  display: grid;
+  grid-template-columns: $split minmax(0, 1fr);
+
+  h1 {
+    max-width: 16ch;
+    margin: 0;
+    font-family: $font-display;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+}
+
+.hero-main {
+  min-width: 0;
+  padding: 4rem 3.5rem 3.5rem;
+  background: $page;
+}
+
+.hero-lead {
+  max-width: 38rem;
+  margin: 1rem 0 0;
+  color: mix($navy, $muted, 60%);
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+.course-map {
+  margin-top: 2.5rem;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+}
+
+.course-arena {
+  fill: #fff;
+  stroke: $border-control;
+  stroke-width: 1.5;
+}
+
+.course-track {
+  fill: none;
+  stroke: $muted;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 0.5 7;
+}
+
+.course-arrow {
+  fill: none;
+  stroke: $muted;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+// The track is ridden in once when the page opens.
+.course-reveal {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 14;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: course-ride 2.4s cubic-bezier(0.45, 0, 0.3, 1) 0.2s both;
+}
+
+@keyframes course-ride {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.course-line {
+  line {
+    stroke: $muted;
+    stroke-width: 1.5;
+    stroke-dasharray: 3 3;
+  }
+
+  text {
+    fill: $muted;
+    font-family: $font-body;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-anchor: middle;
+  }
+}
+
+.flag-red {
+  fill: $red;
+}
+
+.flag-white {
+  fill: #fff;
+  stroke: $navy;
+  stroke-width: 1.5;
+}
+
+.fence {
+  cursor: pointer;
+
+  .bar,
+  .pill {
+    fill: $navy;
+    transition: fill 0.15s ease;
+  }
+
+  &:hover,
+  &.is-lit {
+    .bar,
+    .pill {
+      fill: $indigo;
+    }
+  }
+}
+
+.pill-text {
+  fill: #fff;
+  font-family: $font-display;
+  font-size: 13px;
+  font-weight: 700;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.hero-key {
+  min-width: 0;
+  padding: 4rem 2.5rem 3.5rem;
+  background: $band;
+  color: #fff;
+}
+
+.hero-key-title {
+  @include caps-label;
+  margin: 0 0 1rem;
+  color: rgba(#fff, 0.55);
+}
+
+.course-key {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  a {
+    display: grid;
+    grid-template-columns: 1.75rem minmax(0, 1fr);
+    gap: 0.875rem;
+    margin: 0 -0.75rem;
+    padding: 0.625rem 0.75rem;
+    border-radius: 0.5rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover,
+  .is-lit a {
+    background: rgba(#fff, 0.06);
+
+    .key-num {
+      background: $indigo;
+      color: #fff;
+    }
+  }
+}
+
+.key-num {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: #fff;
+  color: $navy;
+  font-family: $font-display;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.key-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  padding-top: 0.1875rem;
+}
+
+.key-name {
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.key-note {
+  color: rgba(#fff, 0.65);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+@media (max-width: $stack-below) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    padding-bottom: 3.5rem;
+    background: $page;
+  }
+
+  .hero-main {
+    padding-bottom: 2rem;
+  }
+
+  .hero-key {
+    margin: 0 3.5rem;
+    padding: 1.75rem;
+    border-radius: 0.75rem;
+  }
+}
+
+// Where the plan would be too small to read, the key is the course: the
+// numbers stand on a dotted track of their own.
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero-main {
+    padding: 2.5rem 1.25rem 1.75rem;
+  }
+
+  .course-map {
+    display: none;
+  }
+
+  .hero {
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-key {
+    margin: 0 1.25rem;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .course-key::before {
+    content: "";
+    position: absolute;
+    top: 1.5rem;
+    bottom: 1.5rem;
+    left: 0.875rem;
+    border-left: 2px dotted rgba(#fff, 0.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .course-reveal {
+    animation: none;
+  }
+
+  .fence .bar,
+  .fence .pill,
+  .key-num {
+    transition: none;
+  }
+}

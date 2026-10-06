@@ -1,0 +1,62 @@
+// The colours of equipe-entry (app/assets/stylesheets/_palette.scss). It
+// builds them in OKLCH around the Equipe navy; they are written out here,
+// as the Sass of GitHub Pages can't work them out.
+
+$navy: #353851;
+$band: #101827;
+
+$muted: #686B7A;
+$border-control: #BCBDC6;
+$border: #D6D7DD;
+$sunken: #EFF0F4;
+$page: #F9F9FB;
+
+$focus: #A6AEF3;
+
+$indigo-wash: #F0F2FF;
+$indigo-soft: #B1B8F7;
+$indigo: #6164C6;
+$indigo-text: #454798;
+
+$green-wash: #E2FBE9;
+$green-soft: #81D39F;
+$green: #14874E;
+$green-text: #006436;
+
+$red-wash: #FFEEEC;
+$red-soft: #F8A49D;
+$red: #D42F34;
+$red-text: #A21921;
+
+$amber-wash: #FFF1CE;
+$amber: #F0B135;
+$amber-text: #755000;
+
+// The text of the code on the dark rail.
+$code-text: #E4E5EC;
+$code-quiet: #8E92A8;
+
+// Headings in Familjen Grotesk, from the Stockholm studio Familjen; the
+// running text in the system's face, as in equipe-entry; code in Fragment
+// Mono.
+$font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-display: "Familjen Grotesk", $font-body;
+$font-mono: "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+$topbar-height: 3.5rem;
+$sidebar-width: 16.5rem;
+// The share of the width the text takes beside the code.
+$split: 58%;
+// Below this the code goes under the text.
+$stack-below: 1100px;
+// Below this the contents slide in over the page.
+$nav-below: 900px;
+
+// A small label in capitals, as in equipe-entry.
+@mixin caps-label($font-size: 0.6875rem, $letter-spacing: 0.08em) {
+  font-family: $font-body;
+  font-size: $font-size;
+  font-weight: 600;
+  letter-spacing: $letter-spacing;
+  text-transform: uppercase;
+}

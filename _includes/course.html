@@ -1,0 +1,164 @@
+{% comment %}
+  The steps of the guide drawn as a show jumping course: start, fences 1 to
+  6 with the red flag on the rider's right, and finish. Step 2 is a double,
+  the shows (2a) and the entries (2b). The key beside it holds the same
+  links for keyboards and screen readers, so the drawing is left out for
+  them.
+{% endcomment %}
+{% assign track = "M 24 235 L 430 235 C 560 235 640 230 640 150 C 640 82 590 72 520 72 L 230 72 C 120 72 110 150 200 150 L 560 150" %}
+<section class="hero">
+  <div class="hero-main">
+    <h1>Connect your federation to Equipe</h1>
+    <p class="hero-lead">You build the web services and Equipe calls them. We import your shows and entries, look up riders, horses, officials and clubs during the show, and send you the results when it's over.</p>
+
+    <div class="course-map">
+      <svg viewBox="0 0 720 300" aria-hidden="true" focusable="false">
+        <defs>
+          <mask id="course-reveal" maskUnits="userSpaceOnUse" x="0" y="0" width="720" height="300">
+            <path class="course-reveal" d="{{ track }}" pathLength="1"/>
+          </mask>
+        </defs>
+
+        <rect class="course-arena" x="8" y="8" width="704" height="284" rx="12"/>
+
+        <g mask="url(#course-reveal)">
+          <path class="course-track" d="{{ track }}"/>
+          <path class="course-arrow" d="M 106 230 L 114 235 L 106 240"/>
+          <path class="course-arrow" d="M 404 67 L 396 72 L 404 77"/>
+          <path class="course-arrow" d="M 256 145 L 264 150 L 256 155"/>
+        </g>
+
+        <g class="course-line">
+          <line x1="70" y1="215" x2="70" y2="255"/>
+          <circle class="flag-white" cx="70" cy="215" r="5"/>
+          <circle class="flag-red" cx="70" cy="255" r="5"/>
+          <text x="70" y="198">START</text>
+        </g>
+
+        <a class="fence" data-step="1" href="#federation_apisingle_sign_on" tabindex="-1">
+          <rect class="bar" x="167" y="215" width="6" height="40" rx="3"/>
+          <circle class="flag-white" cx="170" cy="215" r="5"/>
+          <circle class="flag-red" cx="170" cy="255" r="5"/>
+          <circle class="pill" cx="170" cy="193" r="13"/>
+          <text class="pill-text" x="170" y="193" dy="0.35em">1</text>
+        </a>
+
+        <a class="fence" data-step="2" href="#federation_apishows" tabindex="-1">
+          <rect class="bar" x="297" y="215" width="6" height="40" rx="3"/>
+          <circle class="flag-white" cx="300" cy="215" r="5"/>
+          <circle class="flag-red" cx="300" cy="255" r="5"/>
+          <rect class="pill" x="283" y="180" width="34" height="26" rx="13"/>
+          <text class="pill-text" x="300" y="193" dy="0.35em">2a</text>
+        </a>
+
+        <a class="fence" data-step="2" href="#federation_apientries" tabindex="-1">
+          <rect class="bar" x="347" y="215" width="6" height="40" rx="3"/>
+          <circle class="flag-white" cx="350" cy="215" r="5"/>
+          <circle class="flag-red" cx="350" cy="255" r="5"/>
+          <rect class="pill" x="333" y="180" width="34" height="26" rx="13"/>
+          <text class="pill-text" x="350" y="193" dy="0.35em">2b</text>
+        </a>
+
+        <a class="fence" data-step="3" href="#step-3---create-judgement-mapping" tabindex="-1">
+          <rect class="bar" x="620" y="147" width="40" height="6" rx="3"/>
+          <circle class="flag-white" cx="620" cy="150" r="5"/>
+          <circle class="flag-red" cx="660" cy="150" r="5"/>
+          <circle class="pill" cx="685" cy="150" r="13"/>
+          <text class="pill-text" x="685" y="150" dy="0.35em">3</text>
+        </a>
+
+        <a class="fence" data-step="4" href="#federation_apisearch_riders" tabindex="-1">
+          <rect class="bar" x="461" y="52" width="6" height="40" rx="3"/>
+          <rect class="bar" x="473" y="52" width="6" height="40" rx="3"/>
+          <circle class="flag-red" cx="470" cy="52" r="5"/>
+          <circle class="flag-white" cx="470" cy="92" r="5"/>
+          <circle class="pill" cx="470" cy="30" r="13"/>
+          <text class="pill-text" x="470" y="30" dy="0.35em">4</text>
+        </a>
+
+        <a class="fence" data-step="5" href="#federation_apiresults" tabindex="-1">
+          <rect class="bar" x="297" y="52" width="6" height="40" rx="3"/>
+          <circle class="flag-red" cx="300" cy="52" r="5"/>
+          <circle class="flag-white" cx="300" cy="92" r="5"/>
+          <circle class="pill" cx="300" cy="30" r="13"/>
+          <text class="pill-text" x="300" y="30" dy="0.35em">5</text>
+        </a>
+
+        <a class="fence" data-step="6" href="#moretranslation" tabindex="-1">
+          <rect class="bar" x="377" y="130" width="6" height="40" rx="3"/>
+          <circle class="flag-white" cx="380" cy="130" r="5"/>
+          <circle class="flag-red" cx="380" cy="170" r="5"/>
+          <circle class="pill" cx="380" cy="108" r="13"/>
+          <text class="pill-text" x="380" y="108" dy="0.35em">6</text>
+        </a>
+
+        <g class="course-line">
+          <line x1="510" y1="130" x2="510" y2="170"/>
+          <circle class="flag-white" cx="510" cy="130" r="5"/>
+          <circle class="flag-red" cx="510" cy="170" r="5"/>
+          <text x="510" y="116">FINISH</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hero-key">
+    <h2 class="hero-key-title">Six steps to a full integration</h2>
+    <ol class="course-key">
+      <li data-step="1">
+        <a href="#federation_apisingle_sign_on">
+          <span class="key-num">1</span>
+          <span class="key-text">
+            <span class="key-name">Sign in users</span>
+            <span class="key-note">Your users log in to Equipe from your system. We create the organizer and the user.</span>
+          </span>
+        </a>
+      </li>
+      <li data-step="2">
+        <a href="#federation_apishows">
+          <span class="key-num">2</span>
+          <span class="key-text">
+            <span class="key-name">Import shows and entries</span>
+            <span class="key-note">We read your list of shows (2a), then the entries of the show the user picks (2b).</span>
+          </span>
+        </a>
+      </li>
+      <li data-step="3">
+        <a href="#step-3---create-judgement-mapping">
+          <span class="key-num">3</span>
+          <span class="key-text">
+            <span class="key-name">Map judgements</span>
+            <span class="key-note">Match your judgement ids with ours in the federation settings.</span>
+          </span>
+        </a>
+      </li>
+      <li data-step="4">
+        <a href="#federation_apisearch_riders">
+          <span class="key-num">4</span>
+          <span class="key-text">
+            <span class="key-name">Search riders, horses, officials and clubs</span>
+            <span class="key-note">For the changes that come in during the show.</span>
+          </span>
+        </a>
+      </li>
+      <li data-step="5">
+        <a href="#federation_apiresults">
+          <span class="key-num">5</span>
+          <span class="key-text">
+            <span class="key-name">Receive results</span>
+            <span class="key-note">We send them to you when the show is over.</span>
+          </span>
+        </a>
+      </li>
+      <li data-step="6">
+        <a href="#moretranslation">
+          <span class="key-num">6</span>
+          <span class="key-text">
+            <span class="key-name">Translate the apps</span>
+            <span class="key-note">app.equipe.com and online.equipe.com in your language.</span>
+          </span>
+        </a>
+      </li>
+    </ol>
+  </div>
+</section>

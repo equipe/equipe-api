@@ -1,0 +1,348 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: $topbar-height + 1.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: $navy;
+  font-family: $font-body;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid $focus;
+  outline-offset: 2px;
+}
+
+// The navy bar over the page, as the navbar of equipe-entry.
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: calc(#{$topbar-height} + env(safe-area-inset-top, 0px));
+  padding: env(safe-area-inset-top, 0px) 1.25rem 0;
+  background: $navy;
+  color: #fff;
+}
+
+// The logo and the word API take the width of the contents under them, so
+// that the search lines up with the text.
+.brand {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.75rem;
+  width: $sidebar-width - 1.25rem;
+  color: #fff;
+  text-decoration: none;
+
+  img {
+    display: block;
+    width: auto;
+    height: 2rem;
+    transition: transform 0.15s ease;
+  }
+
+  &:active img {
+    transform: scale(0.96);
+  }
+}
+
+.brand-name {
+  padding-left: 0.75rem;
+  border-left: 1px solid rgba(#fff, 0.25);
+  font-family: $font-display;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+.search {
+  position: relative;
+  flex: 0 1 22rem;
+  min-width: 0;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    width: 1rem;
+    height: 1rem;
+    transform: translateY(-50%);
+    color: rgba(#fff, 0.7);
+    pointer-events: none;
+  }
+
+  input {
+    width: 100%;
+    height: 2.25rem;
+    padding: 0 0.75rem 0 2.25rem;
+    border: 1px solid rgba(#fff, 0.25);
+    border-radius: 0.375rem;
+    background: rgba(#fff, 0.08);
+    color: #fff;
+    font: inherit;
+    font-size: 0.875rem;
+    -webkit-appearance: none;
+    appearance: none;
+
+    &::placeholder {
+      color: rgba(#fff, 0.7);
+    }
+
+    &:focus {
+      outline: 0;
+      border-color: $focus;
+      background: rgba(#fff, 0.14);
+      box-shadow: 0 0 0 3px rgba($focus, 0.35);
+    }
+  }
+}
+
+.topbar-link {
+  flex: none;
+  margin-left: auto;
+  color: rgba(#fff, 0.8);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.open-nav {
+  display: none;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: -0.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0.375rem;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(#fff, 0.08);
+  }
+
+  svg {
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+}
+
+// The contents, down the left of the page.
+.sidebar {
+  position: fixed;
+  top: calc(#{$topbar-height} + env(safe-area-inset-top, 0px));
+  bottom: 0;
+  left: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: $sidebar-width;
+  padding: 1.5rem 1rem 1.5rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-right: 1px solid $border;
+  background: $page;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3125rem 0.625rem;
+    border-radius: 0.375rem;
+    color: $navy;
+    font-size: 0.875rem;
+    line-height: 1.35;
+    text-decoration: none;
+
+    &:hover {
+      background: $sunken;
+    }
+
+    // The page being read is lifted out as a white box, the content box of
+    // equipe-entry.
+    &.active {
+      background: #fff;
+      box-shadow: 0 0 0 1px $border;
+      font-weight: 600;
+    }
+  }
+}
+
+.sidebar-title {
+  @include caps-label;
+  margin: 0 0 0.375rem;
+  padding: 0 0.625rem;
+  color: $muted;
+}
+
+.sidebar-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-foot {
+  margin: auto 0 0;
+  padding: 0 0.625rem;
+  color: $muted;
+  font-size: 0.75rem;
+
+  a {
+    display: inline;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+
+    &:hover {
+      background: none;
+      text-decoration: underline;
+    }
+  }
+}
+
+// The method of an endpoint, as a tag in its colour.
+.endpoint {
+  flex: none;
+  padding: 0.1875rem 0.3125rem;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  font-family: $font-mono;
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+
+  &.get {
+    border-color: $green-soft;
+    background: $green-wash;
+    color: $green-text;
+  }
+
+  &.post,
+  &.form {
+    border-color: $indigo-soft;
+    background: $indigo-wash;
+    color: $indigo-text;
+  }
+
+  &.put {
+    border-color: $amber;
+    background: $amber-wash;
+    color: $amber-text;
+  }
+
+  &.delete {
+    border-color: $red-soft;
+    background: $red-wash;
+    color: $red-text;
+  }
+}
+
+.main {
+  min-height: 100vh;
+  margin-left: $sidebar-width;
+  padding-top: calc(#{$topbar-height} + env(safe-area-inset-top, 0px));
+}
+
+@media (max-width: $nav-below) {
+  .open-nav {
+    display: inline-flex;
+  }
+
+  .brand {
+    width: auto;
+  }
+
+  .sidebar {
+    width: 18rem;
+    max-width: 85vw;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.2s ease, visibility 0s linear 0.2s;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  body.nav-open {
+    overflow: hidden;
+
+    .sidebar {
+      transform: none;
+      visibility: visible;
+      transition: transform 0.2s ease;
+      box-shadow: 0 0 2rem rgba($band, 0.25);
+    }
+
+    // The page behind the open contents is dimmed, and closes them when
+    // pressed (main.js).
+    &::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 15;
+      background: rgba($band, 0.4);
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar {
+    gap: 0.75rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .brand-name,
+  .topbar-link {
+    display: none;
+  }
+
+  .search {
+    flex: 1 1 auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  body.nav-open .sidebar,
+  .brand img {
+    transition: none;
+  }
+}
