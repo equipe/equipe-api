@@ -18,10 +18,10 @@ right_code: |
         "city":"xxx",
         "address_country":"Sweden",
         "home_phone":"",
-        "club_id":2628,
+        "club_id":"2628",
         "club_logo_id":"0235",
         "club_logo_group": "svrf",
-        "person_no":1969,
+        "person_no":"1969",
         "email":"xxx",
         "country":"SWE"
       }
@@ -49,6 +49,12 @@ last_name
 : Last name (starts with)
 
 The response must validate json-schema [riders.json](https://app.equipe.com/api/schemas/riders.json)
+
+#### In Equipe
+
+This is how Equipe shows your answer, here for a search on the last name "sten". Riders whose `licence_year` is the current year are shown in green. The user picks a rider with **Choose**.
+
+<a href="images/search_riders.png"><img src="images/search_riders.png" alt="The riders found in a search on the federation's tab in Equipe" style="width: 100%"/></a>
 
 #### Models
 

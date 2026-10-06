@@ -31,6 +31,12 @@ name
 
 The response must validate json-schema [clubs.json](https://app.equipe.com/api/schemas/clubs.json)
 
+#### In Equipe
+
+This is how Equipe shows your answer, here for a search on the name "helsingborg". The user picks a club with **Choose**.
+
+<a href="images/search_clubs.png"><img src="images/search_clubs.png" alt="The clubs found in a search on the federation's tab in Equipe" style="width: 100%"/></a>
+
 #### Models
 
 * [Club](#modelsCLUB)
