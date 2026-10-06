@@ -62,6 +62,14 @@ Content-Type: application/json
 }
 ~~~
 
+This is how the user sees your errors:
+
+<a href="images/export_unprocessable.png"><img src="images/export_unprocessable.png" alt="The errors from the federation when exporting results in Equipe" style="width: 100%"/></a>
+
+And this is how the user sees `202 Accepted`:
+
+<a href="images/export_accepted.png"><img src="images/export_accepted.png" alt="The federation accepting the results exported from Equipe" style="width: 100%"/></a>
+
 ### Submit the results to external converter
 
 Make sure that you have specified **Result File URL** under settings for your federation in app.equipe.com.

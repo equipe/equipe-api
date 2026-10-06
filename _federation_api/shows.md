@@ -9,16 +9,16 @@ right_code: |
      "shows":[
         {
            "id":"f34a80c1-069f-4498-846a-e3fca05a7f00",
-           "name":"International CSI 3* Horse Show 2016",
-           "starts_on":"2016-08-09",
-           "ends_on":"2016-08-14",
+           "name":"International CSI 3* Horse Show 2026",
+           "starts_on":"2026-08-09",
+           "ends_on":"2026-08-14",
            "entries_url":"https://example.com/shows/24/entries.json"
         },
         {
            "id":"9305e1ed-8d8a-4242-ad12-08e1ea4cf046",
-           "name":"Jumping Championships (YR, J, C) 2016",
-           "starts_on":"2016-07-28",
-           "ends_on":"2016-07-30",
+           "name":"Jumping Championships (YR, J, C) 2026",
+           "starts_on":"2026-07-28",
+           "ends_on":"2026-07-30",
            "entries_url":"https://example.com/shows/23/entries.json"
         }
     ]
@@ -48,3 +48,9 @@ entries_url | url | Yes | Full url including protocol, host and path to the Entr
 
 Test this by creating a new show in Equipe, once the show is created go to File > Your federation > Import entries
 {: .success }
+
+#### In Equipe
+
+The user picks the show to import from your list, where Equipe shows the `name` of each show.
+
+<a href="images/import_shows.png"><img src="images/import_shows.png" alt="The shows from the federation to pick from when importing entries in Equipe" style="width: 100%"/></a>

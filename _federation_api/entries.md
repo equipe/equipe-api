@@ -7,8 +7,8 @@ right_code: |
   ~~~ json
   {
     "show": {
-      "id": "fc1bf64e-1f6d-4838-ab45-1d4f0a079288",
-      "name": "Mini show 2017",
+      "id": "f34a80c1-069f-4498-846a-e3fca05a7f00",
+      "name": "International CSI 3* Horse Show 2026",
       "currency": "SEK"
     },
     "competitions": [
@@ -17,12 +17,12 @@ right_code: |
         "name": "Two phases, not atc T A",
         "judgement_id": "274.5.1",
         "discipline": "H",
-        "starts_on": "2017-01-10",
+        "starts_on": "2026-08-09",
         "start_time": "12:00",
         "fence_height": 120,
         "entry_fee": 120,
         "late_entry_fee": 50,
-        "vat": 0
+        "vat_included_by": 0
       }
     ],
     "people": [
@@ -74,6 +74,16 @@ Does it take long time to collect and build entries response? Return `202 ACCEPT
 The entries import is designed so that it can be run any number of times before the show starts. First time the user have to select a show, after that when the import is requested by the user it will immediately start the import without prompting to select show again.
 
 Values that have been changed by the user will not be overridden by changes from the entries given by the web service. Entries that are no longer present in the web service response will be withdrawn.
+
+#### In Equipe
+
+While you answer `202 Accepted`, the user sees that Equipe is waiting for your entries.
+
+<a href="images/import_waiting.png"><img src="images/import_waiting.png" alt="Equipe waiting for the federation to deliver the entries" style="width: 100%"/></a>
+
+When the import is done, Equipe shows the user what it changed in the show. The ids you send are kept as **Foreign ID**.
+
+<a href="images/import_changes.png"><img src="images/import_changes.png" alt="The changes the import made to the show in Equipe" style="width: 100%"/></a>
 
 #### Models
 
