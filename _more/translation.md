@@ -7,12 +7,11 @@ position: 1
 Translation should be done and maintained by a active user of the system.
 {: .info }
 
-<img src="images/start_reason.png?raw=true" alt="Image of Federation webservices" style="width: 100%"/>
+We translate the apps at [translation.equipe.com](https://translation.equipe.com).
 
-You will notice that more words will come over and over again. This is because they are used in different parts of the apps. The translation-key is visible in the top-right of the word, it will give you some context where it's used. Marked with yellow in the screenshot above.
+<img src="images/translation.png" alt="The Spanish translations of the reasons a start ends, in translation.equipe.com" style="width: 100%"/>
 
-Translation.io saves white space and new line, so be careful when you leave the text box so there is no extra new line (enter) or traling white space.
-{: .warning }
+You will notice that some words come back again and again. This is because they are used in different parts of the apps. The translation key above each text tells you where it's used. In the screenshot above we searched for `activerecord.values.start.reason`, and the matches are marked in yellow.
 
 
 Try to keep the words in similar length as the original values.
