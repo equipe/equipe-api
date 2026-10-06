@@ -20,6 +20,8 @@ right_code: |
 Make sure that you have specified your **API KEY**, enabled **Single sign on** and copied your unique `YOUR-SINGLE-SIGN-ON-URL` under settings for your federation in app.equipe.com.
 {: .info }
 
+<a href="images/federation_single_sign_on.png"><img src="images/federation_single_sign_on.png" alt="The Single sign on tab of the federation settings in Equipe, with the federation's single sign on URL" style="width: 100%"/></a>
+
 Users of your system needs to login to `https://app.equipe.com`, you can sign in users that you already have authenticated. This also creates the organizer and user if they do not already exist in Equipe and assigns them to your federation. You should only generate this login possibility to users that have the role of organizer.
 
 ### HTML Form

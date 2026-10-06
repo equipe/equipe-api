@@ -13,7 +13,7 @@ This solves two problems, create the organizer and user in Equipe, and make it s
 
 First of all we need to be able to import entries into Equipe. This is done by specifying the **Shows URL** in the settings for your federation in Equipe.
 
-<img src="images/federation_webservices.png?raw=true" alt="Image of Federation webservices" style="width: 100%"/>
+<a href="images/federation_web_services.png"><img src="images/federation_web_services.png" alt="The Web Services tab of the federation settings in Equipe" style="width: 100%"/></a>
 
 * User creates a new show in Equipe, and selects File > Federation > Import entries.
 * Equipe makes a `HTTP GET` with [headers](#federation_apiauthentication) to the **Shows URL** it return shows that the logged in user are able to import.
