@@ -61,6 +61,9 @@ $decoded->payload->target
 # CSS (present when using modal or browser)
 $decoded->payload->style_url
 
+# The language of the user who started the action
+$decoded->payload->locale
+
 # Access context
 $decoded->payload->starts_url
 $decoded->payload->url

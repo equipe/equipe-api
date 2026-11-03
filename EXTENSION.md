@@ -22,7 +22,7 @@ Start by providing the *name* and *description* of the extension. The *Locale* s
 
 The *URL* must use HTTPS, as this is the URL to which Equipe will send all requests and webhooks.
 
-*Secret* refers to our shared secret used to encode the JWT token, which you will use to decode it.
+*Secret* refers to our shared secret used to encode the JWT token, which you will use to decode it. Equipe makes one for you with 44 characters. If you set your own, it must be at least 32 characters, since HS256 needs a key of 256 bits.
 
 Select the webhooks/events to which you want your extension to subscribe.
 
@@ -59,6 +59,25 @@ This is example in ruby using the the jwt gem. `EXTENSION_SECRET` is the same as
 ```ruby
 @payload, @header = JWT.decode params[:token], ENV['EXTENSION_SECRET']
 ```
+
+The decoded token looks like this:
+
+```json
+{
+   "event_name": "action",
+   "api_key": "[FILTERED]",
+   "payload": {
+      "name": "open",
+      "target": "modal",
+      "url": "https://app.equipe.com/meetings/929/competitions/1/starts",
+      "meeting_url": "https://app.equipe.com/meetings/929",
+      "style_url": "https://app.equipe.com/assets/application.css",
+      "locale": "sv"
+   }
+}
+```
+
+`locale` is the language the user sees Equipe in. It is one of the locales Equipe uses, so Norwegian is `no` and Chinese is `zh-Hans`. Add it as `l` to your API requests, for example `?l=sv`, to get the answers in the language of the user instead of the locale of the extension.
 
 # Install
 
